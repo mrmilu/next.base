@@ -4,7 +4,7 @@
 declarations to the file `react-i18next.d.ts`. This way typescript will be able to infer the translations keys
 for each file.
 
-**_Also remember_** (as stated in the package documentation) that to translations to work the following snippet
+**_Also remember_** (as stated in the package documentation) that for translations to work the following snippet
 of code should be available on each page:
 
 ```tsx
@@ -17,5 +17,5 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 ```
 
-Here you could use either `getStaticProps` or `getServerSideProps` depending on the chosen strategy. For more
+Here you could either use `getStaticProps` or `getServerSideProps` depending on the chosen strategy. For more
 info read the package documentation.
