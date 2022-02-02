@@ -17,6 +17,12 @@
 
 ### First steps
 
+**Set node version**
+
+```
+nvm use
+```
+
 **Install dependencies**
 
 ```
