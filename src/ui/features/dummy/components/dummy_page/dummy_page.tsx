@@ -1,12 +1,17 @@
 import { ReactElement, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/src/ui/state";
-import { getUsers, getUsersThunk } from "@/src/ui/features/dummy/state/dummy.slice";
+import { getLoadingState, getUsers, getUsersThunk } from "@/src/ui/features/dummy/state/dummy.slice";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
+import { SimpleCard } from "@/src/ui/components/simple_card/simple_card";
+import { LoaderStyled } from "@/src/ui/components/loader/loader.styled";
+import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
 
 export default function DummyPage() {
   const dispatch = useAppDispatch();
   const users = useAppSelector(getUsers);
+  const loadingUsers = useAppSelector(getLoadingState);
+  const { mdAndUp } = useBreakpointsMatch();
 
   useEffect(() => {
     dispatch(getUsersThunk());
@@ -14,13 +19,8 @@ export default function DummyPage() {
 
   return (
     <DummyPageStyled>
-      <ul>
-        {users.map((user, idx) => (
-          <li key={`${user.id}_${idx}`}>
-            {user.name} - {user.email}
-          </li>
-        ))}
-      </ul>
+      {mdAndUp && <h2>Dummy page</h2>}
+      {loadingUsers ? <LoaderStyled /> : users.map((user, idx) => <SimpleCard key={`${user.id}_${idx}`} title={user.name} subtitle={user.email} />)}
     </DummyPageStyled>
   );
 }

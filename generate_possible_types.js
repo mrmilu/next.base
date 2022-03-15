@@ -10,7 +10,7 @@ try {
     }
   });
 
-  fs.writeFile("./src/core/app/data/services/mocki_io_service_possible_types.json", JSON.stringify(possibleTypes), (err) => {
+  fs.writeFile("./src/core/app/data/services/mock_service_possible_types.json", JSON.stringify(possibleTypes), (err) => {
     if (err) {
       console.error("Error writing possibleTypes.json", err);
     } else {

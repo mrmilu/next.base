@@ -18,16 +18,18 @@ export const BaseLayoutStyled = styled.div`
 
 export const BaseLayoutFooterStyled = styled.footer`
   display: flex;
+  flex: 1 0 auto;
   align-items: center;
   justify-content: center;
   background-color: ${colors.gray90};
   color: ${colors.white};
-  height: ${px2rem(60)};
+  height: ${px2rem(120)};
 `;
 
 export const BaseLayoutNavStyled = styled.nav`
   height: ${px2rem(60)};
   display: flex;
+  flex: 1 0 auto;
   align-items: center;
   justify-content: start;
   background-color: ${colors.gray20};

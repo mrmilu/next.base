@@ -3,11 +3,11 @@ import { IGraphqlDataSource } from "@/src/common/interfaces/graphql_data_source"
 import { DocumentNode } from "graphql";
 import { IEnvVars } from "@/src/core/app/domain/interfaces/env_vars";
 import { TYPES } from "../../ioc/types";
-import possibleTypes from "./mocki_io_service_possible_types.json";
+import possibleTypes from "./mock_service_possible_types.json";
 import { GraphqlClient } from "@/src/common/network/graphql_client";
 
 @injectable()
-export class MockiIoService implements IGraphqlDataSource {
+export class MockService implements IGraphqlDataSource {
   private graphqlClient: GraphqlClient;
 
   constructor(@inject(TYPES.IEnvVars) envVars: IEnvVars) {

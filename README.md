@@ -41,7 +41,7 @@ Create a `.env.local` file with your environment variables with the following de
 
 ```
 NEXT_PUBLIC_API_URL=http://localhost:3000
-NEXT_PUBLIC_DEV_GRAPHQL_PROXY_ENDPOINT=https://api.mocki.io/v2/c4d7a195/graphql/
+NEXT_PUBLIC_DEV_GRAPHQL_PROXY_ENDPOINT=https://graphqlzero.almansi.me/api
 NEXT_PUBLIC_SENTRY_DSN=project_dsn
 NEXT_PUBLIC_SENTRY_ENABLED=false
 SENTRY_ENVIRONMENT=dev

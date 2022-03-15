@@ -42,8 +42,8 @@ const bodyL = css`
 // Heading
 const subHeading = css`
   ${fonts.Lato};
-  font-size: ${px2rem(48)};
-  line-height: ${px2rem(52)};
+  font-size: ${px2rem(26)};
+  line-height: ${px2rem(30)};
   font-weight: 400;
 `;
 const headingS = css`

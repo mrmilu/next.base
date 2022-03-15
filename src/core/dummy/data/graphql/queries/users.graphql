@@ -2,6 +2,8 @@
 
 query Users {
   users {
-    ...BaseUser
+    data {
+      ...BaseUser
+    }
   }
 }

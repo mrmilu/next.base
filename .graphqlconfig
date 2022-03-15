@@ -4,7 +4,7 @@
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
-        "url": "https://api.mocki.io/v2/c4d7a195/graphql/",
+        "url": "https://graphqlzero.almansi.me/api",
         "headers": {
           "user-agent": "JS GraphQL"
         },
