@@ -1,13 +1,13 @@
-import "@/src/dependencies/ioc/index";
-import "@/src/ui/styles/globals.scss";
+import "@/src/core/app/ioc/index";
 import type { AppProps } from "next/app";
-import { ReactElement, ReactNode, useEffect, useRef } from "react";
+import { ReactElement, ReactNode, useEffect } from "react";
 import { NextPage } from "next";
 import { Provider } from "react-redux";
 import { store } from "@/src/ui/state";
 import { appWithTranslation } from "next-i18next";
-import { MyMainLoader } from "@/src/ui/components/my_main_loader/my_main_loader";
+import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
 import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
+import { GlobalStyles } from "@/src/ui/styles/globals";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -31,10 +31,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <Provider store={store}>
-      <>
-        <MyMainLoader />
-        {getLayout(<Component {...pageProps} />)}
-      </>
+      <GlobalStyles />
+      <MainLoader />
+      {getLayout(<Component {...pageProps} />)}
     </Provider>
   );
 }

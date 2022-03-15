@@ -2,9 +2,9 @@ import { createAsyncThunk, createSelector, createSlice, PayloadAction } from "@r
 import { DummySliceState } from "@/src/ui/features/dummy/view_models/dummy.slice";
 import { RootState } from "@/src/ui/state";
 import { setLoader } from "@/src/ui/state/ui.slice";
-import { locator } from "@/src/dependencies/ioc/index";
+import { locator } from "@/src/core/app/ioc";
 import { DummyRepositoryProvider } from "@/src/core/dummy/domain/interfaces/dummy_repository";
-import { TYPES } from "@/src/dependencies/ioc/types";
+import { TYPES } from "@/src/core/app/ioc/types";
 
 const initialState = (): DummySliceState => ({
   users: []

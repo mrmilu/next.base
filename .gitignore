@@ -3,6 +3,8 @@
 # misc
 .idea
 __generated__
+.yalc
+yalc.lock
 
 # dependencies
 /node_modules
