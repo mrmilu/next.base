@@ -116,8 +116,6 @@ export const ResetCSS = createGlobalStyle`
 
   body {
     line-height: 1;
-
-    // width: 100vw; Disabled because it causes horizontal scrolling
     height: 100vh;
   }
 
