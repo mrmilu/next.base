@@ -13,7 +13,6 @@ export interface DummySSRPageProps {
 
 export default function DummySSRPage({ serializedUsers }: DummySSRPageProps) {
   const { mdAndUp } = useBreakpointsMatch();
-  const router = useRouter();
   const usersDomain: Array<DummyUser> = useMemo(
     () => JSON.parse(serializedUsers).map((value: Record<string, any>) => plainToClass(DummyUser, value)),
     [serializedUsers]
