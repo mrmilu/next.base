@@ -14,7 +14,6 @@ export default function DummyPage() {
   const loadingUsers = useAppSelector(getLoadingState);
   const { mdAndUp } = useBreakpointsMatch();
   const router = useRouter();
-  console.log(router.basePath);
 
   useEffect(() => {
     dispatch(getUsersThunk());
