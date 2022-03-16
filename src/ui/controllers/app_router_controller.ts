@@ -1,12 +1,11 @@
-import { EnhancedStore } from "@reduxjs/toolkit";
-import { RootState } from "@/src/ui/state";
+import { Store } from "@reduxjs/toolkit";
 import { setLoader } from "@/src/ui/state/ui.slice";
 import RouterSingleton from "next/router";
 
 export class AppRouterController {
-  private store: EnhancedStore<RootState> | null;
+  private store!: Store;
 
-  constructor(store: EnhancedStore<RootState>) {
+  constructor(store: Store) {
     this.store = store;
     this.init();
   }
@@ -24,14 +23,14 @@ export class AppRouterController {
   }
 
   private handleRouteChangeStart = () => {
-    this.store?.dispatch(setLoader(true));
+    this.store.dispatch(setLoader(true));
   };
 
   private handleRouteChangeComplete = () => {
-    this.store?.dispatch(setLoader(false));
+    this.store.dispatch(setLoader(false));
   };
 
   private handleRouteChangeError = () => {
-    this.store?.dispatch(setLoader(false));
+    this.store.dispatch(setLoader(false));
   };
 }
