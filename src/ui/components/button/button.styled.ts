@@ -6,7 +6,7 @@ import { spacing } from "@/src/ui/styles/spacing";
 
 export const ButtonStyled = styled.button<ButtonProps>`
   border-radius: ${px2rem(16)};
-  background-color: ${colors.gray90};
+  background-color: ${(props) => (props.disabled ? colors.gray20 : colors.gray90)};
   border: none;
   padding: ${px2rem(spacing.size2)} ${px2rem(spacing.size4)};
   color: ${colors.white};
@@ -14,6 +14,6 @@ export const ButtonStyled = styled.button<ButtonProps>`
 
   &:hover,
   &:focus {
-    background-color: ${colors.gray80};
+    background-color: ${(props) => (props.disabled ? colors.gray20 : colors.gray70)};
   }
 `;

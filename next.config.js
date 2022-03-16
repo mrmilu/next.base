@@ -31,9 +31,6 @@ const moduleExports = {
       : [...DEFAULT_REWRITES];
   },
   i18n,
-  sassOptions: {
-    includePaths: [path.join(__dirname, "src/ui/styles")]
-  },
   images: {
     domains: [apiDomain]
   },

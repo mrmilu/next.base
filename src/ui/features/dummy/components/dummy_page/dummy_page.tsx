@@ -6,12 +6,15 @@ import { DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/d
 import { SimpleCard } from "@/src/ui/components/simple_card/simple_card";
 import { LoaderStyled } from "@/src/ui/components/loader/loader.styled";
 import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
+import { useRouter } from "next/router";
 
 export default function DummyPage() {
   const dispatch = useAppDispatch();
   const users = useAppSelector(getUsers);
   const loadingUsers = useAppSelector(getLoadingState);
   const { mdAndUp } = useBreakpointsMatch();
+  const router = useRouter();
+  console.log(router.basePath);
 
   useEffect(() => {
     dispatch(getUsersThunk());

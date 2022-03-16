@@ -1,40 +1,79 @@
-import { useTranslation } from "next-i18next";
+import { i18n, useTranslation } from "next-i18next";
 import { FormikHelpers } from "formik/dist/types";
-import { Formik } from "formik";
-import { InputFormik } from "@/src/ui/components/input_formik/input_formik";
+import { FormikProvider, useFormik } from "formik";
+import { InputFormik } from "@/src/ui/components/input/input";
 import { Button } from "@/src/ui/components/button/button";
-import Link from "next/link";
-import { ReactElement } from "react";
+import { ReactElement, useMemo, useState } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import { HomeFormStyled, HomePageStyled } from "@/src/ui/features/home/components/home_page/home_page.styled";
+import { HomeFormStyled, HomePageLocaleStyled, HomePageStyled } from "@/src/ui/features/home/components/home_page/home_page.styled";
+import { useRouter } from "next/router";
+import yup from "@/src/common/utils/yup_extended";
+import { timeout } from "@/src/common/utils/promise";
 
 interface FormValues {
-  example: string;
+  name: string;
+  email: string;
+  age: string;
 }
 
-const initialFormValues: FormValues = {
-  example: ""
+const formValues: FormValues = {
+  name: "",
+  email: "",
+  age: ""
 };
 
 export default function HomePage() {
   const { t } = useTranslation();
+  const router = useRouter();
+  const [firstSubmit, setFirstSubmit] = useState(false);
+  const validationSchema = useMemo(
+    () =>
+      yup.object().shape({
+        name: yup.string().required(t("form.errors.required")),
+        email: yup.string().required(t("form.errors.required")).email(t("form.errors.email")),
+        age: yup
+          .number()
+          .typeError(t("form.errors.number") ?? "")
+          .required(t("form.errors.required"))
+          .isNotUnderAge(t("form.errors.underAge"))
+      }),
+    [t]
+  );
 
-  const onSubmit = (values: FormValues, formikHelpers: FormikHelpers<FormValues>) => {
-    alert(`This is your input value: ${values.example}`);
+  const formik = useFormik({
+    initialValues: formValues,
+    validationSchema,
+    validateOnBlur: firstSubmit,
+    validateOnChange: firstSubmit,
+    onSubmit: async (values: FormValues, formikHelpers: FormikHelpers<FormValues>) => {
+      await timeout(3000);
+      alert(`name: ${values.name}, email: ${values.email}, age: ${values.age}`);
+    }
+  });
+
+  const changeLanguage = (language: string) => {
+    router.push(`${router.basePath}`, router.asPath, { locale: language });
   };
 
   return (
     <HomePageStyled>
-      <p>{t("helloWorld")}</p>
-      <Formik initialValues={initialFormValues} onSubmit={onSubmit}>
+      <HomePageLocaleStyled>
+        <p>{t("helloWorld")}</p>
+        <select name="language" value={router.locale} onChange={(e) => changeLanguage(e.target.value)}>
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+        </select>
+      </HomePageLocaleStyled>
+      <FormikProvider value={formik}>
         <HomeFormStyled>
-          <InputFormik label="Base input" name="example" />
-          <Button type="submit">Test button</Button>
+          <InputFormik name="name" label={t("form.fields.name.label")} placeholder={t("form.fields.name.placeholder")} />
+          <InputFormik name="email" label={t("form.fields.email.label")} placeholder={t("form.fields.email.placeholder")} />
+          <InputFormik name="age" type="number" label={t("form.fields.age.label")} placeholder={t("form.fields.age.placeholder")} />
+          <Button type="submit" disabled={formik.isSubmitting} onClick={() => setFirstSubmit(true)}>
+            {t("form.submit")}
+          </Button>
         </HomeFormStyled>
-      </Formik>
-      <Link href="/dummy">
-        <a>Dummy section</a>
-      </Link>
+      </FormikProvider>
     </HomePageStyled>
   );
 }

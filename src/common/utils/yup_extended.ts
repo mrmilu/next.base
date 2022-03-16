@@ -1,25 +1,25 @@
 import * as yup from "yup";
 import type { AnyObject, Maybe } from "yup/lib/types";
 
-yup.addMethod<yup.StringSchema>(yup.string, "emptyAsUndefined", function () {
-  return this.transform((value?: string) => (value ? value : undefined));
+// Here declare yup extend methods for each schema type
+
+yup.addMethod<yup.StringSchema>(yup.string, "isNotUnderAge", function (message?: string) {
+  return this.test("isNotUnderAge", message ?? "", (value?: string) => (value ? Number(value) > 18 : false));
 });
 
-yup.addMethod<yup.NumberSchema>(yup.number, "emptyAsUndefined", function () {
-  return this.transform((value: string, originalValue?: string) => (originalValue?.trim() ? value : undefined));
+yup.addMethod<yup.NumberSchema>(yup.number, "isNotUnderAge", function (message?: string) {
+  return this.test("isNotUnderAge", message ?? "", (value?: number) => (value ? value >= 18 : true));
 });
 
-declare module "yup-extended" {
+declare module "yup" {
   interface StringSchema<TType extends Maybe<string> = string | undefined, TContext extends AnyObject = AnyObject, TOut extends TType = TType>
     extends yup.BaseSchema<TType, TContext, TOut> {
-    emptyAsUndefined(): StringSchema<TType, TContext>;
-    hex(message: string): StringSchema<TType, TContext>;
-    moreThan(moreThan: number | string, message: string): StringSchema<TType, TContext>;
+    isNotUnderAge(message?: string): StringSchema<TType, TContext>;
   }
 
   interface NumberSchema<TType extends Maybe<number> = number | undefined, TContext extends AnyObject = AnyObject, TOut extends TType = TType>
     extends yup.BaseSchema<TType, TContext, TOut> {
-    emptyAsUndefined(): NumberSchema<TType, TContext>;
+    isNotUnderAge(message?: string): NumberSchema<TType, TContext>;
   }
 }
 
