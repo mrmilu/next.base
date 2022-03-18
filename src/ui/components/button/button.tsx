@@ -5,11 +5,12 @@ export interface ButtonProps {
   onClick?: MouseEventHandler;
   type?: "submit" | "reset" | "button";
   disabled?: boolean;
+  className?: string;
 }
 
-export const Button = ({ children, onClick, type, disabled }: PropsWithChildren<ButtonProps>) => {
+export const Button = ({ className, children, onClick, type, disabled }: PropsWithChildren<ButtonProps>) => {
   return (
-    <ButtonStyled type={type} onClick={onClick} disabled={disabled}>
+    <ButtonStyled className={className} type={type} onClick={onClick} disabled={disabled}>
       {children}
     </ButtonStyled>
   );

@@ -16,6 +16,9 @@ export const BaseLayout = ({ children }: PropsWithChildren<unknown>) => {
           <li>
             <Link href="/dummy_ssr">dummy SSR</Link>
           </li>
+          <li>
+            <Link href="/create_post">create post</Link>
+          </li>
         </ul>
       </BaseLayoutNavStyled>
       <main>{children}</main>

@@ -1,6 +1,7 @@
 export const TYPES = {
-  MockIoService: Symbol("MockIoService"),
+  MockService: Symbol("MockService"),
   IEnvVars: Symbol("IEnvVars"),
   IDummyRepository: Symbol("IDummyRepository"),
-  GetDummyUsersUseCase: Symbol("GetDummyUsersUseCase")
+  GetDummyUsersUseCase: Symbol("GetDummyUsersUseCase"),
+  CreteDummyPostUseCase: Symbol("CreteDummyPostUseCase")
 };
