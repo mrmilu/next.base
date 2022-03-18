@@ -17,7 +17,7 @@ export default function CreatePostPage() {
   const [asyncStateOn, setAsyncState] = useState(true);
   const { state: asyncState, setPromise } = useAsyncState();
 
-  const createPost = async () => {
+  const createPost = async (isDebounce = false) => {
     const useCase = await locator.get<IocProvider<CreateDummyPostUseCase>>(TYPES.CreteDummyPostUseCase)();
     // Super important to set the promise in which you are doing side effects to maintain the promise chain
     const promise = useCase
@@ -29,7 +29,7 @@ export default function CreatePostPage() {
         console.log("set post number");
         setPostNumber((prevState) => prevState + 1);
       });
-    if (asyncStateOn) setPromise(promise);
+    if (asyncStateOn && !isDebounce) setPromise(promise);
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,7 +48,7 @@ export default function CreatePostPage() {
           }}
         />
       </div>
-      <Button onClick={debounceOn ? debounceCreatePost : createPost}>Create</Button>
+      <Button onClick={debounceOn ? () => debounceCreatePost(true) : () => createPost()}>Create</Button>
       <div>
         <h3>Create a random disable button state post</h3>
         <Switch
@@ -60,7 +60,7 @@ export default function CreatePostPage() {
           }}
         />
       </div>
-      <Button onClick={createPost} disabled={asyncState === "pending"}>
+      <Button onClick={() => createPost()} disabled={asyncState === "pending"}>
         Create
       </Button>
       {postTitles.map((title, idx) => {

@@ -8,6 +8,7 @@ import { appWithTranslation } from "next-i18next";
 import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
 import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
 import { GlobalStyles } from "@/src/ui/styles/globals";
+import { Modal } from "@/src/ui/components/modal/modal";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <Provider store={store}>
       <GlobalStyles />
+      <Modal />
       <MainLoader />
       {getLayout(<Component {...pageProps} />)}
     </Provider>

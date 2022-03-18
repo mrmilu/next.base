@@ -1,27 +1,34 @@
 import { ReactElement, useEffect, useMemo } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import { DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
-import { SimpleCard } from "@/src/ui/components/simple_card/simple_card";
+import { DummyPageSimpleCardStyled, DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
 import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
 import { plainToClass } from "class-transformer";
 import { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
+import { showModal } from "@/src/ui/state/ui.slice";
+import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
+import { useAppDispatch } from "@/src/ui/state";
 
 export interface DummySSRPageProps {
   serializedUsers: string;
 }
 
 export default function DummySSRPage({ serializedUsers }: DummySSRPageProps) {
+  const dispatch = useAppDispatch();
   const { mdAndUp } = useBreakpointsMatch();
   const usersDomain: Array<DummyUser> = useMemo(
     () => JSON.parse(serializedUsers).map((value: Record<string, any>) => plainToClass(DummyUser, value)),
     [serializedUsers]
   );
 
+  const showUserModal = (user: DummyUser) => {
+    dispatch(showModal(<UserModal user={user} />));
+  };
+
   return (
     <DummyPageStyled>
       {mdAndUp && <h2>Dummy SSR page</h2>}
       {usersDomain.map((user, idx) => (
-        <SimpleCard key={`${user.id}_${idx}`} title={user.name} subtitle={user.email} />
+        <DummyPageSimpleCardStyled onClick={() => showUserModal(user)} key={`${user.id}_${idx}`} title={user.name} subtitle={user.email} />
       ))}
     </DummyPageStyled>
   );
