@@ -9,6 +9,7 @@ import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
 import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
 import { GlobalStyles } from "@/src/ui/styles/globals";
 import { Modal } from "@/src/ui/components/modal/modal";
+import Head from "next/head";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -32,6 +33,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <Provider store={store}>
+      <Head>
+        <title>Next boilerplate app</title>
+      </Head>
       <GlobalStyles />
       <Modal />
       <MainLoader />

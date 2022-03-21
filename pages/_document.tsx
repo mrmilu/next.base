@@ -1,4 +1,4 @@
-import Document, { DocumentContext } from "next/document";
+import Document, { DocumentContext, Head, Main, NextScript, Html } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import { AppPropsType, AppType } from "next/dist/shared/lib/utils";
 
@@ -26,6 +26,22 @@ class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head>
+          <link rel="preload" href="/assets/fonts/Lato-Regular.ttf" as="font" type="font/truetype" />
+          <link rel="preload" href="/assets/fonts/Lato-Bold.ttf" as="font" type="font/truetype" />
+          <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font" type="font/truetype" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
   }
 }
 

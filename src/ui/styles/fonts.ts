@@ -5,21 +5,21 @@ export const FontStyled = createGlobalStyle`
   @font-face {
     font-family: Lato;
     src: url("/assets/fonts/Lato-Regular.ttf") format('truetype');
-    font-display: auto;
+    font-display: optional;
     font-weight: 400;
   }
 
   @font-face {
     font-family: Lato;
     src: url("/assets/fonts/Lato-Bold.ttf") format('truetype');
-    font-display: auto;
+    font-display: optional;
     font-weight: 700;
   }
 
   @font-face {
     font-family: Lato;
     src: url("/assets/fonts/Lato-Light.ttf") format('truetype');
-    font-display: auto;
+    font-display: optional;
     font-weight: 300;
   }
 `;
