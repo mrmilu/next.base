@@ -9,6 +9,7 @@ import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
 import type { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
 import { showModal } from "@/src/ui/state/ui.slice";
+import { makeCancelable } from "@/src/common/utils/promise";
 
 export default function DummyPage() {
   const dispatch = useAppDispatch();
@@ -17,8 +18,19 @@ export default function DummyPage() {
   const { mdAndUp } = useBreakpointsMatch();
 
   useEffect(() => {
-    dispatch(getUsersThunk());
-  }, [dispatch]);
+    const cancelablePromise = makeCancelable(dispatch(getUsersThunk()));
+    cancelablePromise.promise.then(() => {
+      console.log("Expensive side effect");
+    });
+    cancelablePromise.onCancel(() => {
+      console.log("Promise canceled");
+    });
+
+    return () => {
+      cancelablePromise.cancel();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const showUserModal = (user: DummyUser) => {
     dispatch(showModal(<UserModal user={user} />));
