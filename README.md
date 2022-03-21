@@ -10,10 +10,10 @@
 - Apollo (GraphQL)
 - SCSS
 - [Commitlint](docs/comitlint.md) (with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) config)
-- Stylelint
+- [Styled components](docs/styled_components.md)
 - ESLint (with TypeScript config)
 - Prettier
-- [i18n-next](docs/i18n-next.md) ([next-i18n oficial documentation](https://github.com/isaachinman/next-i18next))
+- [i18n-next](docs/i18n_next.md) ([next-i18n oficial documentation](https://github.com/isaachinman/next-i18next))
 
 ### First steps
 

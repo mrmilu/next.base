@@ -1,11 +1,16 @@
 import type { PropsWithChildren, ReactElement } from "react";
 import { cloneElement, forwardRef, useEffect, useRef, useState } from "react";
 import { ModalCloseBtn, ModalContentStyled, ModalStyled } from "@/src/ui/components/modal/modal.styled";
-import { useTransition, animated } from "react-spring";
+import { useTransition, animated, easings } from "react-spring";
 import { Close as CloseIcon } from "@/src/ui/icons";
 import { useAppDispatch, useAppSelector } from "@/src/ui/state";
 import { getModalContent, getShowModal, hideModal } from "@/src/ui/state/ui.slice";
 import { useClickOutside } from "@/src/ui/hooks/click_outisde.hook";
+
+const MODAL_TRANSITION_CONFIG = {
+  duration: 450,
+  easing: easings.easeOutQuart
+};
 
 export const Modal = () => {
   const dispatch = useAppDispatch();
@@ -19,14 +24,14 @@ export const Modal = () => {
     enter: { opacity: 1 },
     leave: { opacity: 0 },
     reverse: showModal,
-    delay: 100
+    config: MODAL_TRANSITION_CONFIG
   });
   const showContentTransition = useTransition(showContent, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
+    from: { opacity: 0, transform: "translate(0px, 300px)" },
+    enter: { opacity: 1, transform: "translate(0px,0px)" },
+    leave: { opacity: 0, transform: "translate(0px, 300px)" },
     reverse: showContent,
-    delay: 100
+    config: MODAL_TRANSITION_CONFIG
   });
 
   useEffect(() => {

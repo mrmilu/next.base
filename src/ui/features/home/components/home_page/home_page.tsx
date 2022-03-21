@@ -3,12 +3,14 @@ import { FormikProvider, useFormik } from "formik";
 import { InputFormik } from "@/src/ui/components/input/input";
 import { Button } from "@/src/ui/components/button/button";
 import type { ReactElement } from "react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { HomeFormStyled, HomePageLocaleStyled, HomePageStyled } from "@/src/ui/features/home/components/home_page/home_page.styled";
 import { useRouter } from "next/router";
 import yup from "@/src/common/utils/yup_extended";
 import { timeout } from "@/src/common/utils/promise";
+import { BaseError } from "make-error";
+import { AppErrorBoundary } from "@/src/ui/components/app_error_boundary/app_error_boundary";
 
 interface FormValues {
   name: string;
@@ -55,6 +57,12 @@ export default function HomePage() {
     router.push(`${router.basePath}`, router.asPath, { locale: language });
   };
 
+  useEffect(() => {
+    if (Number(formik.values.age) > 40) {
+      throw new BaseError("The user is too old xD");
+    }
+  }, [formik.values.age]);
+
   return (
     <HomePageStyled>
       <HomePageLocaleStyled>
@@ -79,5 +87,9 @@ export default function HomePage() {
 }
 
 HomePage.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout>{page}</BaseLayout>;
+  return (
+    <BaseLayout>
+      <AppErrorBoundary>{page}</AppErrorBoundary>
+    </BaseLayout>
+  );
 };
