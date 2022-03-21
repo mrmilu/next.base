@@ -1,11 +1,12 @@
-import { DocumentNode } from "graphql";
-import { ApolloClient, FetchPolicy, InMemoryCache, NormalizedCacheObject } from "@apollo/client";
-import { MutationFetchPolicy } from "@apollo/client/core/watchQueryOptions";
-import { PossibleTypesMap } from "@apollo/client/cache/inmemory/policies";
+import type { DocumentNode } from "graphql";
+import type { FetchPolicy, NormalizedCacheObject } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import type { MutationFetchPolicy } from "@apollo/client/core/watchQueryOptions";
+import type { PossibleTypesMap } from "@apollo/client/cache/inmemory/policies";
 
 type DataWithError<T> = T & { errors?: Array<string> };
-export type QueryOptions = { fetchPolicy?: FetchPolicy; headers: Record<string, any> };
-export type MutationOptions = { fetchPolicy?: MutationFetchPolicy; headers: Record<string, any> };
+export type QueryOptions = { fetchPolicy?: FetchPolicy; headers: Record<string, unknown> };
+export type MutationOptions = { fetchPolicy?: MutationFetchPolicy; headers: Record<string, unknown> };
 
 export class GraphqlClient {
   private client: ApolloClient<NormalizedCacheObject>;
@@ -32,7 +33,7 @@ export class GraphqlClient {
     });
   }
 
-  async mutate<T, V = any>(mutation: DocumentNode, variables?: V, options?: MutationOptions): Promise<T | null | undefined> {
+  async mutate<T, V = Record<string, unknown>>(mutation: DocumentNode, variables?: V, options?: MutationOptions): Promise<T | null | undefined> {
     try {
       const { data, errors } = await this.client.mutate<T>({
         mutation,
@@ -46,7 +47,7 @@ export class GraphqlClient {
       if (hasError) {
         throw new Error(errors[0].message);
       } else if (hasDataError) {
-        throw new Error(castedData.errors![0]);
+        throw new Error(castedData.errors?.[0]);
       }
       return data;
     } catch (e) {
@@ -54,7 +55,7 @@ export class GraphqlClient {
     }
   }
 
-  async query<T, V = any>(query: DocumentNode, variables?: V, options?: QueryOptions): Promise<T | null | undefined> {
+  async query<T, V = Record<string, unknown>>(query: DocumentNode, variables?: V, options?: QueryOptions): Promise<T | null | undefined> {
     try {
       const { data, errors } = await this.client.query<T>({
         query,
@@ -68,7 +69,7 @@ export class GraphqlClient {
       if (hasError) {
         throw new Error(errors[0].message);
       } else if (hasDataError) {
-        throw new Error(castedData.errors![0]);
+        throw new Error(castedData.errors?.[0]);
       }
       return data;
     } catch (e) {

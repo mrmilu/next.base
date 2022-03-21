@@ -1,13 +1,13 @@
 import { UserModalContentStyled, UserModalStyled } from "@/src/ui/features/dummy/components/user_modal/user_modal.styled";
-import { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
-import { forwardRef, Ref } from "react";
+import type { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
+import { forwardRef } from "react";
 
 interface UserModalProps {
   user: DummyUser;
 }
 
 // eslint-disable-next-line react/display-name
-export const UserModal = forwardRef<Ref<any>, UserModalProps>(({ user }, ref) => {
+export const UserModal = forwardRef<HTMLDivElement, UserModalProps>(({ user }, ref) => {
   return (
     <UserModalContentStyled id={user.id} ref={ref}>
       <UserModalStyled>

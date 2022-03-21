@@ -1,6 +1,7 @@
-import Document, { DocumentContext, Head, Main, NextScript, Html } from "next/document";
+import type { DocumentContext } from "next/document";
+import Document, { Head, Main, NextScript, Html } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import { AppPropsType, AppType } from "next/dist/shared/lib/utils";
+import type { AppPropsType, AppType } from "next/dist/shared/lib/utils";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

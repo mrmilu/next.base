@@ -1,14 +1,16 @@
 import { SwitchStyled, SwitchWrapperStyled } from "@/src/ui/components/switch/switch.styled";
-import { FieldInputProps, FieldMetaProps, FormikHandlers, useField } from "formik";
-import { KeyboardEvent, useRef } from "react";
-import { BaseFormikProps } from "@/src/ui/view_models/formik";
+import type { FieldInputProps, FormikHandlers } from "formik";
+import { useField } from "formik";
+import type { KeyboardEvent } from "react";
+import { useRef } from "react";
+import type { BaseFormikProps } from "@/src/ui/view_models/formik";
 
 interface SwitchProps {
   label?: string;
   id: string;
   name?: string;
   onChange?: FormikHandlers["handleChange"];
-  formik?: BaseFormikProps;
+  formik?: BaseFormikProps<string | undefined>;
   value?: string;
   defaultChecked?: boolean;
   className?: string;
@@ -16,12 +18,11 @@ interface SwitchProps {
 
 export const Switch = ({ value, label, onChange, formik, name, id, defaultChecked, className }: SwitchProps) => {
   const innerRef = useRef<HTMLInputElement>(null);
-  let field: FieldInputProps<any>;
-  let meta: FieldMetaProps<any>;
+  let field: FieldInputProps<string | undefined>;
   if (formik) {
     field = formik.field;
-    meta = formik.meta;
   } else {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const emptyHandler = () => {};
     field = {
       onBlur: emptyHandler,
@@ -30,7 +31,6 @@ export const Switch = ({ value, label, onChange, formik, name, id, defaultChecke
       checked: defaultChecked,
       name: name || ""
     };
-    meta = { initialTouched: false, initialValue: undefined, value: undefined, touched: false };
   }
 
   const handleKeypress = (e: KeyboardEvent<HTMLLabelElement>) => {

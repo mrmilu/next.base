@@ -1,11 +1,12 @@
-import { ReactElement, useEffect } from "react";
+import type { ReactElement } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/src/ui/state";
 import { getLoadingState, getUsers, getUsersThunk } from "@/src/ui/features/dummy/state/dummy.slice";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { DummyPageSimpleCardStyled, DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
 import { LoaderStyled } from "@/src/ui/components/loader/loader.styled";
 import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
-import { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
+import type { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
 import { showModal } from "@/src/ui/state/ui.slice";
 

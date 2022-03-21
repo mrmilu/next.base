@@ -1,10 +1,11 @@
-import { cloneElement, forwardRef, PropsWithChildren, ReactElement, Ref, useEffect, useRef, useState } from "react";
+import type { PropsWithChildren, ReactElement } from "react";
+import { cloneElement, forwardRef, useEffect, useRef, useState } from "react";
 import { ModalCloseBtn, ModalContentStyled, ModalStyled } from "@/src/ui/components/modal/modal.styled";
 import { useTransition, animated } from "react-spring";
 import { Close as CloseIcon } from "@/src/ui/icons";
 import { useAppDispatch, useAppSelector } from "@/src/ui/state";
 import { getModalContent, getShowModal, hideModal } from "@/src/ui/state/ui.slice";
-import { useClickOutside } from "@/src/ui/hooks/cilck_outisde.hook";
+import { useClickOutside } from "@/src/ui/hooks/click_outisde.hook";
 
 export const Modal = () => {
   const dispatch = useAppDispatch();
@@ -38,7 +39,7 @@ export const Modal = () => {
     }
   }, [showModal]);
 
-  useClickOutside(modalContentRef, (e) => dispatch(hideModal()));
+  useClickOutside(modalContentRef, () => dispatch(hideModal()));
 
   const escapeKeyUpListener = (e: KeyboardEvent) => {
     if (showModal && (e.key === "Escape" || e.keyCode === 27)) {
@@ -71,7 +72,7 @@ export const Modal = () => {
 };
 
 // eslint-disable-next-line react/display-name
-export const ModalContent = forwardRef<HTMLDivElement, PropsWithChildren<{ className: string }>>(({ children, className }, ref) => {
+export const ModalContent = forwardRef<HTMLDivElement, PropsWithChildren<{ className?: string }>>(({ children, className }, ref) => {
   const dispatch = useAppDispatch();
 
   return (

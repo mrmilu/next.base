@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(req: NextRequest) {
-  const { name, params } = req.page;
+  const { name } = req.page;
 
   const notGraphql = !req.nextUrl.pathname.includes("/graphql");
   const notPublicFile = !PUBLIC_FILE.test(req.nextUrl.pathname);

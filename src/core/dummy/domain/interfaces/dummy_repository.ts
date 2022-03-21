@@ -1,5 +1,5 @@
-import { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
-import { DummyPost } from "@/src/core/dummy/domain/models/dummy_post";
+import type { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
+import type { DummyPost } from "@/src/core/dummy/domain/models/dummy_post";
 
 export interface CreatePostInput {
   title: string;

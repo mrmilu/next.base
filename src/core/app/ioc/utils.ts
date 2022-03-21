@@ -1,6 +1,6 @@
 import { locator } from "@/src/core/app/ioc/index";
 
-export const bindDynamicModule = <P, T>(identifier: symbol, toResolveModule: () => Promise<any>) => {
+export const bindDynamicModule = <P, T>(identifier: symbol, toResolveModule: () => Promise<new (...args: never[]) => T>) => {
   locator.bind<P>(identifier).toProvider<T>((context) => {
     return async () => {
       const repo = await toResolveModule();
@@ -14,7 +14,7 @@ export const bindDynamicModule = <P, T>(identifier: symbol, toResolveModule: () 
   });
 };
 
-export const bindSingletonDynamicModule = <P, T>(identifier: symbol, toResolveModule: () => Promise<any>) => {
+export const bindSingletonDynamicModule = <P, T>(identifier: symbol, toResolveModule: () => Promise<new (...args: never[]) => T>) => {
   locator.bind<P>(identifier).toProvider<T>((context) => {
     return async () => {
       const repo = await toResolveModule();

@@ -1,5 +1,5 @@
 import { SimpleCardStyled, SimpleCardAvatarStyled, SimpleCardStyledContent } from "@/src/ui/components/simple_card/simple_card.styled";
-import { MouseEventHandler } from "react";
+import type { MouseEventHandler } from "react";
 
 export interface SimpleCardProps {
   title: string;

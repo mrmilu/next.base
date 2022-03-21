@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { colors } from "../../styles/colors";
 import { px2rem } from "@/src/ui/styles/utils";
 import { spacing } from "../../styles/spacing";
-import { breakpoints, includeMedia } from "@/src/ui/styles/breakpoints";
+import { includeMedia } from "@/src/ui/styles/breakpoints";
 
 export const BaseLayoutStyled = styled.div`
   display: flex;

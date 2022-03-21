@@ -1,4 +1,5 @@
-import { createGlobalStyle, css, FlattenSimpleInterpolation } from "styled-components";
+import type { FlattenSimpleInterpolation } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 
 export const FontStyled = createGlobalStyle`
   /* Lato */

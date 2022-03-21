@@ -1,4 +1,4 @@
-import { Store } from "@reduxjs/toolkit";
+import type { Store } from "@reduxjs/toolkit";
 import { setLoader } from "@/src/ui/state/ui.slice";
 import RouterSingleton from "next/router";
 

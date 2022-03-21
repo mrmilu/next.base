@@ -1,4 +1,4 @@
-import { IEnvVars } from "../interfaces/env_vars";
+import type { IEnvVars } from "../interfaces/env_vars";
 import { injectable } from "inversify";
 
 @injectable()

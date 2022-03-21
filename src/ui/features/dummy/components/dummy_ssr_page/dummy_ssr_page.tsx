@@ -1,4 +1,5 @@
-import { ReactElement, useEffect, useMemo } from "react";
+import type { ReactElement } from "react";
+import { useMemo } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { DummyPageSimpleCardStyled, DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
 import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
@@ -16,7 +17,7 @@ export default function DummySSRPage({ serializedUsers }: DummySSRPageProps) {
   const dispatch = useAppDispatch();
   const { mdAndUp } = useBreakpointsMatch();
   const usersDomain: Array<DummyUser> = useMemo(
-    () => JSON.parse(serializedUsers).map((value: Record<string, any>) => plainToClass(DummyUser, value)),
+    () => JSON.parse(serializedUsers).map((value: Record<string, unknown>) => plainToClass(DummyUser, value)),
     [serializedUsers]
   );
 

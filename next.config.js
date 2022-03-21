@@ -17,6 +17,9 @@ const {
 const apiDomain = NODE_ENV !== "production" ? "next_base.dev.mrmilu.com" : NEXT_PUBLIC_API_URL?.replace("https://", "");
 
 const moduleExports = {
+  eslint: {
+    dirs: ["pages", "src"]
+  },
   reactStrictMode: true,
   async rewrites() {
     const DEFAULT_REWRITES = [];

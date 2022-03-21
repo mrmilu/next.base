@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
-import { ButtonProps } from "@/src/ui/components/button/button";
+import type { ButtonProps } from "@/src/ui/components/button/button";
 import { px2rem } from "@/src/ui/styles/utils";
 import { spacing } from "@/src/ui/styles/spacing";
 

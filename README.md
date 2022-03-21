@@ -11,7 +11,7 @@
 - SCSS
 - [Commitlint](docs/comitlint.md) (with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) config)
 - Stylelint
-- ESLint
+- ESLint (with TypeScript config)
 - Prettier
 - [i18n-next](docs/i18n-next.md) ([next-i18n oficial documentation](https://github.com/isaachinman/next-i18next))
 

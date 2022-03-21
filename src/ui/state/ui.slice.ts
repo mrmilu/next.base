@@ -1,7 +1,8 @@
-import { createAsyncThunk, createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "./index";
-import { UiSliceState } from "../view_models/ui.slice";
-import { ReactNode } from "react";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "./index";
+import type { UiSliceState } from "../view_models/ui.slice";
+import type { ReactNode } from "react";
 
 const initialState = (): UiSliceState => ({
   showLoader: false,

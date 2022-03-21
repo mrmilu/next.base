@@ -1,5 +1,5 @@
 import DummyPage from "@/src/ui/features/dummy/components/dummy_page/dummy_page";
-import { GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export default DummyPage;

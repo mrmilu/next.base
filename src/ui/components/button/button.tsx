@@ -1,4 +1,4 @@
-import { MouseEventHandler, PropsWithChildren } from "react";
+import type { MouseEventHandler, PropsWithChildren } from "react";
 import { ButtonStyled } from "@/src/ui/components/button/button.styled";
 
 export interface ButtonProps {

@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import type { TypedUseSelectorHook } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ui from "./ui.slice";
 import dummy from "@/src/ui/features/dummy/state/dummy.slice";
 

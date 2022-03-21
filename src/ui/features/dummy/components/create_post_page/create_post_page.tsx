@@ -1,9 +1,10 @@
-import { ChangeEvent, ReactElement, useCallback, useState } from "react";
+import type { ReactElement } from "react";
+import { useCallback, useState } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { ClearButton, CreatePostPageStyled } from "@/src/ui/features/dummy/components/create_post_page/create_post_page.styled";
 import { Button } from "@/src/ui/components/button/button";
 import { locator } from "@/src/core/app/ioc";
-import { IocProvider } from "@/src/core/app/ioc/interfaces";
+import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import type { CreateDummyPostUseCase } from "@/src/core/dummy/domain/use_cases/create_dummy_post_use_case";
 import { TYPES } from "@/src/core/app/ioc/types";
 import { debounce } from "lodash";
@@ -43,7 +44,7 @@ export default function CreatePostPage() {
           id="switch_off_debounce"
           label="Debounce active"
           defaultChecked={debounceOn}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          onChange={() => {
             setDebounceOn(!debounceOn);
           }}
         />
@@ -55,7 +56,7 @@ export default function CreatePostPage() {
           id="switch_off_async_state"
           label="Button disable active"
           defaultChecked={asyncStateOn}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          onChange={() => {
             setAsyncState(!asyncStateOn);
           }}
         />

@@ -1,7 +1,8 @@
-import { FieldInputProps, FieldMetaProps, FormikHandlers, useField } from "formik";
-import { BaseFormikProps } from "../../view_models/formik";
+import type { FieldInputProps, FieldMetaProps, FormikHandlers } from "formik";
+import { useField } from "formik";
+import type { BaseFormikProps } from "../../view_models/formik";
 import { InputErrorStyled, InputStyled, InputStyledWrapper } from "@/src/ui/components/input/input.styled";
-import { FocusEventHandler, HTMLInputTypeAttribute, KeyboardEventHandler } from "react";
+import type { FocusEventHandler, HTMLInputTypeAttribute, KeyboardEventHandler } from "react";
 
 interface InputProps {
   label?: string;
@@ -13,7 +14,7 @@ interface InputProps {
   onBlur?: FormikHandlers["handleBlur"];
   onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
   placeholder?: string;
-  formik?: BaseFormikProps;
+  formik?: BaseFormikProps<string | undefined>;
   value?: string;
   className?: string;
   type?: HTMLInputTypeAttribute;
@@ -34,12 +35,13 @@ export const Input = ({
   className,
   type
 }: InputProps) => {
-  let field: FieldInputProps<any>;
-  let meta: FieldMetaProps<any>;
+  let field: FieldInputProps<string | undefined>;
+  let meta: FieldMetaProps<string | undefined>;
   if (formik) {
     field = formik.field;
     meta = formik.meta;
   } else {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const emptyHandler = () => {};
     field = {
       onBlur: onBlur || emptyHandler,

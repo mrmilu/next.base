@@ -1,9 +1,9 @@
-import { i18n, useTranslation } from "next-i18next";
-import { FormikHelpers } from "formik/dist/types";
+import { useTranslation } from "next-i18next";
 import { FormikProvider, useFormik } from "formik";
 import { InputFormik } from "@/src/ui/components/input/input";
 import { Button } from "@/src/ui/components/button/button";
-import { ReactElement, useMemo, useState } from "react";
+import type { ReactElement } from "react";
+import { useMemo, useState } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { HomeFormStyled, HomePageLocaleStyled, HomePageStyled } from "@/src/ui/features/home/components/home_page/home_page.styled";
 import { useRouter } from "next/router";
@@ -45,7 +45,7 @@ export default function HomePage() {
     validationSchema,
     validateOnBlur: firstSubmit,
     validateOnChange: firstSubmit,
-    onSubmit: async (values: FormValues, formikHelpers: FormikHelpers<FormValues>) => {
+    onSubmit: async (values: FormValues) => {
       await timeout(3000);
       alert(`name: ${values.name}, email: ${values.email}, age: ${values.age}`);
     }

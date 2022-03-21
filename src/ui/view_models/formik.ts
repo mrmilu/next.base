@@ -1,6 +1,6 @@
-import { FieldInputProps, FieldMetaProps } from "formik";
+import type { FieldInputProps, FieldMetaProps } from "formik";
 
-export interface BaseFormikProps<Val = any> {
+export interface BaseFormikProps<Val> {
   meta: FieldMetaProps<Val>;
   field: FieldInputProps<Val>;
 }

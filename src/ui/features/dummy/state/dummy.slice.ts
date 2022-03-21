@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
-import { DummySliceState } from "@/src/ui/features/dummy/view_models/dummy.slice";
-import { RootState } from "@/src/ui/state";
+import type { DummySliceState } from "@/src/ui/features/dummy/view_models/dummy.slice";
+import type { RootState } from "@/src/ui/state";
 import { setLoader } from "@/src/ui/state/ui.slice";
 import { locator } from "@/src/core/app/ioc";
 import { TYPES } from "@/src/core/app/ioc/types";
-import { IocProvider } from "@/src/core/app/ioc/interfaces";
+import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import type { GetDummyUsersUseCase } from "@/src/core/dummy/domain/use_cases/get_dummy_users_use_case";
 
 const initialState = (): DummySliceState => ({
@@ -31,7 +31,7 @@ const uiSlice = createSlice({
       state.loading = false;
       state.users = payload;
     });
-    builder.addCase(getUsersThunk.pending, (state, { payload }) => {
+    builder.addCase(getUsersThunk.pending, (state) => {
       state.loading = true;
     });
   }

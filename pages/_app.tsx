@@ -1,7 +1,8 @@
 import "@/src/core/app/ioc/index";
 import type { AppProps } from "next/app";
-import { ReactElement, ReactNode, useEffect } from "react";
-import { NextPage } from "next";
+import type { ReactElement, ReactNode } from "react";
+import { useEffect } from "react";
+import type { NextPage } from "next";
 import { Provider } from "react-redux";
 import { store } from "@/src/ui/state";
 import { appWithTranslation } from "next-i18next";

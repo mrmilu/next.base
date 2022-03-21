@@ -1,9 +1,8 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Form } from "formik";
 import { px2rem, wrapperStyles } from "@/src/ui/styles/utils";
 import { colors } from "@/src/ui/styles/colors";
 import { spacing } from "@/src/ui/styles/spacing";
-import { includeMedia } from "@/src/ui/styles/breakpoints";
 
 export const HomePageStyled = styled.div`
   ${wrapperStyles};

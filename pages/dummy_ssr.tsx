@@ -1,11 +1,11 @@
 import DummySSRPage from "@/src/ui/features/dummy/components/dummy_ssr_page/dummy_ssr_page";
-import { GetServerSideProps } from "next";
+import type { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { locator } from "@/src/core/app/ioc";
-import { IocProvider } from "@/src/core/app/ioc/interfaces";
-import { GetDummyUsersUseCase } from "@/src/core/dummy/domain/use_cases/get_dummy_users_use_case";
+import type { IocProvider } from "@/src/core/app/ioc/interfaces";
+import type { GetDummyUsersUseCase } from "@/src/core/dummy/domain/use_cases/get_dummy_users_use_case";
 import { TYPES } from "@/src/core/app/ioc/types";
-import { instanceToPlain, serialize } from "class-transformer";
+import { instanceToPlain } from "class-transformer";
 
 export default DummySSRPage;
 

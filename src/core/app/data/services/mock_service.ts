@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
-import { IGraphqlDataSource } from "@/src/common/interfaces/graphql_data_source";
-import { DocumentNode } from "graphql";
-import { IEnvVars } from "@/src/core/app/domain/interfaces/env_vars";
+import type { IGraphqlDataSource } from "@/src/common/interfaces/graphql_data_source";
+import type { DocumentNode } from "graphql";
+import type { IEnvVars } from "@/src/core/app/domain/interfaces/env_vars";
 import { TYPES } from "../../ioc/types";
 import possibleTypes from "./mock_service_possible_types.json";
 import { GraphqlClient } from "@/src/common/network/graphql_client";
@@ -14,11 +14,11 @@ export class MockService implements IGraphqlDataSource {
     this.graphqlClient = new GraphqlClient(envVars.serverUrl, possibleTypes);
   }
 
-  mutate<T, V = any>(mutation: DocumentNode, variables?: V): Promise<T | null | undefined> {
+  mutate<T, V = Record<string, unknown>>(mutation: DocumentNode, variables?: V): Promise<T | null | undefined> {
     return this.graphqlClient.mutate<T, V>(mutation, variables);
   }
 
-  query<T, V = any>(query: DocumentNode, variables?: V): Promise<T | null | undefined> {
+  query<T, V = Record<string, unknown>>(query: DocumentNode, variables?: V): Promise<T | null | undefined> {
     return this.graphqlClient.query<T, V>(query, variables);
   }
 }
