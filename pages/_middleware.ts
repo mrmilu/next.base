@@ -6,9 +6,9 @@ const PUBLIC_FILE = /\.(.*)$/;
 export function middleware(req: NextRequest) {
   const { name } = req.page;
 
-  const notGraphql = !req.nextUrl.pathname.includes("/graphql");
+  const notApi = !req.nextUrl.pathname.includes("graphql") || !req.nextUrl.pathname.includes("rest");
   const notPublicFile = !PUBLIC_FILE.test(req.nextUrl.pathname);
-  if (notPublicFile && notGraphql && name) {
+  if (notPublicFile && notApi && name) {
     // Here do something
     const someCheck = true;
     if (someCheck) {

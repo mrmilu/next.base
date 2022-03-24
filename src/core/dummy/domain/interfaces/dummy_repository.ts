@@ -10,4 +10,6 @@ export interface IDummyRepository {
   users(): Promise<Array<DummyUser>>;
 
   createPost(input: CreatePostInput): Promise<DummyPost | null>;
+
+  posts(): Promise<Array<DummyPost>>;
 }

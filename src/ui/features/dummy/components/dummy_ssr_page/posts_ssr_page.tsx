@@ -17,7 +17,7 @@ export default function DummySSRPage({ serializedUsers }: DummySSRPageProps) {
   const dispatch = useAppDispatch();
   const { mdAndUp } = useBreakpointsMatch();
   const usersDomain: Array<DummyUser> = useMemo(
-    () => JSON.parse(serializedUsers).map((value: Record<string, unknown>) => plainToClass(DummyUser, value)),
+    () => JSON.parse(serializedUsers).map((value: Record<string, unknown>) => plainToClass(DummyUser, value, { excludeExtraneousValues: true })),
     [serializedUsers]
   );
 

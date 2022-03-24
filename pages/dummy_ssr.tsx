@@ -1,4 +1,4 @@
-import DummySSRPage from "@/src/ui/features/dummy/components/dummy_ssr_page/dummy_ssr_page";
+import DummySSRPage from "@/src/ui/features/dummy/components/dummy_ssr_page/posts_ssr_page";
 import type { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { locator } from "@/src/core/app/ioc";

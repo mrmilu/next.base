@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import("next").NextConfig} */
 const { i18n } = require("./next-i18next.config");
-const path = require("path");
 const { withSentryConfig } = require("@sentry/nextjs");
 
 const {
   NEXT_PUBLIC_SENTRY_ENABLED,
   NODE_ENV,
   NEXT_PUBLIC_API_URL,
-  NEXT_PUBLIC_DEV_GRAPHQL_PROXY_ENDPOINT,
+  NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT,
+  NEXT_PUBLIC_REST_PROXY_ENDPOINT,
   SENTRY_ORG,
   SENTRY_PROJECT,
   SENTRY_AUTH_TOKEN,
@@ -27,7 +28,11 @@ const moduleExports = {
       ? [
           {
             source: "/s/graphql",
-            destination: NEXT_PUBLIC_DEV_GRAPHQL_PROXY_ENDPOINT
+            destination: NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT
+          },
+          {
+            source: "/rest/:path*",
+            destination: `${NEXT_PUBLIC_REST_PROXY_ENDPOINT}/:path*`
           },
           ...DEFAULT_REWRITES
         ]
@@ -69,6 +74,11 @@ const SentryWebpackPluginOptions = {
   authToken: SENTRY_AUTH_TOKEN
 };
 
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true"
+});
+
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports = NEXT_PUBLIC_SENTRY_ENABLED === "true" ? withSentryConfig(moduleExports, SentryWebpackPluginOptions) : moduleExports;
+module.exports =
+  NEXT_PUBLIC_SENTRY_ENABLED === "true" ? withSentryConfig(moduleExports, SentryWebpackPluginOptions) : withBundleAnalyzer(moduleExports);

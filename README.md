@@ -8,11 +8,11 @@
 - [Class transformers](https://github.com/typestack/class-transformer)
 - Redux toolkit
 - Apollo (GraphQL)
-- SCSS
 - [Commitlint](docs/comitlint.md) (with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) config)
 - [Styled components](docs/styled_components.md)
 - ESLint (with TypeScript config)
 - Prettier
+- [Error boundary](docs/error_boundary.md)
 - [i18n-next](docs/i18n_next.md) ([next-i18n oficial documentation](https://github.com/isaachinman/next-i18next))
 
 ### First steps
@@ -41,7 +41,7 @@ Create a `.env.local` file with your environment variables with the following de
 
 ```
 NEXT_PUBLIC_API_URL=http://localhost:3000
-NEXT_PUBLIC_DEV_GRAPHQL_PROXY_ENDPOINT=https://graphqlzero.almansi.me/api
+NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT=https://graphqlzero.almansi.me/api
 NEXT_PUBLIC_SENTRY_DSN=project_dsn
 NEXT_PUBLIC_SENTRY_ENABLED=false
 SENTRY_ENVIRONMENT=dev
