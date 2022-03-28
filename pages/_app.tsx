@@ -36,6 +36,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <Provider store={store}>
       <Head>
         <title>Next boilerplate app</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        {process.env.NODE_ENV === "production" && (
+          <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; child-src 'none'; style-src 'unsafe-inline'; object-src 'none'" />
+        )}
+        <meta httpEquiv="referrer" content="no-referrer, strict-origin-when-cross-origin" />
       </Head>
       <GlobalStyles />
       <Modal />
