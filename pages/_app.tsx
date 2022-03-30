@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import "@/src/core/app/ioc/index";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import type { NextPage } from "next";
 import { Provider } from "react-redux";
 import { store } from "@/src/ui/state";
@@ -11,6 +12,14 @@ import { AppRouterController } from "@/src/ui/controllers/app_router_controller"
 import { GlobalStyles } from "@/src/ui/styles/globals";
 import { Modal } from "@/src/ui/components/modal/modal";
 import Head from "next/head";
+
+// Conditionally inject axe into the page.
+// This only happens outside of production and in a browser (not SSR).
+if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
+  const ReactDOM = require("react-dom");
+  const axe = require("@axe-core/react");
+  axe(React, ReactDOM, 1000);
+}
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -36,7 +45,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <Provider store={store}>
       <Head>
         <title>Next boilerplate app</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
         {process.env.NODE_ENV === "production" && (
           <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; child-src 'none'; style-src 'unsafe-inline'; object-src 'none'" />
         )}

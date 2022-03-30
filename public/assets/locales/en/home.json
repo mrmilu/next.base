@@ -1,4 +1,5 @@
 {
+  "homeTitle": "Next base",
   "helloWorld": "Hello World from next-i18n",
   "form": {
     "errors": {

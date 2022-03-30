@@ -65,9 +65,10 @@ export default function HomePage() {
 
   return (
     <HomePageStyled>
+      <h1>{t("homeTitle")}</h1>
       <HomePageLocaleStyled>
         <p>{t("helloWorld")}</p>
-        <select name="language" value={router.locale} onChange={(e) => changeLanguage(e.target.value)}>
+        <select aria-label="Languages" name="language" value={router.locale} onChange={(e) => changeLanguage(e.target.value)}>
           <option value="es">ES</option>
           <option value="en">EN</option>
         </select>
