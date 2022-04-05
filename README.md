@@ -1,4 +1,4 @@
-## Base Mr. Milu Next.js
+## Base Mr. Milu: Next.js
 
 ### Index and features
 

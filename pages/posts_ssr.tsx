@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { instanceToPlain } from "class-transformer";
-import PostsSSRPage from "@/src/ui/features/dummy/components/post_ssr_page/dummy_ssr_page";
+import PostsSSRPage from "@/src/ui/features/dummy/components/posts_ssr_page/posts_ssr_page";
 import { locator } from "@/src/core/app/ioc";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import type { GetDummyPostsUseCase } from "@/src/core/dummy/domain/use_cases/get_dummy_posts_use_case";
