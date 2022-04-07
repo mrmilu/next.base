@@ -16,10 +16,10 @@ export const getUsersThunk = createAsyncThunk("dummy.slice/getUsers", async (arg
   dispatch(setLoader(true));
   try {
     const getDummyUsersUseCase = await locator.get<IocProvider<GetDummyUsersUseCase>>(TYPES.GetDummyUsersUseCase)();
-    return getDummyUsersUseCase.execute();
-  } finally {
-    dispatch(setLoader(false));
-  }
+    return getDummyUsersUseCase.execute().finally(() => {
+      dispatch(setLoader(false));
+    });
+  } catch (e) {}
 });
 
 const uiSlice = createSlice({
@@ -29,7 +29,7 @@ const uiSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getUsersThunk.fulfilled, (state, { payload }) => {
       state.loading = false;
-      state.users = payload;
+      if (payload) state.users = payload;
     });
     builder.addCase(getUsersThunk.pending, (state) => {
       state.loading = true;

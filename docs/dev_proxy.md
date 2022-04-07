@@ -6,7 +6,7 @@ most of the time our development server will run better in our local machines; i
 If our external sources (backend) are in an online server o a local container some requests (auth for example)
 can make it harder to work in our local machine.
 
-To solve this in this boilerplate you will find that **proxies** are configured through the **rewrites** option
+To solve it in this boilerplate you will find that **proxies** are configured through the **rewrites** option
 given by `next.conifg.js` file.
 
 In the **rewrites** property you will find that some relative endpoints will be matched to our external sources
