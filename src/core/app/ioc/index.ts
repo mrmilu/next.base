@@ -17,7 +17,7 @@ import type { MockService } from "@/src/core/app/data/services/mock_service";
 const locator = new Container();
 locator.bind<IEnvVars>(TYPES.IEnvVars).to(EnvVars);
 bindDynamicModule<IocProvider<IGraphqlDataSource>, MockService>(TYPES.MockService, () =>
-  import("../../../core/app/data/services/mock_service").then((module) => module.MockService)
+  import("../data/services/mock_service").then((module) => module.MockService)
 );
 bindDynamicModule<IocProvider<IRestDataSource>, JSONPlaceholderService>(TYPES.JSONPlaceholderService, () =>
   import("../data/services/json_placeholder_service").then((module) => module.JSONPlaceholderService)
