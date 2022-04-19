@@ -22,7 +22,7 @@ export const getUsersThunk = createAsyncThunk("dummy.slice/getUsers", async (arg
   } catch (e) {}
 });
 
-const uiSlice = createSlice({
+const dummySlice = createSlice({
   name: "ui.slice",
   initialState: initialState(),
   reducers: {},
@@ -44,4 +44,4 @@ function selectDummyBase(state: RootState) {
 export const getUsers = createSelector([selectDummyBase], (slice) => slice.users);
 export const getLoadingState = createSelector([selectDummyBase], (slice) => slice.loading);
 
-export default uiSlice.reducer;
+export default dummySlice.reducer;
