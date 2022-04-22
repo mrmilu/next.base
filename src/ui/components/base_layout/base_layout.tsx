@@ -5,10 +5,21 @@ import { Button } from "@/src/ui/components/button/button";
 import { getLoggedState, loginThunk, logoutThunk } from "@/src/ui/state/user.slice";
 import { useAppDispatch } from "@/src/ui/state";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import { showModal } from "@/src/ui/state/ui.slice";
+import { LoggingModal } from "@/src/ui/components/loggin_modal/loggin_modal";
 
 export const BaseLayout = ({ children }: PropsWithChildren<unknown>) => {
   const dispatch = useAppDispatch();
   const userLogged = useSelector(getLoggedState);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (router.query.protectedRouteAccessAttempt) {
+      dispatch(showModal(<LoggingModal />));
+    }
+  }, [dispatch, router.query]);
 
   const login = () => {
     dispatch(loginThunk());
