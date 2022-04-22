@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Container } from "inversify";
+import { Container, decorate, injectable } from "inversify";
 import type { IEnvVars } from "@/src/core/app/domain/interfaces/env_vars";
 import { TYPES } from "./types";
 import { EnvVars } from "@/src/core/app/domain/models/env_vars";
@@ -13,9 +13,14 @@ import type { GetDummyUsersUseCase } from "../../dummy/domain/use_cases/get_dumm
 import type { IDummyRepository } from "@/src/core/dummy/domain/interfaces/dummy_repository";
 import type { IGraphqlDataSource } from "@/src/common/interfaces/graphql_data_source";
 import type { MockService } from "@/src/core/app/data/services/mock_service";
+import { TagManagerService } from "@/src/common/services/tag_manager_service";
+
+// Third party deps
+decorate(injectable(), TagManagerService);
 
 const locator = new Container();
 locator.bind<IEnvVars>(TYPES.IEnvVars).to(EnvVars);
+locator.bind<TagManagerService>(TYPES.TagManagerService).to(TagManagerService);
 bindDynamicModule<IocProvider<IGraphqlDataSource>, MockService>(TYPES.MockService, () =>
   import("../data/services/mock_service").then((module) => module.MockService)
 );
