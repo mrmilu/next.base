@@ -6,10 +6,14 @@ export interface CreatePostInput {
   body: string;
 }
 
+export interface GetPostsInput {
+  userId: number;
+}
+
 export interface IDummyRepository {
   users(): Promise<Array<DummyUser>>;
 
   createPost(input: CreatePostInput): Promise<DummyPost | null>;
 
-  posts(): Promise<Array<DummyPost>>;
+  posts(input?: GetPostsInput): Promise<Array<DummyPost>>;
 }

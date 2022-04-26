@@ -1,4 +1,4 @@
-import type { IDummyRepository } from "../../domain/interfaces/dummy_repository";
+import type { GetPostsInput, IDummyRepository } from "../../domain/interfaces/dummy_repository";
 import { inject, injectable } from "inversify";
 import { TYPES } from "@/src/core/app/ioc/types";
 import { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
@@ -13,6 +13,7 @@ import type { CreatePostInput } from "../../domain/interfaces/dummy_repository";
 import type { JSONPlaceholderService } from "@/src/core/app/data/services/json_placeholder_service";
 import type { DataPost } from "@/src/core/dummy/data/interfaces/data_post";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
+import { parseQueryParams } from "@/src/common/utils/queryParams";
 
 @injectable()
 export class DummyRepository implements IDummyRepository {
@@ -31,9 +32,10 @@ export class DummyRepository implements IDummyRepository {
     return response ? plainToClass(DummyPost, response.createPost, { excludeExtraneousValues: true }) : null;
   }
 
-  async posts(): Promise<Array<DummyPost>> {
+  async posts(input?: GetPostsInput): Promise<Array<DummyPost>> {
     const jsonPlaceholderService = await this.jsonPlaceholderServiceProvider();
-    const dataPostList = await jsonPlaceholderService.get<Array<DataPost>>("/posts");
+    const params = parseQueryParams({ ...input });
+    const dataPostList = await jsonPlaceholderService.get<Array<DataPost>>(`/posts${params}`);
     return dataPostList.map((dataPost) => plainToClass(DummyPost, dataPost, { excludeExtraneousValues: true }));
   }
 }
