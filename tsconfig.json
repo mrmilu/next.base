@@ -19,12 +19,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["reflect-metadata"],
+    "types": ["reflect-metadata", "node", "jest", "jest-extended", "jest-chain"],
     "typeRoots": ["node_modules/@types", "src/@types", "src/common/@types"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
   "files": ["src/common/@types/graphql.d.ts"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/*.test.ts", "_tests_"]
 }
