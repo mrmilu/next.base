@@ -38,14 +38,12 @@ export function InfiniteScrollPage() {
       return;
     }
     isLoading.current = true;
-    console.log("Loading...");
     const getDummyPostsUseCase = await locator.get<IocProvider<GetDummyPostsUseCase>>(TYPES.GetDummyPostsUseCase)();
     const newPosts = await getDummyPostsUseCase.execute({ userId: Math.round(Math.random() * 10) + 1 });
     const prevLength = posts.length;
     setPosts(posts.concat(newPosts));
     cache.current.clear(prevLength, 0);
     isLoading.current = false;
-    console.log("Finished loading");
   }, [posts]);
 
   // If element of index is loaded, it shows the element. If not, it shows a loading sign.
