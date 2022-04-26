@@ -13,7 +13,7 @@ import type { GetDummyUsersUseCase } from "../../dummy/domain/use_cases/get_dumm
 import type { IDummyRepository } from "@/src/core/dummy/domain/interfaces/dummy_repository";
 import type { IGraphqlDataSource } from "@/src/common/interfaces/graphql_data_source";
 import type { MockService } from "@/src/core/app/data/services/mock_service";
-import { TagManagerService } from "@/src/common/services/tag_manager_service";
+import { TagManagerService } from "@front_web_mrmilu/services";
 
 // Third party deps
 decorate(injectable(), TagManagerService);
