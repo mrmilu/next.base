@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { AppErrorBoundary } from "@/src/ui/components/app_error_boundary/app_error_boundary";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { ListRowProps, Index, InfiniteLoaderChildProps } from "react-virtualized";
 import { CellMeasurer, CellMeasurerCache, InfiniteLoader, WindowScroller, AutoSizer, List } from "react-virtualized";
 import type { DummyPost } from "@/src/core/dummy/domain/models/dummy_post";
@@ -21,6 +21,13 @@ export function InfiniteScrollPage() {
   const cache = useRef(new CellMeasurerCache({ defaultHeight: 100, fixedWidth: true }));
   // Control variable that prevents new posts from loading twice
   const isLoading = useRef(false);
+
+  // Recompute row heights when window is resized.
+  const updateRowHeight = () => cache.current.clearAll();
+  useEffect(() => {
+    window.addEventListener("resize", updateRowHeight);
+    return () => window.removeEventListener("resize", updateRowHeight);
+  }, []);
 
   // Checks if an element of a certain index exists in the list of posts.
   const isRowLoaded = useCallback(({ index }: Index) => index < posts.length, [posts]);
