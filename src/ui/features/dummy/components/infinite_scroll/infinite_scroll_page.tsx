@@ -13,7 +13,7 @@ import { InfiniteScrollPageSimpleCardStyled } from "@/src/ui/features/dummy/comp
 
 const TOTAL_COUNT = 10_000;
 
-// Renders an Instagram-style infinite scroll page with virtualized elements.
+// Renders an infinite scroll page with virtualized elements.
 export function InfiniteScrollPage() {
   // List of posts to render
   const [posts, setPosts] = useState<DummyPost[]>([]);
@@ -66,7 +66,7 @@ export function InfiniteScrollPage() {
 
   return (
     <>
-      <h1>Infinite Scroll (Instagram style)</h1>
+      <h1>Infinite Scroll</h1>
       <p>With react-virtualized window scroller</p>
       <hr />
       <InfiniteLoader isRowLoaded={isRowLoaded} loadMoreRows={loadMoreRows} rowCount={TOTAL_COUNT}>

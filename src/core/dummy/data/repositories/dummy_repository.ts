@@ -13,7 +13,6 @@ import type { CreatePostInput } from "../../domain/interfaces/dummy_repository";
 import type { JSONPlaceholderService } from "@/src/core/app/data/services/json_placeholder_service";
 import type { DataPost } from "@/src/core/dummy/data/interfaces/data_post";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
-import { parseQueryParams } from "@/src/common/utils/queryParams";
 
 @injectable()
 export class DummyRepository implements IDummyRepository {
@@ -34,8 +33,7 @@ export class DummyRepository implements IDummyRepository {
 
   async posts(input?: GetPostsInput): Promise<Array<DummyPost>> {
     const jsonPlaceholderService = await this.jsonPlaceholderServiceProvider();
-    const params = parseQueryParams({ ...input });
-    const dataPostList = await jsonPlaceholderService.get<Array<DataPost>>(`/posts${params}`);
+    const dataPostList = await jsonPlaceholderService.get<Array<DataPost>>(`/posts`, { params: { ...input } });
     return dataPostList.map((dataPost) => plainToClass(DummyPost, dataPost, { excludeExtraneousValues: true }));
   }
 }
