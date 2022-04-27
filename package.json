@@ -17,6 +17,9 @@
     "graphql": "yarn graphql-schema --endpoint=https://graphqlzero.almansi.me/api && yarn graphql-possible-types && yarn graphql-types"
   },
   "dependencies": {
+    "@front_web_mrmilu/services": "mrmilu/front_web_mrmilu#master",
+    "@front_web_mrmilu/utils": "mrmilu/front_web_mrmilu#master",
+    "@front_web_mrmilu/network": "mrmilu/front_web_mrmilu#master",
     "@apollo/client": "3.5.10",
     "@reduxjs/toolkit": "1.8.0",
     "@sentry/nextjs": "6.18.2",

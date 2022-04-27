@@ -2,7 +2,7 @@ import type { RootState } from "./index";
 import type { UserSliceState } from "@/src/ui/view_models/user.slice";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
-import { CookieUtils } from "@/src/common/utils/cookie";
+import { CookieUtils } from "@front_web_mrmilu/utils";
 
 const initialState = (): UserSliceState => ({
   logged: false

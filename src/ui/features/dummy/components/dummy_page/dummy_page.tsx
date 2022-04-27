@@ -9,7 +9,7 @@ import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
 import type { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
 import { showModal } from "@/src/ui/state/ui.slice";
-import { makeCancelable } from "@/src/common/utils/promise";
+import { makeCancelable } from "@front_web_mrmilu/utils";
 
 export default function DummyPage() {
   const dispatch = useAppDispatch();
