@@ -1,4 +1,5 @@
 import { locator } from "@/src/core/app/ioc/index";
+import { decorate, injectable } from "inversify";
 
 export const bindDynamicModule = <P, T>(identifier: symbol, toResolveModule: () => Promise<new (...args: never[]) => T>) => {
   locator.bind<P>(identifier).toProvider<T>((context) => {
@@ -26,4 +27,10 @@ export const bindSingletonDynamicModule = <P, T>(identifier: symbol, toResolveMo
       return context.container.get<T>(resolvedIdentifier);
     };
   });
+};
+
+export const decorateDep = (target: unknown) => {
+  try {
+    decorate(injectable(), target);
+  } catch (e) {}
 };

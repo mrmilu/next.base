@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import "@/src/core/app/ioc/index";
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 import React, { useEffect } from "react";

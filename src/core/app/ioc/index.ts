@@ -1,10 +1,10 @@
 import "reflect-metadata";
-import { Container, decorate, injectable } from "inversify";
+import { Container } from "inversify";
 import type { IEnvVars } from "@/src/core/app/domain/interfaces/env_vars";
 import { TYPES } from "./types";
 import { EnvVars } from "@/src/core/app/domain/models/env_vars";
 import type { JSONPlaceholderService } from "@/src/core/app/data/services/json_placeholder_service";
-import { bindDynamicModule } from "./utils";
+import { bindDynamicModule, decorateDep } from "./utils";
 import type { IocProvider } from "./interfaces";
 import type { GetDummyPostsUseCase } from "../../dummy/domain/use_cases/get_dummy_posts_use_case";
 import type { CreateDummyPostUseCase } from "../../dummy/domain/use_cases/create_dummy_post_use_case";
@@ -15,7 +15,7 @@ import { TagManagerService } from "@front_web_mrmilu/services";
 import type { NetworkInterfaces } from "@front_web_mrmilu/network";
 
 // Third party deps
-decorate(injectable(), TagManagerService);
+decorateDep(TagManagerService);
 
 const locator = new Container();
 locator.bind<IEnvVars>(TYPES.IEnvVars).to(EnvVars);
