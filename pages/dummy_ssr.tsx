@@ -1,5 +1,5 @@
 import DummySSRPage from "@/src/ui/features/dummy/components/dummy_ssr_page/dummy_ssr_page";
-import type { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { locator } from "@/src/core/app/ioc";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
@@ -9,7 +9,8 @@ import { instanceToPlain } from "class-transformer";
 
 export default DummySSRPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  console.log("REVALIDATING DUMMY");
   const getDummyUsersUseCase = await locator.get<IocProvider<GetDummyUsersUseCase>>(TYPES.GetDummyUsersUseCase)();
   const dummyUsers = await getDummyUsersUseCase.execute();
   return {
@@ -17,6 +18,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
       serializedUsers: JSON.stringify(instanceToPlain(dummyUsers)),
       ...(await serverSideTranslations(locale || "en"))
       // Will be passed to the page component as props
-    }
+    },
+    revalidate: 5
   };
 };

@@ -39,14 +39,28 @@ yarn dev
 
 ### Environment variables
 
-Create a `.env.local` file with your environment variables with the following defaults
+Create a `.env.development.local` file with your environment variables with the following defaults for dev server
 
 ```
 NEXT_PUBLIC_API_URL=http://localhost:3000
 NEXT_PUBLIC_ANOTHER_API_URL=http://localhost:3000
-NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT=https://graphqlzero.almansi.me/api
+NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT=https://graphqlzero.almansi.me
 NEXT_PUBLIC_REST_PROXY_ENDPOINT=https://jsonplaceholder.typicode.com
 NEXT_PUBLIC_SENTRY_DSN=project_dsn
+NEXT_PUBLIC_SENTRY_ENABLED=false
+SENTRY_ENVIRONMENT=dev
+SENTRY_URL=https://sentry.mrmilu.com
+SENTRY_ORG=mrmilu
+SENTRY_PROJECT=project-name
+SENTRY_AUTH_TOKEN=sentry-user-auth-token
+```
+
+Also create a `.env.production.local` file with your environment variables with the following defaults for production build
+
+```
+NEXT_PUBLIC_API_URL=https://graphqlzero.almansi.me
+NEXT_PUBLIC_ANOTHER_API_URL=https://jsonplaceholder.typicode.com
+#NEXT_PUBLIC_SENTRY_DSN=project_dsn
 NEXT_PUBLIC_SENTRY_ENABLED=false
 SENTRY_ENVIRONMENT=dev
 SENTRY_URL=https://sentry.mrmilu.com

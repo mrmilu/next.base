@@ -28,7 +28,7 @@ const moduleExports = {
       ? [
           {
             source: "/s/graphql",
-            destination: NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT
+            destination: `${NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT}/api`
           },
           {
             source: "/rest/:path*",
