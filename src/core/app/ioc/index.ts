@@ -20,7 +20,7 @@ decorate(injectable(), TagManagerService);
 
 const locator = new Container();
 locator.bind<IEnvVars>(TYPES.IEnvVars).to(EnvVars);
-locator.bind<TagManagerService>(TYPES.TagManagerService).to(TagManagerService);
+locator.bind<TagManagerService>(TYPES.TagManagerService).to(TagManagerService).inSingletonScope();
 bindDynamicModule<IocProvider<IGraphqlDataSource>, MockService>(TYPES.MockService, () =>
   import("../data/services/mock_service").then((module) => module.MockService)
 );
