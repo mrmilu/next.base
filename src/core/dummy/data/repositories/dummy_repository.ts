@@ -1,4 +1,4 @@
-import type { IDummyRepository } from "../../domain/interfaces/dummy_repository";
+import type { GetPostsInput, IDummyRepository } from "../../domain/interfaces/dummy_repository";
 import { inject, injectable } from "inversify";
 import { TYPES } from "@/src/core/app/ioc/types";
 import { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
@@ -31,9 +31,9 @@ export class DummyRepository implements IDummyRepository {
     return response ? plainToClass(DummyPost, response.createPost, { excludeExtraneousValues: true }) : null;
   }
 
-  async posts(): Promise<Array<DummyPost>> {
+  async posts(input?: GetPostsInput): Promise<Array<DummyPost>> {
     const jsonPlaceholderService = await this.jsonPlaceholderServiceProvider();
-    const dataPostList = await jsonPlaceholderService.get<Array<DataPost>>("/posts");
+    const dataPostList = await jsonPlaceholderService.get<Array<DataPost>>(`/posts`, { params: { ...input } });
     return dataPostList.map((dataPost) => plainToClass(DummyPost, dataPost, { excludeExtraneousValues: true }));
   }
 }

@@ -49,6 +49,9 @@ export const BaseLayout = ({ children }: PropsWithChildren<unknown>) => {
             <Link href="/posts_ssr">list post</Link>
           </li>
           <li>
+            <Link href="/infinite_scroll">infinite scroll</Link>
+          </li>
+          <li>
             <Link href="/carousel">carousel</Link>
           </li>
         </ul>
