@@ -48,6 +48,9 @@ export const BaseLayout = ({ children }: PropsWithChildren<unknown>) => {
           <li>
             <Link href="/posts_ssr">list post</Link>
           </li>
+          <li>
+            <Link href="/carousel">carousel</Link>
+          </li>
         </ul>
         <Button onClick={userLogged ? logout : login}>{userLogged ? "Log out" : "Log in"}</Button>
       </BaseLayoutNavStyled>
