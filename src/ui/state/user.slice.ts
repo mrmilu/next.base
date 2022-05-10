@@ -2,7 +2,7 @@ import type { RootState } from "./index";
 import type { UserSliceState } from "@/src/ui/view_models/user.slice";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
-import { CookieUtils } from "@/src/common/utils/cookie";
+import { CookieUtils } from "@front_web_mrmilu/utils";
 
 const initialState = (): UserSliceState => ({
   logged: false
@@ -35,7 +35,6 @@ function selectUiBase(state: RootState) {
 export const getLoggedState = createSelector([selectUiBase], (slice) => {
   let loggedCookie;
   if (typeof window !== "undefined") loggedCookie = CookieUtils.getCookie("logged");
-  // console.log((Boolean(loggedCookie) && loggedCookie === "true") || slice.logged);
   return (Boolean(loggedCookie) && loggedCookie === "true") || slice.logged;
 });
 export const { setLogged } = userSlice.actions;

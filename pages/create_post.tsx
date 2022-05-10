@@ -1,10 +1,10 @@
-import type { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import CreatePostPage from "@/src/ui/features/dummy/components/create_post_page/create_post_page";
 
 export default CreatePostPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale || "en"))

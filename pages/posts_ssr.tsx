@@ -1,4 +1,4 @@
-import type { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { instanceToPlain } from "class-transformer";
 import PostsSSRPage from "@/src/ui/features/dummy/components/posts_ssr_page/posts_ssr_page";
@@ -9,7 +9,8 @@ import { TYPES } from "@/src/core/app/ioc/types";
 
 export default PostsSSRPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  console.log("REVALIDATING POSTS");
   const getDummyPostsUseCase = await locator.get<IocProvider<GetDummyPostsUseCase>>(TYPES.GetDummyPostsUseCase)();
   const dummyPosts = await getDummyPostsUseCase.execute();
 
@@ -19,5 +20,6 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
       ...(await serverSideTranslations(locale || "en"))
       // Will be passed to the page component as props
     }
+    // revalidate: 5
   };
 };

@@ -8,9 +8,12 @@ import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { HomeFormStyled, HomePageLocaleStyled, HomePageStyled } from "@/src/ui/features/home/components/home_page/home_page.styled";
 import { useRouter } from "next/router";
 import yup from "@/src/common/utils/yup_extended";
-import { timeout } from "@/src/common/utils/promise";
 import { BaseError } from "make-error";
 import { AppErrorBoundary } from "@/src/ui/components/app_error_boundary/app_error_boundary";
+import { timeout } from "@front_web_mrmilu/utils";
+import { locator } from "@/src/core/app/ioc";
+import type { TagManagerService } from "@front_web_mrmilu/services";
+import { TYPES } from "@/src/core/app/ioc/types";
 
 interface FormValues {
   name: string;
@@ -56,6 +59,10 @@ export default function HomePage() {
   const changeLanguage = (language: string) => {
     router.push(`${router.basePath}`, router.asPath, { locale: language });
   };
+
+  useEffect(() => {
+    locator.get<TagManagerService>(TYPES.TagManagerService).sendEvent("home_page_visit");
+  }, []);
 
   useEffect(() => {
     if (Number(formik.values.age) > 40) {
