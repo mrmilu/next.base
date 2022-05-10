@@ -17,9 +17,10 @@
     "graphql": "yarn graphql-schema --endpoint=https://graphqlzero.almansi.me/api && yarn graphql-possible-types && yarn graphql-types"
   },
   "dependencies": {
-    "@front_web_mrmilu/services": "mrmilu/front_web_mrmilu#@front_web_mrmilu/services-v1.0.0",
-    "@front_web_mrmilu/utils": "mrmilu/front_web_mrmilu#@front_web_mrmilu/utils-v1.0.0",
-    "@front_web_mrmilu/network": "mrmilu/front_web_mrmilu#@front_web_mrmilu/network-v1.0.0",
+    "@front_web_mrmilu/services": "mrmilu/front_web_mrmilu#@front_web_mrmilu/services-v1.0.1",
+    "@front_web_mrmilu/utils": "mrmilu/front_web_mrmilu#@front_web_mrmilu/utils-v1.0.1",
+    "@front_web_mrmilu/network": "mrmilu/front_web_mrmilu#@front_web_mrmilu/network-v1.0.1",
+    "@front_web_mrmilu/hooks": "mrmilu/front_web_mrmilu#@front_web_mrmilu/hooks-v1.0.1",
     "@apollo/client": "3.6.2",
     "@reduxjs/toolkit": "1.8.1",
     "@sentry/nextjs": "6.19.7",

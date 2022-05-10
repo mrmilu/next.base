@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import { useMemo } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { DummyPageSimpleCardStyled, DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
-import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
+import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
 import { plainToClass } from "class-transformer";
 import { DummyPost } from "@/src/core/dummy/domain/models/dummy_post";
 

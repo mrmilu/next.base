@@ -5,7 +5,7 @@ import { getLoadingState, getUsers, getUsersThunk } from "@/src/ui/features/dumm
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { DummyPageSimpleCardStyled, DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
 import { LoaderStyled } from "@/src/ui/components/loader/loader.styled";
-import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
+import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
 import type { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
 import { showModal } from "@/src/ui/state/ui.slice";

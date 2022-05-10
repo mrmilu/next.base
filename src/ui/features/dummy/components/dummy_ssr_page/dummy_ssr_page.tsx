@@ -2,12 +2,12 @@ import type { ReactElement } from "react";
 import { useMemo } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { DummyPageSimpleCardStyled, DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
-import { useBreakpointsMatch } from "@/src/ui/hooks/breakpoint_match.hook";
 import { plainToClass } from "class-transformer";
 import { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { showModal } from "@/src/ui/state/ui.slice";
 import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
 import { useAppDispatch } from "@/src/ui/state";
+import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
 
 export interface DummySSRPageProps {
   serializedUsers: string;
