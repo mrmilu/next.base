@@ -72,6 +72,7 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "resolutions": {
-    "graphql": "15.5.3"
+    "graphql": "15.5.3",
+    "@types/react": "17.0.40"
   }
 }
