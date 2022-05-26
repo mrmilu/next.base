@@ -1,7 +1,0 @@
-{
-  "**/*": [
-    "bash -c 'yarn check-types'",
-    "bash -c  'yarn lint'",
-    "prettier --write --ignore-unknown"
-  ]
-}
