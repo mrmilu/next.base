@@ -7,7 +7,7 @@
     "analyze": "ANALYZE=true next build",
     "build": "next build",
     "start": "next start",
-    "check-types": "tsc --project tsconfig.json --incremental",
+    "check-types": "tsc --incremental --project tsconfig.json",
     "lint": "next lint --fix",
     "prepare": "husky install",
     "commit": "commit",
