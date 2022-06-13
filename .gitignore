@@ -5,6 +5,7 @@
 __generated__
 .yalc
 yalc.lock
+tsconfig.tsbuildinfo
 
 # dependencies
 /node_modules
