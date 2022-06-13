@@ -10,7 +10,7 @@ import React, { useEffect } from "react";
 import { showModal } from "@/src/ui/state/ui.slice";
 import { LoggingModal } from "@/src/ui/components/loggin_modal/loggin_modal";
 
-export const BaseLayout = ({ children }: PropsWithChildren<unknown>) => {
+export const BaseLayout = ({ children, logged }: PropsWithChildren<{ logged?: boolean }>) => {
   const dispatch = useAppDispatch();
   const userLogged = useSelector(getLoggedState);
   const router = useRouter();
@@ -49,7 +49,7 @@ export const BaseLayout = ({ children }: PropsWithChildren<unknown>) => {
             <Link href="/posts_ssr">list post</Link>
           </li>
         </ul>
-        <Button onClick={userLogged ? logout : login}>{userLogged ? "Log out" : "Log in"}</Button>
+        <Button onClick={userLogged ? logout : login}>{logged || userLogged ? "Log out" : "Log in"}</Button>
       </BaseLayoutNavStyled>
       <main>{children}</main>
       <BaseLayoutFooterStyled>cool footer</BaseLayoutFooterStyled>

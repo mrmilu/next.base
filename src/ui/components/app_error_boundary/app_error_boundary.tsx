@@ -1,3 +1,4 @@
+import type { PropsWithChildren } from "react";
 import { Component } from "react";
 import * as Sentry from "@sentry/nextjs";
 import type { BaseError } from "@/src/core/app/domain/models/base_error";
@@ -8,7 +9,7 @@ interface State {
   errorMsg: string;
 }
 
-export class AppErrorBoundary extends Component {
+export class AppErrorBoundary extends Component<PropsWithChildren<unknown>> {
   state: State = {
     hasError: false,
     errorMsg: ""

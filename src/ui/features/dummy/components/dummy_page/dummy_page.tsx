@@ -38,7 +38,7 @@ export default function DummyPage() {
 
   return (
     <DummyPageStyled>
-      {mdAndUp && <h2>Dummy page</h2>}
+      {mdAndUp && <h1>Dummy page</h1>}
       {loadingUsers ? (
         <LoaderStyled />
       ) : (
@@ -51,5 +51,5 @@ export default function DummyPage() {
 }
 
 DummyPage.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout>{page}</BaseLayout>;
+  return <BaseLayout logged={page.props.logged}>{page}</BaseLayout>;
 };

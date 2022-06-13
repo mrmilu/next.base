@@ -28,5 +28,5 @@ export default function PostsSSRPage({ serializedPosts }: PostsSSRPageProps) {
 }
 
 PostsSSRPage.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout>{page}</BaseLayout>;
+  return <BaseLayout logged={page.props.logged}>{page}</BaseLayout>;
 };

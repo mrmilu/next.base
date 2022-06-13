@@ -3,6 +3,8 @@ import type { DocumentContext } from "next/document";
 import Document, { Head, Main, NextScript, Html } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import type { AppPropsType, AppType } from "next/dist/shared/lib/utils";
+import React from "react";
+import { CookieUtils } from "@front_web_mrmilu/utils";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -12,18 +14,24 @@ class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App: AppType) => (props: AppPropsType) => sheet.collectStyles(<App {...props} />)
+          enhanceApp:
+            (App: AppType) =>
+            ({ pageProps, ...restProps }: AppPropsType) => {
+              return sheet.collectStyles(
+                <App {...restProps} pageProps={{ ...pageProps, logged: CookieUtils.getCookie("logged", ctx.req?.headers.cookie) }} />
+              );
+            }
         });
 
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
-        styles: (
-          <>
+        styles: [
+          <React.Fragment key="styled-sheets">
             {initialProps.styles}
             {sheet.getStyleElement()}
-          </>
-        )
+          </React.Fragment>
+        ]
       };
     } finally {
       sheet.seal();

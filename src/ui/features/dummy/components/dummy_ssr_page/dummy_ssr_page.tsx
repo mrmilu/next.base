@@ -36,5 +36,5 @@ export default function DummySSRPage({ serializedUsers }: DummySSRPageProps) {
 }
 
 DummySSRPage.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout>{page}</BaseLayout>;
+  return <BaseLayout logged={page.props.logged}>{page}</BaseLayout>;
 };

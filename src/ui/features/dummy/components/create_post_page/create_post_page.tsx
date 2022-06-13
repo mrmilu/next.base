@@ -73,5 +73,5 @@ export default function CreatePostPage() {
 }
 
 CreatePostPage.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout>{page}</BaseLayout>;
+  return <BaseLayout logged={page.props.logged}>{page}</BaseLayout>;
 };
