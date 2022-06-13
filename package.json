@@ -14,10 +14,10 @@
     "graphql": "graphql-codegen --config graphql_codegen.yml"
   },
   "dependencies": {
-    "@front_web_mrmilu/services": "mrmilu/front_web_mrmilu#@front_web_mrmilu/services-v1.2.0",
-    "@front_web_mrmilu/utils": "mrmilu/front_web_mrmilu#@front_web_mrmilu/utils-v1.2.0",
-    "@front_web_mrmilu/network": "mrmilu/front_web_mrmilu#@front_web_mrmilu/network-v1.2.0",
-    "@front_web_mrmilu/hooks": "mrmilu/front_web_mrmilu#@front_web_mrmilu/hooks-v1.2.0",
+    "@front_web_mrmilu/services": "mrmilu/front_web_mrmilu#@front_web_mrmilu/services-v1.3.0",
+    "@front_web_mrmilu/utils": "mrmilu/front_web_mrmilu#@front_web_mrmilu/utils-v1.3.0",
+    "@front_web_mrmilu/network": "mrmilu/front_web_mrmilu#@front_web_mrmilu/network-v1.3.0",
+    "@front_web_mrmilu/hooks": "mrmilu/front_web_mrmilu#@front_web_mrmilu/hooks-v1.3.0",
     "@apollo/client": "3.6.7",
     "@reduxjs/toolkit": "1.8.2",
     "@sentry/nextjs": "7.1.1",
