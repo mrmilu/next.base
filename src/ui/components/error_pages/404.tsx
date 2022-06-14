@@ -8,7 +8,7 @@ export default function Page404() {
 
 Page404.getLayout = function getLayout(page: ReactElement) {
   return (
-    <BaseLayout>
+    <BaseLayout logged={page.props.logged}>
       <AppErrorBoundary>{page}</AppErrorBoundary>
     </BaseLayout>
   );

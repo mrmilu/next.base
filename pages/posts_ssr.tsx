@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       serializedPosts: JSON.stringify(instanceToPlain(dummyPosts)),
       ...(await serverSideTranslations(locale || "en"))
       // Will be passed to the page component as props
-    }
-    // revalidate: 5
+    },
+    revalidate: 5
   };
 };

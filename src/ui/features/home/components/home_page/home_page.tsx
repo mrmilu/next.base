@@ -96,7 +96,7 @@ export default function HomePage() {
 
 HomePage.getLayout = function getLayout(page: ReactElement) {
   return (
-    <BaseLayout>
+    <BaseLayout logged={page.props.logged}>
       <AppErrorBoundary>{page}</AppErrorBoundary>
     </BaseLayout>
   );

@@ -6,7 +6,7 @@ import { getLoggedState, loginThunk, logoutThunk } from "@/src/ui/state/user.sli
 import { useAppDispatch } from "@/src/ui/state";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { showModal } from "@/src/ui/state/ui.slice";
 import { LoggingModal } from "@/src/ui/components/loggin_modal/loggin_modal";
 
@@ -14,6 +14,7 @@ export const BaseLayout = ({ children, logged }: PropsWithChildren<{ logged?: bo
   const dispatch = useAppDispatch();
   const userLogged = useSelector(getLoggedState);
   const router = useRouter();
+  const isUserLogged = useMemo(() => !userLogged && logged !== undefined && logged, [logged, userLogged]);
 
   useEffect(() => {
     if (router.query.protectedRouteAccessAttempt) {
@@ -49,7 +50,7 @@ export const BaseLayout = ({ children, logged }: PropsWithChildren<{ logged?: bo
             <Link href="/posts_ssr">list post</Link>
           </li>
         </ul>
-        <Button onClick={userLogged ? logout : login}>{logged || userLogged ? "Log out" : "Log in"}</Button>
+        <Button onClick={isUserLogged ? logout : login}>{isUserLogged ? "Log out" : "Log in"}</Button>
       </BaseLayoutNavStyled>
       <main>{children}</main>
       <BaseLayoutFooterStyled>cool footer</BaseLayoutFooterStyled>
