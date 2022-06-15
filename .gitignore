@@ -6,6 +6,7 @@ __generated__
 .yalc
 yalc.lock
 tsconfig.tsbuildinfo
+.yarn
 
 # dependencies
 /node_modules
