@@ -58,6 +58,12 @@ just dev
 just
 ```
 
+**Proxy commands through nvm**
+
+```shell
+just nvm-exec "yarn add @front_web_mrmilu/hooks"
+```
+
 ### Environment variables
 
 Create a `.env.development.local` file with your environment variables with the following defaults for dev server
