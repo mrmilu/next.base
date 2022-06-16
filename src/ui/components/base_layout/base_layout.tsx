@@ -14,8 +14,7 @@ export const BaseLayout = ({ children, logged }: PropsWithChildren<{ logged?: bo
   const dispatch = useAppDispatch();
   const userLogged = useSelector(getLoggedState);
   const router = useRouter();
-  const isUserLogged = useMemo(() => !userLogged && logged !== undefined && logged, [logged, userLogged]);
-
+  const isUserLogged = useMemo(() => (typeof window !== "undefined" ? userLogged : logged), [logged, userLogged]);
   useEffect(() => {
     if (router.query.protectedRouteAccessAttempt) {
       dispatch(showModal(<LoggingModal />));

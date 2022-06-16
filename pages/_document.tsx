@@ -18,7 +18,7 @@ class MyDocument extends Document {
             (App: AppType) =>
             ({ pageProps, ...restProps }: AppPropsType) => {
               return sheet.collectStyles(
-                <App {...restProps} pageProps={{ ...pageProps, logged: CookieUtils.getCookie("logged", ctx.req?.headers.cookie) }} />
+                <App {...restProps} pageProps={{ ...pageProps, logged: CookieUtils.getCookie("logged", ctx.req?.headers.cookie ?? "") }} />
               );
             }
         });

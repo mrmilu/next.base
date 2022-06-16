@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  next_base:
+    build: .
+    volumes:
+      - ./src:/app/src
+      - ./pages:/app/pages
+      - /app/node_modules
+      - /app/.yarn
+    ports:
+      - "3000:3000"
