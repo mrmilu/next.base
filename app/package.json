@@ -9,7 +9,7 @@
     "start": "next start",
     "check-types": "tsc --project tsconfig.json",
     "lint": "next lint --fix",
-    "prepare": "cd .. && husky install front/.husky",
+    "prepare": "cd .. && husky install app/.husky",
     "commit": "commit",
     "graphql": "graphql-codegen --config graphql_codegen.yml"
   },
