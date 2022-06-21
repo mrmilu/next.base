@@ -1,29 +1,30 @@
 default:
   just --list
 
-# Enables corepack in node
-corepack-enable:
-    ./nvm_exec.sh corepack enable
-
-# Installs project package.json dependencies
-install-deps:
-    ./nvm_exec.sh yarn
-
 # Starts Next development server
-dev:
-    ./nvm_exec.sh yarn dev
-# Builds Next application
-build:
-    ./nvm_exec.sh yarn build
-
-# Starts Next server for built application
 start:
-    ./nvm_exec.sh yarn start
+    docker compose -f ./docker-compose.dev.yml up
+
+# Rebuilds docker image and starts Next server
+start-and-rebuild:
+    docker compose -f ./docker-compose.dev.yml up --build
 
 # Downloads schema and generates corresponding ts types
 graphql-codegen:
-    ./nvm_exec.sh yarn graphql
+    docker compose -f ./docker-compose.dev.yml up --no-recreate -d
+    docker compose -f ./docker-compose.dev.yml exec next_base yarn graphql
 
-# Proxy comand through nvm
-nvm-exec command:
-    ./nvm_exec.sh {{command}}
+# Install package
+install package:
+    docker compose -f ./docker-compose.dev.yml up --no-recreate -d
+    docker compose -f ./docker-compose.dev.yml exec next_base yarn add "{{package}}"
+
+# Install dev package
+install-dev package:
+    docker compose -f ./docker-compose.dev.yml up --no-recreate -d
+    docker compose -f ./docker-compose.dev.yml exec next_base yarn add -D "{{package}}"
+
+# Remove package
+remove package:
+    docker compose -f ./docker-compose.dev.yml up --no-recreate -d
+    docker compose -f ./docker-compose.dev.yml exec next_base yarn remove "{{package}}"

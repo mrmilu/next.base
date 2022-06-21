@@ -2,11 +2,14 @@ version: "3.8"
 
 services:
   next_base:
-    build: .
+    build:
+      context: .
+      dockerfile: ./docker/dev.Dockerfile
     volumes:
-      - ./src:/app/src
-      - ./pages:/app/pages
+      - ./app:/app
       - /app/node_modules
       - /app/.yarn
+      - /app/.next
     ports:
       - "3000:3000"
+      - "9229:9229"

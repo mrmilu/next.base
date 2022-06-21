@@ -20,11 +20,11 @@
     "jsx": "preserve",
     "incremental": true,
     "types": ["reflect-metadata"],
-    "typeRoots": ["node_modules/@types", "src/@types", "src/common/@types"],
+    "typeRoots": ["./node_modules/@types", "./src/@types", "./src/common/@types"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "files": ["src/common/@types/graphql.d.ts"],
+  "files": ["./src/common/@types/graphql.d.ts"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  next_base_prod:
+    build:
+      context: .
+      dockerfile: ./docker/prod.Dockerfile
+    volumes:
+      - /app/node_modules
+      - /app/.yarn
+    ports:
+      - "3000:3000"
