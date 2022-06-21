@@ -11,7 +11,7 @@
 >  to enable **virtiofs**. Without enabling this feature developing front end
 > web apps in a macOS machines in a dockerized environment it's practically
 > impossible. To enable this feature macOS 12.2+ for Apple Silicon and
-> macOS 12.3+ for Intel is needed. If are not able to meet these requirements please
+> macOS 12.3+ for Intel is needed. If you are not able to meet these requirements please
 > follow the guide for [local development environment](app/README.md#local-development).
 
 ### Prerequisites
