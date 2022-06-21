@@ -14,12 +14,16 @@
 > macOS 12.3+ for Intel is needed. If are not able to meet these requirements please
 > follow the guide for [local development environment](app/README.md#local-development).
 
+### Prerequisites
+
+This project uses the following packages
+
+- [nvm](https://github.com/nvm-sh/nvm) (Node version manager)
+- [Just](https://just.systems/man/en/chapter_4.html) (For justfile usage)
+
 ### Getting started - (Dockerized environment)
 
-First install [just](https://just.systems/man/en/chapter_4.html), this it will be used
-for executing justfile commands.
-
-After this add the corresponding environment variables to your Next.js `app` folder (check the
+First add the corresponding environment variables to your Next.js `app` folder (check the
 [app readme](app/README.md#environment-variables-for-all-environments---local-or-dockerized)).
 
 To run the project in dockerized environment run the following command:

@@ -18,13 +18,6 @@
 - Sentry
 
 ## Local development
-### Prerequisites 
-(ONLY IF EXECUTING OUTSIDE DOCKER ENVIRONMENT)
-
-This project uses the following packages
-
-- [nvm](https://github.com/nvm-sh/nvm) (Node version manager)
-- [Just](https://just.systems/man/en/chapter_4.html) (For justfile usage)
 
 Run the following command to install the node version declared in the `.nvmrc`
 file for this project:
@@ -67,6 +60,7 @@ just nvm-exec "yarn add @front_web_mrmilu/hooks"
 ```
 
 ## Environment variables for all environments - (local or dockerized)
+
 <h3 id="custom-id">My Great Heading</h3>
 
 Create a `.env.development.local` file with your environment variables with the following defaults for dev server
