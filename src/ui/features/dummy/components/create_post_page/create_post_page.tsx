@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useCallback, useState } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import { ClearButton, CreatePostPageStyled } from "@/src/ui/features/dummy/components/create_post_page/create_post_page.styled";
+import Styled from "@/src/ui/features/dummy/components/create_post_page/create_post_page.styled";
 import { Button } from "@/src/ui/components/button/button";
 import { locator } from "@/src/core/app/ioc";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
@@ -37,7 +37,7 @@ export default function CreatePostPage() {
   const debounceCreatePost = useCallback(debounce(createPost, 400), [postNumber]);
 
   return (
-    <CreatePostPageStyled>
+    <Styled.Wrapper>
       <div>
         <h3>Create a random debounce post</h3>
         <Switch
@@ -67,8 +67,8 @@ export default function CreatePostPage() {
       {postTitles.map((title, idx) => {
         return <p key={idx}>{title}</p>;
       })}
-      <ClearButton onClick={() => setPostTitle([])}>Clear list</ClearButton>
-    </CreatePostPageStyled>
+      <Styled.ClearButton onClick={() => setPostTitle([])}>Clear list</Styled.ClearButton>
+    </Styled.Wrapper>
   );
 }
 
