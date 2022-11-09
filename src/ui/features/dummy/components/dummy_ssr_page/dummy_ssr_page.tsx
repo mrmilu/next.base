@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useMemo } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import { DummyPageSimpleCardStyled, DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
+import Styled from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
 import { plainToClass } from "class-transformer";
 import { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { showModal } from "@/src/ui/state/ui.slice";
@@ -26,12 +26,12 @@ export default function DummySSRPage({ serializedUsers }: DummySSRPageProps) {
   };
 
   return (
-    <DummyPageStyled>
+    <Styled.Wrapper>
       {mdAndUp && <h2>Dummy SSR page</h2>}
       {usersDomain.map((user, idx) => (
-        <DummyPageSimpleCardStyled onClick={() => showUserModal(user)} key={`${user.id}_${idx}`} title={user.name} subtitle={user.email} />
+        <Styled.SimpleCard onClick={() => showUserModal(user)} key={`${user.id}_${idx}`} title={user.name} subtitle={user.email} />
       ))}
-    </DummyPageStyled>
+    </Styled.Wrapper>
   );
 }
 

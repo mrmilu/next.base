@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { PropsWithChildren } from "react";
-import { BaseLayoutFooterStyled, BaseLayoutNavStyled, BaseLayoutStyled } from "@/src/ui/components/base_layout/base_layout.styled";
+import Styled from "@/src/ui/components/base_layout/base_layout.styled";
 import { Button } from "@/src/ui/components/button/button";
 import { getLoggedState, loginThunk, logoutThunk } from "@/src/ui/state/user.slice";
 import { useAppDispatch } from "@/src/ui/state";
@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo } from "react";
 import { showModal } from "@/src/ui/state/ui.slice";
-import { LoggingModal } from "@/src/ui/components/loggin_modal/loggin_modal";
+import { LoggingModal } from "@/src/ui/components/logging_modal/logging_modal";
 
 export const BaseLayout = ({ children, logged }: PropsWithChildren<{ logged?: boolean }>) => {
   const dispatch = useAppDispatch();
@@ -31,8 +31,8 @@ export const BaseLayout = ({ children, logged }: PropsWithChildren<{ logged?: bo
   };
 
   return (
-    <BaseLayoutStyled>
-      <BaseLayoutNavStyled>
+    <Styled.Wrapper>
+      <Styled.Nav>
         <ul>
           <li>
             <Link href="/">home</Link>
@@ -51,9 +51,9 @@ export const BaseLayout = ({ children, logged }: PropsWithChildren<{ logged?: bo
           </li>
         </ul>
         <Button onClick={isUserLogged ? logout : login}>{isUserLogged ? "Log out" : "Log in"}</Button>
-      </BaseLayoutNavStyled>
+      </Styled.Nav>
       <main>{children}</main>
-      <BaseLayoutFooterStyled>cool footer</BaseLayoutFooterStyled>
-    </BaseLayoutStyled>
+      <Styled.Footer>cool footer</Styled.Footer>
+    </Styled.Wrapper>
   );
 };

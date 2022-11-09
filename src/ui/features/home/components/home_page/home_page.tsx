@@ -5,7 +5,7 @@ import { Button } from "@/src/ui/components/button/button";
 import type { ReactElement } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import { HomeFormStyled, HomePageLocaleStyled, HomePageStyled } from "@/src/ui/features/home/components/home_page/home_page.styled";
+import Styled from "@/src/ui/features/home/components/home_page/home_page.styled";
 import { useRouter } from "next/router";
 import yup from "@/src/common/utils/yup_extended";
 import { BaseError } from "make-error";
@@ -71,26 +71,26 @@ export default function HomePage() {
   }, [formik.values.age]);
 
   return (
-    <HomePageStyled>
+    <Styled.Wrapper>
       <h1>{t("homeTitle")}</h1>
-      <HomePageLocaleStyled>
+      <Styled.Locale>
         <p>{t("helloWorld")}</p>
         <select aria-label="Languages" name="language" value={router.locale} onChange={(e) => changeLanguage(e.target.value)}>
           <option value="es">ES</option>
           <option value="en">EN</option>
         </select>
-      </HomePageLocaleStyled>
+      </Styled.Locale>
       <FormikProvider value={formik}>
-        <HomeFormStyled>
+        <Styled.Form>
           <InputFormik name="name" label={t("form.fields.name.label")} placeholder={t("form.fields.name.placeholder")} />
           <InputFormik name="email" label={t("form.fields.email.label")} placeholder={t("form.fields.email.placeholder")} />
           <InputFormik name="age" type="number" label={t("form.fields.age.label")} placeholder={t("form.fields.age.placeholder")} />
           <Button type="submit" disabled={formik.isSubmitting} onClick={() => setFirstSubmit(true)}>
             {t("form.submit")}
           </Button>
-        </HomeFormStyled>
+        </Styled.Form>
       </FormikProvider>
-    </HomePageStyled>
+    </Styled.Wrapper>
   );
 }
 

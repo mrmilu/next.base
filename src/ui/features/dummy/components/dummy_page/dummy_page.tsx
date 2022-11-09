@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/src/ui/state";
 import { getLoadingState, getUsers, getUsersThunk } from "@/src/ui/features/dummy/state/dummy.slice";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import { DummyPageSimpleCardStyled, DummyPageStyled } from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
-import { LoaderStyled } from "@/src/ui/components/loader/loader.styled";
+import Styled from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
+import LoaderStyled from "@/src/ui/components/loader/loader.styled";
 import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
 import type { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
@@ -37,16 +37,16 @@ export default function DummyPage() {
   };
 
   return (
-    <DummyPageStyled>
+    <Styled.Wrapper>
       {mdAndUp && <h1>Dummy page</h1>}
       {loadingUsers ? (
         <LoaderStyled />
       ) : (
         users.map((user, idx) => (
-          <DummyPageSimpleCardStyled onClick={() => showUserModal(user)} key={`${user.id}_${idx}`} title={user.name} subtitle={user.email} />
+          <Styled.SimpleCard onClick={() => showUserModal(user)} key={`${user.id}_${idx}`} title={user.name} subtitle={user.email} />
         ))
       )}
-    </DummyPageStyled>
+    </Styled.Wrapper>
   );
 }
 
