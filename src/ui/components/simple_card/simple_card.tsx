@@ -1,4 +1,4 @@
-import { SimpleCardStyled, SimpleCardAvatarStyled, SimpleCardStyledContent } from "@/src/ui/components/simple_card/simple_card.styled";
+import Styled from "@/src/ui/components/simple_card/simple_card.styled";
 import type { MouseEventHandler } from "react";
 
 export interface SimpleCardProps {
@@ -10,12 +10,12 @@ export interface SimpleCardProps {
 
 export const SimpleCard = ({ title, subtitle, className, onClick }: SimpleCardProps) => {
   return (
-    <SimpleCardStyled onClick={onClick} className={className}>
-      <SimpleCardAvatarStyled />
-      <SimpleCardStyledContent>
+    <Styled.Wrapper onClick={onClick} className={className}>
+      <Styled.Avatar />
+      <Styled.Content>
         <h4>{title}</h4>
         <p>{subtitle}</p>
-      </SimpleCardStyledContent>
-    </SimpleCardStyled>
+      </Styled.Content>
+    </Styled.Wrapper>
   );
 };

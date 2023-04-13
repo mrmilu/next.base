@@ -1,6 +1,6 @@
 import type { PropsWithChildren, ReactElement } from "react";
 import { cloneElement, forwardRef, useEffect, useRef, useState } from "react";
-import { ModalCloseBtn, ModalContentStyled, ModalStyled } from "@/src/ui/components/modal/modal.styled";
+import Styled from "@/src/ui/components/modal/modal.styled";
 import { useTransition, animated, easings } from "react-spring";
 import { Close as CloseIcon } from "@/src/ui/icons";
 import { useAppDispatch, useAppSelector } from "@/src/ui/state";
@@ -64,14 +64,14 @@ export const Modal = () => {
   return showModalTransition(
     (styles, item) =>
       item && (
-        <ModalStyled ref={modalRef} style={styles}>
+        <Styled.Wrapper ref={modalRef} style={styles}>
           {showContentTransition(
             (styles, item) =>
               item && (
                 <animated.div style={styles}>{modalContent && cloneElement(modalContent as ReactElement, { ref: modalContentRef })}</animated.div>
               )
           )}
-        </ModalStyled>
+        </Styled.Wrapper>
       )
   );
 };
@@ -81,9 +81,9 @@ export const ModalContent = forwardRef<HTMLDivElement, PropsWithChildren<{ class
   const dispatch = useAppDispatch();
 
   return (
-    <ModalContentStyled ref={ref} className={className}>
-      <ModalCloseBtn icon={<CloseIcon />} onClick={() => dispatch(hideModal())} />
+    <Styled.Content ref={ref} className={className}>
+      <Styled.CloseBtn icon={<CloseIcon />} onClick={() => dispatch(hideModal())} />
       {children}
-    </ModalContentStyled>
+    </Styled.Content>
   );
 });

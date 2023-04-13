@@ -1,4 +1,4 @@
-import { UserModalContentStyled, UserModalStyled } from "@/src/ui/features/dummy/components/user_modal/user_modal.styled";
+import Styled from "@/src/ui/features/dummy/components/user_modal/user_modal.styled";
 import type { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { forwardRef } from "react";
 
@@ -9,8 +9,8 @@ interface UserModalProps {
 // eslint-disable-next-line react/display-name
 export const UserModal = forwardRef<HTMLDivElement, UserModalProps>(({ user }, ref) => {
   return (
-    <UserModalContentStyled id={user.id} ref={ref}>
-      <UserModalStyled>
+    <Styled.Wrapper id={user.id} ref={ref}>
+      <Styled.Content>
         <h3>
           <b>Name:</b> {user.name}
         </h3>
@@ -18,7 +18,7 @@ export const UserModal = forwardRef<HTMLDivElement, UserModalProps>(({ user }, r
           <b>Email</b>: {user.email}
         </p>
         <small>ID: {user.id}</small>
-      </UserModalStyled>
-    </UserModalContentStyled>
+      </Styled.Content>
+    </Styled.Wrapper>
   );
 });
