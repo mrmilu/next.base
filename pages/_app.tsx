@@ -11,6 +11,7 @@ import { AppRouterController } from "@/src/ui/controllers/app_router_controller"
 import { GlobalStyles } from "@/src/ui/styles/globals";
 import { Modal } from "@/src/ui/components/modal/modal";
 import Head from "next/head";
+import "@/src/common/utils/yup_extensions";
 
 // Conditionally inject axe into the page.
 // This only happens outside of production and in a browser (not SSR).

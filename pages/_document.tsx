@@ -4,10 +4,9 @@ import Document, { Head, Main, NextScript, Html } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 import type { AppPropsType, AppType } from "next/dist/shared/lib/utils";
 import React from "react";
-import { CookieUtils } from "@front_web_mrmilu/utils";
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
+  static async getInitialProps (ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
@@ -16,11 +15,12 @@ class MyDocument extends Document {
         originalRenderPage({
           enhanceApp:
             (App: AppType) =>
-            ({ pageProps, ...restProps }: AppPropsType) => {
-              return sheet.collectStyles(
-                <App {...restProps} pageProps={{ ...pageProps, logged: CookieUtils.getCookie("logged", ctx.req?.headers.cookie) }} />
-              );
-            }
+              ({ pageProps, ...restProps }: AppPropsType) => {
+
+                return sheet.collectStyles(
+                  <App { ...restProps } pageProps={pageProps} />
+                );
+              }
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -28,8 +28,8 @@ class MyDocument extends Document {
         ...initialProps,
         styles: [
           <React.Fragment key="styled-sheets">
-            {initialProps.styles}
-            {sheet.getStyleElement()}
+            { initialProps.styles }
+            { sheet.getStyleElement() }
           </React.Fragment>
         ]
       };
@@ -38,7 +38,7 @@ class MyDocument extends Document {
     }
   }
 
-  render() {
+  render () {
     return (
       <Html>
         <Head>
@@ -47,8 +47,8 @@ class MyDocument extends Document {
           <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font" type="font/truetype" />
         </Head>
         <body>
-          <Main />
-          <NextScript />
+        <Main />
+        <NextScript />
         </body>
       </Html>
     );

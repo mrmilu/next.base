@@ -32,10 +32,6 @@ function selectUiBase(state: RootState) {
   return state.user;
 }
 
-export const getLoggedState = createSelector([selectUiBase], (slice) => {
-  let loggedCookie;
-  if (typeof window !== "undefined") loggedCookie = CookieUtils.getCookie("logged");
-  return (Boolean(loggedCookie) && loggedCookie === "true") || slice.logged;
-});
+export const getLoggedState = createSelector([selectUiBase], (slice) => slice.logged)
 export const { setLogged } = userSlice.actions;
 export default userSlice.reducer;

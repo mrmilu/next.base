@@ -23,10 +23,12 @@ export class AppRouterController {
   }
 
   private handleRouteChangeStart = () => {
+    console.log("Route change start")
     this.store.dispatch(setLoader(true));
   };
 
   private handleRouteChangeComplete = () => {
+    console.log("Route change complete")
     this.store.dispatch(setLoader(false));
   };
 
