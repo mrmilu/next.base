@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
-import React, { useEffect } from "react";
+import React from "react";
 import type { NextPage } from "next";
 import { Provider } from "react-redux";
 import { store } from "@/src/ui/state";
@@ -29,15 +29,9 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-const appRouterController = new AppRouterController(store);
+new AppRouterController(store);
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  useEffect(() => {
-    return () => {
-      appRouterController.dispose();
-    };
-  }, []);
-
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
 

@@ -9,13 +9,6 @@ export class AppRouterController {
     this.store = store;
     this.init();
   }
-
-  dispose() {
-    RouterSingleton.events.off("routeChangeStart", this.handleRouteChangeStart);
-    RouterSingleton.events.off("routeChangeComplete", this.handleRouteChangeComplete);
-    RouterSingleton.events.off("routeChangeError", this.handleRouteChangeError);
-  }
-
   private init() {
     RouterSingleton.events.on("routeChangeStart", this.handleRouteChangeStart);
     RouterSingleton.events.on("routeChangeComplete", this.handleRouteChangeComplete);
@@ -23,12 +16,10 @@ export class AppRouterController {
   }
 
   private handleRouteChangeStart = () => {
-    console.log("Route change start")
     this.store.dispatch(setLoader(true));
   };
 
   private handleRouteChangeComplete = () => {
-    console.log("Route change complete")
     this.store.dispatch(setLoader(false));
   };
 
