@@ -5,7 +5,7 @@ import { setLoader } from "@/src/ui/state/ui.slice";
 import { locator } from "@/src/core/app/ioc";
 import { TYPES } from "@/src/core/app/ioc/types";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
-import type { GetDummyUsersUseCase } from "@/src/core/dummy/domain/use_cases/get_dummy_users_use_case";
+import type { GetUsersUseCase } from "@/src/core/users/domain/use_cases/get_users_use_case";
 
 const initialState = (): DummySliceState => ({
   users: [],
@@ -15,8 +15,8 @@ const initialState = (): DummySliceState => ({
 export const getUsersThunk = createAsyncThunk("dummy.slice/getUsers", async (arg, { dispatch }) => {
   dispatch(setLoader(true));
   try {
-    const getDummyUsersUseCase = await locator.get<IocProvider<GetDummyUsersUseCase>>(TYPES.GetDummyUsersUseCase)();
-    return getDummyUsersUseCase.execute().finally(() => {
+    const getUsersUseCase = await locator.get<IocProvider<GetUsersUseCase>>(TYPES.GetUsersUseCase)();
+    return getUsersUseCase.execute().finally(() => {
       dispatch(setLoader(false));
     });
   } catch (e) {}

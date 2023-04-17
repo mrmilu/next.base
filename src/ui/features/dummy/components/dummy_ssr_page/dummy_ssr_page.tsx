@@ -2,12 +2,12 @@ import type { ReactElement } from "react";
 import { useMemo } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import Styled from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
-import { plainToClass } from "class-transformer";
-import { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { showModal } from "@/src/ui/state/ui.slice";
 import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
 import { useAppDispatch } from "@/src/ui/state";
 import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
+import { User } from "@/src/core/users/domain/models/user";
+import type { ConstructorType } from "@/src/common/interfaces/constructor_type";
 
 export interface DummySSRPageProps {
   serializedUsers: string;
@@ -16,12 +16,12 @@ export interface DummySSRPageProps {
 export default function DummySSRPage({ serializedUsers }: DummySSRPageProps) {
   const dispatch = useAppDispatch();
   const { mdAndUp } = useBreakpointsMatch();
-  const usersDomain: Array<DummyUser> = useMemo(
-    () => JSON.parse(serializedUsers).map((value: Record<string, unknown>) => plainToClass(DummyUser, value, { excludeExtraneousValues: true })),
+  const usersDomain: Array<User> = useMemo(
+    () => JSON.parse(serializedUsers).map((value: Record<string, unknown>) => new User(value as ConstructorType<User>)),
     [serializedUsers]
   );
 
-  const showUserModal = (user: DummyUser) => {
+  const showUserModal = (user: User) => {
     dispatch(showModal(<UserModal user={user} />));
   };
 

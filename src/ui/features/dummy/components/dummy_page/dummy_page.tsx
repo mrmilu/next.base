@@ -6,10 +6,10 @@ import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import Styled from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
 import LoaderStyled from "@/src/ui/components/loader/loader.styled";
 import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
-import type { DummyUser } from "@/src/core/dummy/domain/models/dummy_user";
 import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
 import { showModal } from "@/src/ui/state/ui.slice";
 import { makeCancelable } from "@front_web_mrmilu/utils";
+import type { User } from "@/src/core/users/domain/models/user";
 
 export default function DummyPage() {
   const dispatch = useAppDispatch();
@@ -32,7 +32,7 @@ export default function DummyPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const showUserModal = (user: DummyUser) => {
+  const showUserModal = (user: User) => {
     dispatch(showModal(<UserModal user={user} />));
   };
 

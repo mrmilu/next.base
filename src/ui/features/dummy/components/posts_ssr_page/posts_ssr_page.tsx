@@ -4,7 +4,7 @@ import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import Styled from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
 import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
 import { plainToClass } from "class-transformer";
-import { DummyPost } from "@/src/core/dummy/domain/models/dummy_post";
+import { Post } from "@/src/core/posts/domain/models/post";
 
 export interface PostsSSRPageProps {
   serializedPosts: string;
@@ -12,8 +12,8 @@ export interface PostsSSRPageProps {
 
 export default function PostsSSRPage({ serializedPosts }: PostsSSRPageProps) {
   const { mdAndUp } = useBreakpointsMatch();
-  const postDomain: Array<DummyPost> = useMemo(
-    () => JSON.parse(serializedPosts).map((value: Record<string, unknown>) => plainToClass(DummyPost, value, { excludeExtraneousValues: true })),
+  const postDomain: Array<Post> = useMemo(
+    () => JSON.parse(serializedPosts).map((value: Record<string, unknown>) => plainToClass(Post, value, { excludeExtraneousValues: true })),
     [serializedPosts]
   );
 
