@@ -21,9 +21,9 @@ const SimpleCardStyled = styled(SimpleCard)<SimpleCardProps>`
   cursor: ${(props) => props.onClick && "pointer"};
 `;
 
-const DummyPageStyled = {
+const UsersPageStyled = {
   Wrapper,
   SimpleCard: SimpleCardStyled
 };
 
-export default DummyPageStyled;
+export default UsersPageStyled;

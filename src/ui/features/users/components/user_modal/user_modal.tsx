@@ -1,4 +1,4 @@
-import Styled from "@/src/ui/features/dummy/components/user_modal/user_modal.styled";
+import Styled from "./user_modal.styled"
 import { forwardRef } from "react";
 import type { User } from "@/src/core/users/domain/models/user";
 

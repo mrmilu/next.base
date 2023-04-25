@@ -1,18 +1,18 @@
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
-import type { DummySliceState } from "@/src/ui/features/dummy/view_models/dummy.slice";
 import type { RootState } from "@/src/ui/state";
 import { setLoader } from "@/src/ui/state/ui.slice";
 import { locator } from "@/src/core/app/ioc";
 import { TYPES } from "@/src/core/app/ioc/types";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import type { GetUsersUseCase } from "@/src/core/users/domain/use_cases/get_users_use_case";
+import type { UsersSliceState } from "@/src/ui/features/users/view_models/users.slice";
 
-const initialState = (): DummySliceState => ({
+const initialState = (): UsersSliceState => ({
   users: [],
   loading: false
 });
 
-export const getUsersThunk = createAsyncThunk("dummy.slice/getUsers", async (arg, { dispatch }) => {
+export const getUsersThunk = createAsyncThunk("users.slice/getUsers", async (arg, { dispatch }) => {
   dispatch(setLoader(true));
   try {
     const getUsersUseCase = await locator.get<IocProvider<GetUsersUseCase>>(TYPES.GetUsersUseCase)();
@@ -22,7 +22,7 @@ export const getUsersThunk = createAsyncThunk("dummy.slice/getUsers", async (arg
   } catch (e) {}
 });
 
-const dummySlice = createSlice({
+const usersSlice = createSlice({
   name: "ui.slice",
   initialState: initialState(),
   reducers: {},
@@ -37,11 +37,11 @@ const dummySlice = createSlice({
   }
 });
 
-function selectDummyBase(state: RootState) {
-  return state.dummy;
+function selectUsersBase(state: RootState) {
+  return state.users;
 }
 
-export const getUsers = createSelector([selectDummyBase], (slice) => slice.users);
-export const getLoadingState = createSelector([selectDummyBase], (slice) => slice.loading);
+export const getUsers = createSelector([selectUsersBase], (slice) => slice.users);
+export const getLoadingState = createSelector([selectUsersBase], (slice) => slice.loading);
 
-export default dummySlice.reducer;
+export default usersSlice.reducer;

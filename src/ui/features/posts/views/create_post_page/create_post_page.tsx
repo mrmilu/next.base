@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useCallback, useState } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import Styled from "@/src/ui/features/dummy/components/create_post_page/create_post_page.styled";
+import Styled from "@/src/ui/features/posts/views/create_post_page/create_post_page.styled";
 import { Button } from "@/src/ui/components/button/button";
 import { locator } from "@/src/core/app/ioc";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";

@@ -1,4 +1,4 @@
-import HomePage from "@/src/ui/features/home/components/home_page/home_page";
+import HomePage from "@/src/ui/features/home/views/home_page/home_page";
 import type { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 

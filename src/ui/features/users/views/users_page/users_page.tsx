@@ -1,17 +1,17 @@
 import type { ReactElement } from "react";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/src/ui/state";
-import { getLoadingState, getUsers, getUsersThunk } from "@/src/ui/features/dummy/state/dummy.slice";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import Styled from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
 import LoaderStyled from "@/src/ui/components/loader/loader.styled";
 import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
-import { UserModal } from "@/src/ui/features/dummy/components/user_modal/user_modal";
 import { showModal } from "@/src/ui/state/ui.slice";
 import { makeCancelable } from "@front_web_mrmilu/utils";
 import type { User } from "@/src/core/users/domain/models/user";
+import { UserModal } from "@/src/ui/features/users/components/user_modal/user_modal";
+import { getLoadingState, getUsers, getUsersThunk } from "@/src/ui/features/users/state/users.slice";
+import UsersPageStyled from "./users_page.styled"
 
-export default function DummyPage() {
+export default function UsersPage () {
   const dispatch = useAppDispatch();
   const users = useAppSelector(getUsers);
   const loadingUsers = useAppSelector(getLoadingState);
@@ -33,23 +33,24 @@ export default function DummyPage() {
   }, []);
 
   const showUserModal = (user: User) => {
-    dispatch(showModal(<UserModal user={user} />));
+    dispatch(showModal(<UserModal user={ user } />));
   };
 
   return (
-    <Styled.Wrapper>
-      {mdAndUp && <h1>Dummy page</h1>}
-      {loadingUsers ? (
+    <UsersPageStyled.Wrapper>
+      { mdAndUp && <h1>Users page</h1> }
+      { loadingUsers ? (
         <LoaderStyled />
       ) : (
         users.map((user, idx) => (
-          <Styled.SimpleCard onClick={() => showUserModal(user)} key={`${user.id}_${idx}`} title={user.name} subtitle={user.email} />
+          <UsersPageStyled.SimpleCard onClick={ () => showUserModal(user) } key={ `${ user.id }_${ idx }` } title={ user.name }
+                                      subtitle={ user.email } />
         ))
-      )}
-    </Styled.Wrapper>
+      ) }
+    </UsersPageStyled.Wrapper>
   );
 }
 
-DummyPage.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout logged={page.props.logged}>{page}</BaseLayout>;
+UsersPage.getLayout = function getLayout (page: ReactElement) {
+  return <BaseLayout logged={ page.props.logged }>{ page }</BaseLayout>;
 };

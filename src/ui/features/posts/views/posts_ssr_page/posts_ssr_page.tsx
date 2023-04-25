@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { useMemo } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import Styled from "@/src/ui/features/dummy/components/dummy_page/dummy_page.styled";
+import Styled from "../../../users/views/users_page/users_page.styled";
 import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
 import { plainToClass } from "class-transformer";
 import { Post } from "@/src/core/posts/domain/models/post";

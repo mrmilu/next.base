@@ -5,7 +5,7 @@ import { Button } from "@/src/ui/components/button/button";
 import type { ReactElement } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import Styled from "@/src/ui/features/home/components/home_page/home_page.styled";
+import Styled from "@/src/ui/features/home/views/home_page/home_page.styled";
 import { useRouter } from "next/router";
 import { BaseError } from "make-error";
 import { AppErrorBoundary } from "@/src/ui/components/app_error_boundary/app_error_boundary";
