@@ -1,6 +1,6 @@
 import type { Store } from "@reduxjs/toolkit";
-import { setLoader } from "@/src/ui/state/ui.slice";
 import RouterSingleton from "next/router";
+import { uiProvider } from "@/src/ui/providers/ui.provider";
 
 export class AppRouterController {
   private store!: Store;
@@ -16,14 +16,19 @@ export class AppRouterController {
   }
 
   private handleRouteChangeStart = () => {
-    this.store.dispatch(setLoader(true));
+    this.setLoader(true);
   };
 
   private handleRouteChangeComplete = () => {
-    this.store.dispatch(setLoader(false));
+    this.setLoader(false);
   };
 
   private handleRouteChangeError = () => {
-    this.store.dispatch(setLoader(false));
+    this.setLoader(false);
   };
+
+  private setLoader (state: boolean) {
+    const uiState = uiProvider.getState();
+    uiState.setLoader(state);
+  }
 }

@@ -7,20 +7,21 @@ import { useAppDispatch } from "@/src/ui/state";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import { showModal } from "@/src/ui/state/ui.slice";
 import { LoggingModal } from "@/src/ui/components/logging_modal/logging_modal";
 import { CookieUtils } from "@front_web_mrmilu/utils";
+import { useUiProvider } from "@/src/ui/providers/ui.provider";
 
 export const BaseLayout = ({ children }: PropsWithChildren<{ logged?: boolean }>) => {
+  const showModal = useUiProvider((state) => state.showModal);
   const dispatch = useAppDispatch();
   const isUserLogged = useSelector(getLoggedState);
   const router = useRouter();
 
   useEffect(() => {
     if (router.query.protectedRouteAccessAttempt) {
-      dispatch(showModal(<LoggingModal />));
+      showModal(<LoggingModal />)
     }
-  }, [ dispatch, router.query ]);
+  }, [dispatch, router.query, showModal]);
 
   useEffect(() => {
     const logged = CookieUtils.getCookie("logged");

@@ -1,6 +1,6 @@
 import type { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import CreatePostPage from "@/src/ui/features/dummy/components/create_post_page/create_post_page";
+import CreatePostPage from "@/src/ui/features/posts/views/create_post_page/create_post_page";
 
 export default CreatePostPage;
 

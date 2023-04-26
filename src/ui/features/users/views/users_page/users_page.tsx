@@ -4,18 +4,19 @@ import { useAppDispatch, useAppSelector } from "@/src/ui/state";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import LoaderStyled from "@/src/ui/components/loader/loader.styled";
 import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
-import { showModal } from "@/src/ui/state/ui.slice";
 import { makeCancelable } from "@front_web_mrmilu/utils";
 import type { User } from "@/src/core/users/domain/models/user";
 import { UserModal } from "@/src/ui/features/users/components/user_modal/user_modal";
 import { getLoadingState, getUsers, getUsersThunk } from "@/src/ui/features/users/state/users.slice";
 import UsersPageStyled from "./users_page.styled"
+import { useUiProvider } from "@/src/ui/providers/ui.provider";
 
 export default function UsersPage () {
   const dispatch = useAppDispatch();
   const users = useAppSelector(getUsers);
   const loadingUsers = useAppSelector(getLoadingState);
   const { mdAndUp } = useBreakpointsMatch();
+  const showModal = useUiProvider(state => state.showModal)
 
   useEffect(() => {
     const cancelablePromise = makeCancelable(dispatch(getUsersThunk()));
@@ -33,7 +34,7 @@ export default function UsersPage () {
   }, []);
 
   const showUserModal = (user: User) => {
-    dispatch(showModal(<UserModal user={ user } />));
+    showModal(<UserModal user={ user } />);
   };
 
   return (
