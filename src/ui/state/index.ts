@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import type { TypedUseSelectorHook } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
-import user from "./user.slice";
 import users from "../features/users/state/users.slice";
 
 export const store = configureStore({
   reducer: {
-    user,
     users
   },
   middleware: (getDefaultMiddleware) =>
