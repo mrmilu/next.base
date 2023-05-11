@@ -3,8 +3,6 @@ import type { AppProps } from "next/app";
 import type { ReactElement, ReactNode } from "react";
 import React from "react";
 import type { NextPage } from "next";
-import { Provider } from "react-redux";
-import { store } from "@/src/ui/state";
 import { appWithTranslation } from "next-i18next";
 import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
 import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
@@ -12,6 +10,7 @@ import { GlobalStyles } from "@/src/ui/styles/globals";
 import { Modal } from "@/src/ui/components/modal/modal";
 import Head from "next/head";
 import "@/src/common/utils/yup_extensions";
+import { uiProvider } from "@/src/ui/providers/ui.provider";
 
 // Conditionally inject axe into the page.
 // This only happens outside of production and in a browser (not SSR).
@@ -29,14 +28,14 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-new AppRouterController(store);
+new AppRouterController(uiProvider.getState());
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <Provider store={store}>
+    <>
       <Head>
         <title>Next boilerplate app</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
@@ -49,7 +48,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Modal />
       <MainLoader />
       {getLayout(<Component {...pageProps} />)}
-    </Provider>
+    </>
   );
 }
 

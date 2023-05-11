@@ -1,12 +1,11 @@
-import type { Store } from "@reduxjs/toolkit";
 import RouterSingleton from "next/router";
-import { uiProvider } from "@/src/ui/providers/ui.provider";
+import type { UiStateViewModel } from "@/src/ui/view_models/ui_state";
 
 export class AppRouterController {
-  private store!: Store;
+  private uiState!: UiStateViewModel;
 
-  constructor(store: Store) {
-    this.store = store;
+  constructor(uiState: UiStateViewModel) {
+    this.uiState = uiState;
     this.init();
   }
   private init() {
@@ -27,8 +26,7 @@ export class AppRouterController {
     this.setLoader(false);
   };
 
-  private setLoader (state: boolean) {
-    const uiState = uiProvider.getState();
-    uiState.setLoader(state);
+  private setLoader(state: boolean) {
+    this.uiState.setLoader(state);
   }
 }

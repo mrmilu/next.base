@@ -3,17 +3,17 @@ import { useMemo } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import Styled from "../../../users/views/users_page/users_page.styled";
 import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
-import { plainToClass } from "class-transformer";
 import { Post } from "@/src/core/posts/domain/models/post";
+import type { ConstructorType } from "@/src/common/interfaces/constructor_type";
 
 export interface PostsSSRPageProps {
-  serializedPosts: string;
+  serializedPosts: Array<Record<string, unknown>>;
 }
 
 export default function PostsSSRPage({ serializedPosts }: PostsSSRPageProps) {
   const { mdAndUp } = useBreakpointsMatch();
   const postDomain: Array<Post> = useMemo(
-    () => JSON.parse(serializedPosts).map((value: Record<string, unknown>) => plainToClass(Post, value, { excludeExtraneousValues: true })),
+    () => serializedPosts.map((value: Record<string, unknown>) => new Post(value as ConstructorType<Post>)),
     [serializedPosts]
   );
 

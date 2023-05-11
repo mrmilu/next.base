@@ -1,7 +1,5 @@
 import type { User } from "@/src/core/users/domain/models/user";
 
-
-export interface UsersSliceState {
+export interface UsersListStateViewModel {
   users: Array<User>;
-  loading: boolean;
 }

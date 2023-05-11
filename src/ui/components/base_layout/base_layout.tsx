@@ -36,10 +36,10 @@ export const BaseLayout = ({ children }: PropsWithChildren<{ logged?: boolean }>
             <Link href="/">home</Link>
           </li>
           <li>
-            <Link href="/users">users</Link>
+            <Link href="/users_provider">users</Link>
           </li>
           <li>
-            <Link href="/users_ssr">users SSR</Link>
+            <Link href="/users">users SSR</Link>
           </li>
           <li>
             <Link href="/create_post">create post</Link>

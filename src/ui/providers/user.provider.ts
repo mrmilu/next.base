@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { UserState } from "@/src/ui/view_models/user.slice";
+import type { UserStateViewModel } from "@/src/ui/view_models/user_state";
 import { CookieUtils } from "@front_web_mrmilu/utils";
 import { createStore, useStore } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
-export const userProvider = createStore<UserState>()(
+export const userProvider = createStore<UserStateViewModel>()(
   immer((set, get) => ({
     logged: false,
     setLogged(logged: boolean) {
@@ -23,8 +23,8 @@ export const userProvider = createStore<UserState>()(
   }))
 );
 
-export function useUserProvider(): UserState;
-export function useUserProvider<T>(selector: (state: UserState) => T, equals?: (a: T, b: T) => boolean): T;
+export function useUserProvider(): UserStateViewModel;
+export function useUserProvider<T>(selector: (state: UserStateViewModel) => T, equals?: (a: T, b: T) => boolean): T;
 export function useUserProvider(selector?: any, equals?: any) {
   return useStore(userProvider, selector, equals);
 }
