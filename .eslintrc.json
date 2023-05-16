@@ -3,7 +3,7 @@
   "extends": ["plugin:@typescript-eslint/recommended", "prettier", "next/core-web-vitals"],
   "rules": {
     "unused-imports/no-unused-imports": "error",
-    "react/display-name": ["disabled"],
+    "react/display-name": 0,
     "@typescript-eslint/consistent-type-imports": "error"
   }
 }
