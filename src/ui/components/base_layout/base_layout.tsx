@@ -36,16 +36,16 @@ export const BaseLayout = ({ children }: PropsWithChildren<{ logged?: boolean }>
             <Link href="/">home</Link>
           </li>
           <li>
-            <Link href="/users_provider">users</Link>
+            <Link href="/users_provider">users (with zustand provider)</Link>
           </li>
           <li>
-            <Link href="/users">users SSR</Link>
+            <Link href="/users">users</Link>
           </li>
           <li>
             <Link href="/create_post">create post</Link>
           </li>
           <li>
-            <Link href="/posts_ssr">list post</Link>
+            <Link href="/posts">list post</Link>
           </li>
         </ul>
         <Button onClick={isUserLogged ? logout : login}>{isUserLogged ? "Log out" : "Log in"}</Button>

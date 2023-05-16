@@ -8,11 +8,11 @@ import { UserModal } from "@/src/ui/features/users/components/user_modal/user_mo
 import UsersPageStyled from "../users_page/users_page.styled";
 import { useUiProvider } from "@/src/ui/providers/ui.provider";
 
-export interface UsersSSRPageProps {
+export interface UsersPageProps {
   serializedUsers: Array<Record<string, unknown>>;
 }
 
-export default function UsersSSRPage({ serializedUsers }: UsersSSRPageProps) {
+export default function UsersPage({ serializedUsers }: UsersPageProps) {
   const showModal = useUiProvider((state) => state.showModal);
   const { mdAndUp } = useBreakpointsMatch();
   const usersDomain: Array<User> = useMemo(
@@ -34,6 +34,6 @@ export default function UsersSSRPage({ serializedUsers }: UsersSSRPageProps) {
   );
 }
 
-UsersSSRPage.getLayout = function getLayout(page: ReactElement) {
+UsersPage.getLayout = function getLayout(page: ReactElement) {
   return <BaseLayout logged={page.props.logged}>{page}</BaseLayout>;
 };

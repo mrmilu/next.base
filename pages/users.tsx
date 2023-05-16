@@ -4,9 +4,9 @@ import { locator } from "@/src/core/app/ioc";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import { TYPES } from "@/src/core/app/ioc/types";
 import type { GetUsersUseCase } from "@/src/core/users/domain/use_cases/get_users_use_case";
-import UsersSSRPage from "@/src/ui/features/users/views/users_ssr_page/users_ssr_page";
+import UsersPage from "@/src/ui/features/users/views/users_ssr_page/users_ssr_page";
 
-export default UsersSSRPage;
+export default UsersPage;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   console.log("REVALIDATING USERS");

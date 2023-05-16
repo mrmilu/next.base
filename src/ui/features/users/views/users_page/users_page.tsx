@@ -13,7 +13,7 @@ interface Props {
   serializedUsers: Array<Record<string, unknown>>;
 }
 
-export default function UsersPage({ serializedUsers }: Props) {
+export default function UsersPageWithProvider({ serializedUsers }: Props) {
   const usersDomain: Array<User> = useMemo(
     () => serializedUsers.map((value: Record<string, unknown>) => new User(value as ConstructorType<User>)),
     [serializedUsers]
@@ -47,6 +47,6 @@ function UsersList() {
   );
 }
 
-UsersPage.getLayout = function getLayout(page: ReactElement) {
+UsersPageWithProvider.getLayout = function getLayout(page: ReactElement) {
   return <BaseLayout logged={page.props.logged}>{page}</BaseLayout>;
 };

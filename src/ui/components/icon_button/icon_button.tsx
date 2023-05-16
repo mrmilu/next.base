@@ -11,7 +11,6 @@ export interface IconButtonProps {
   asLink?: boolean;
 }
 
-// eslint-disable-next-line react/display-name
 export const IconButton = forwardRef<HTMLAnchorElement, IconButtonProps>(
   ({ href, onClick, icon, disabled = false, className, asLink = false }, ref) => {
     if (asLink) {
