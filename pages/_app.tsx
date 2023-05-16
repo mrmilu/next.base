@@ -6,7 +6,6 @@ import type { NextPage } from "next";
 import { appWithTranslation } from "next-i18next";
 import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
 import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
-import { GlobalStyles } from "@/src/ui/styles/globals";
 import { Modal } from "@/src/ui/components/modal/modal";
 import Head from "next/head";
 import "@/src/common/utils/yup_extensions";
@@ -44,7 +43,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         )}
         <meta httpEquiv="referrer" content="no-referrer, strict-origin-when-cross-origin" />
       </Head>
-      <GlobalStyles />
       <Modal />
       <MainLoader />
       {getLayout(<Component {...pageProps} />)}

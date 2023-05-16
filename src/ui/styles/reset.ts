@@ -1,12 +1,7 @@
-import { createGlobalStyle } from "styled-components";
+import { globalStyle } from "@vanilla-extract/css";
 
-export const ResetCSS = createGlobalStyle`
-  /* http://meyerweb.com/eric/tools/css/reset/
-     v2.0 | 20110126
-     License: none (public domain)
-  */
-
-  html,
+globalStyle(
+  `html,
   body,
   div,
   span,
@@ -86,20 +81,21 @@ export const ResetCSS = createGlobalStyle`
   time,
   mark,
   audio,
-  video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: baseline;
+  video`,
+  {
+    margin: 0,
+    padding: 0,
+    border: 0,
+    verticalAlign: "baseline"
   }
+);
 
-  /* HTML5 display-role reset for older browsers */
+globalStyle("*", {
+  boxSizing: "border-box"
+});
 
-  * {
-    box-sizing: border-box;
-  }
-
-  article,
+globalStyle(
+  `article,
   aside,
   details,
   figcaption,
@@ -109,43 +105,22 @@ export const ResetCSS = createGlobalStyle`
   hgroup,
   menu,
   nav,
-  section {
-    display: block;
+  section`,
+  {
+    display: "block"
   }
+);
 
-  body {
-    line-height: 1;
-    height: 100vh;
-  }
+globalStyle(`body`, {
+  lineHeight: 1,
+  height: "100vh"
+});
 
-  ol,
-  ul {
-    list-style: none;
-  }
-
-  blockquote,
-  q {
-    quotes: none;
-  }
-
-  blockquote {
-    &::before,
-    &::after {
-      content: "";
-      content: none;
-    }
-  }
-
-  q {
-    &::before,
-    &::after {
-      content: "";
-      content: none;
-    }
-  }
-
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-`;
+globalStyle(`ol, ul`, { listStyle: "none" });
+globalStyle(`blockquote, q`, { quotes: "none" });
+globalStyle(`blockquote::before, blockquote::after`, { content: "none" });
+globalStyle(`q::before, q::after`, { content: "none" });
+globalStyle(`table`, {
+  borderCollapse: "collapse",
+  borderSpacing: 0
+});

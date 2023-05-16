@@ -1,31 +1,32 @@
-import styled from "styled-components";
-import { colors } from "../../styles/colors";
 import { px2rem } from "@/src/ui/styles/utils";
-import { shadows } from "@/src/ui/styles/shadows";
+import { vars } from "@/src/ui/styles/theme.css";
+import { style } from "@vanilla-extract/css";
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
+const wrapper = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flex: 1,
 
-  > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    height: 80%;
-    background-color: ${colors.gray20};
-    margin: auto;
-    box-shadow: ${shadows.one};
-    border-radius: ${px2rem(6)};
-    color: ${colors.gray80};
+  selectors: {
+    "& > div": {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "80%",
+      height: "80%",
+      backgroundColor: vars.colors.gray20,
+      margin: "auto",
+      boxShadow: vars.shadows.one,
+      borderRadius: px2rem(6),
+      color: vars.colors.gray80
+    }
   }
-`;
+});
 
-const AppErrorBoundaryStyled = {
-  Wrapper
+const Styles = {
+  wrapper
 };
 
-export default AppErrorBoundaryStyled;
+export default Styles;

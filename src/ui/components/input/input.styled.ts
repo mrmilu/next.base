@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { typography } from "@/src/ui/styles/typography";
+import { typographyStyles } from "@/src/ui/styles/typography";
 import { spacing } from "@/src/ui/styles/spacing";
 import { px2rem } from "@/src/ui/styles/utils";
 import { colors } from "../../styles/colors";
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Input = styled.label`
-  ${typography.bodyM};
+  ${typographyStyles.bodyM};
   display: flex;
   flex-direction: column;
   position: relative;

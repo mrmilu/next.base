@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import("next").NextConfig} */
+const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
 const { i18n } = require("./next-i18next.config");
 const { withSentryConfig } = require("@sentry/nextjs");
+
+const withVanillaExtract = createVanillaExtractPlugin();
 
 const {
   NEXT_PUBLIC_SENTRY_ENABLED,
@@ -106,4 +109,6 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
 module.exports =
-  NEXT_PUBLIC_SENTRY_ENABLED === "true" ? withSentryConfig(moduleExports, SentryWebpackPluginOptions) : withBundleAnalyzer(moduleExports);
+  NEXT_PUBLIC_SENTRY_ENABLED === "true"
+    ? withSentryConfig(withVanillaExtract(moduleExports), SentryWebpackPluginOptions)
+    : withBundleAnalyzer(withVanillaExtract(moduleExports));

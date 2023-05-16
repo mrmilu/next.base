@@ -3,7 +3,7 @@ import { px2rem } from "@/src/ui/styles/utils";
 import { spacing } from "@/src/ui/styles/spacing";
 import { colors } from "../../styles/colors";
 import { shadows } from "@/src/ui/styles/shadows";
-import { typography } from "@/src/ui/styles/typography";
+import { typographyStyles } from "@/src/ui/styles/typography";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,7 +27,7 @@ const Content = styled.div`
   overflow: hidden;
 
   > h4 {
-    ${typography.bodyL};
+    ${typographyStyles.bodyL};
   }
 `;
 
