@@ -18,6 +18,7 @@
     "@front_web_mrmilu/network": "~2.1.0",
     "@front_web_mrmilu/services": "~2.1.0",
     "@front_web_mrmilu/utils": "~2.1.0",
+    "@hookform/resolvers": "~3.1.1",
     "@sentry/nextjs": "~7.60.1",
     "axios": "1.4.0",
     "class-transformer": "0.5.1",
