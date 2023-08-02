@@ -19,7 +19,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["reflect-metadata"],
     "typeRoots": ["node_modules/@types", "src/@types", "src/common/@types"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true

@@ -3,7 +3,16 @@
   "extends": ["plugin:@typescript-eslint/recommended", "prettier", "next/core-web-vitals"],
   "rules": {
     "unused-imports/no-unused-imports": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
     "react/display-name": 0,
-    "@typescript-eslint/consistent-type-imports": "error"
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        "default": "generic",
+        "readonly": "generic"
+      }
+    ]
   }
 }
