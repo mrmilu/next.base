@@ -1,19 +1,20 @@
-import { useTranslation } from "next-i18next";
-import { FormikProvider, useFormik } from "formik";
-import { InputFormik } from "@/src/ui/components/input/input";
-import { Button } from "@/src/ui/components/button/button";
-import type { ReactElement } from "react";
-import { useEffect, useMemo, useState } from "react";
-import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import Styled from "@/src/ui/features/home/views/home_page/home_page.styled";
-import { useRouter } from "next/router";
-import { BaseError } from "make-error";
-import { AppErrorBoundary } from "@/src/ui/components/app_error_boundary/app_error_boundary";
-import { timeout } from "@front_web_mrmilu/utils";
 import { locator } from "@/src/core/app/ioc";
-import type { TagManagerService } from "@front_web_mrmilu/services";
 import { TYPES } from "@/src/core/app/ioc/types";
-import { number, object, string } from "yup";
+import { AppErrorBoundary } from "@/src/ui/components/app_error_boundary/app_error_boundary";
+import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
+import { Button } from "@/src/ui/components/button/button";
+import { ControlledInput } from "@/src/ui/components/input/input";
+import Styled from "@/src/ui/features/home/views/home_page/home_page.styled";
+import type { TagManagerService } from "@front_web_mrmilu/services";
+import { timeout } from "@front_web_mrmilu/utils";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { BaseError } from "make-error";
+import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import type { ReactElement } from "react";
+import { useEffect, useMemo } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { object, string } from "yup";
 
 interface FormValues {
   name: string;
@@ -21,7 +22,7 @@ interface FormValues {
   age: string;
 }
 
-const formValues: FormValues = {
+const defaultValues: FormValues = {
   name: "",
   email: "",
   age: ""
@@ -30,30 +31,29 @@ const formValues: FormValues = {
 export default function HomePage() {
   const { t } = useTranslation();
   const router = useRouter();
-  const [firstSubmit, setFirstSubmit] = useState(false);
   const validationSchema = useMemo(
     () =>
       object().shape({
         name: string().required(`${t("form.errors.required")}`),
-        email: string().required(`${t("form.errors.required")}`).email(`${t("form.errors.email")}`),
-        age: number()
-          .typeError(t("form.errors.number") ?? "")
+        email: string()
+          .required(`${t("form.errors.required")}`)
+          .email(`${t("form.errors.email")}`),
+        age: string()
+          .isNumber(`${t("form.errors.required")}`)
           .required(`${t("form.errors.required")}`)
           .isNotUnderAge(`${t("form.errors.underAge")}`)
       }),
     [t]
   );
-
-  const formik = useFormik({
-    initialValues: formValues,
-    validationSchema,
-    validateOnBlur: firstSubmit,
-    validateOnChange: firstSubmit,
-    onSubmit: async (values: FormValues) => {
-      await timeout(3000);
-      alert(`name: ${values.name}, email: ${values.email}, age: ${values.age}`);
-    }
+  const form = useForm({
+    defaultValues,
+    resolver: yupResolver(validationSchema, { abortEarly: false }),
+    reValidateMode: "onChange"
   });
+  const handleSubmit = async (values: FormValues) => {
+    await timeout(3000);
+    alert(`name: ${values.name}, email: ${values.email}, age: ${values.age}`);
+  };
 
   const changeLanguage = (language: string) => {
     router.push(`${router.basePath}`, router.asPath, { locale: language });
@@ -63,11 +63,13 @@ export default function HomePage() {
     locator.get<TagManagerService>(TYPES.TagManagerService).sendEvent("home_page_visit");
   }, []);
 
+  const age = form.watch("age");
+
   useEffect(() => {
-    if (Number(formik.values.age) > 40) {
+    if (Number(age) > 40) {
       throw new BaseError("The user is too old xD");
     }
-  }, [formik.values.age]);
+  }, [age]);
 
   return (
     <Styled.Wrapper>
@@ -79,16 +81,16 @@ export default function HomePage() {
           <option value="en">EN</option>
         </select>
       </Styled.Locale>
-      <FormikProvider value={formik}>
-        <Styled.Form>
-          <InputFormik name="name" label={`${t("form.fields.name.label")}`} placeholder={`${t("form.fields.name.placeholder")}`} />
-          <InputFormik name="email" label={`${t("form.fields.email.label")}`} placeholder={`${t("form.fields.email.placeholder")}`} />
-          <InputFormik name="age" type="number" label={`${t("form.fields.age.label")}`} placeholder={`${t("form.fields.age.placeholder")}`} />
-          <Button type="submit" disabled={formik.isSubmitting} onClick={() => setFirstSubmit(true)}>
+      <FormProvider {...form}>
+        <Styled.Form onSubmit={form.handleSubmit(handleSubmit)}>
+          <ControlledInput name="name" label={`${t("form.fields.name.label")}`} placeholder={`${t("form.fields.name.placeholder")}`} />
+          <ControlledInput name="email" label={`${t("form.fields.email.label")}`} placeholder={`${t("form.fields.email.placeholder")}`} />
+          <ControlledInput name="age" type="number" label={`${t("form.fields.age.label")}`} placeholder={`${t("form.fields.age.placeholder")}`} />
+          <Button type="submit" disabled={form.formState.isSubmitting}>
             {t("form.submit")}
           </Button>
         </Styled.Form>
-      </FormikProvider>
+      </FormProvider>
     </Styled.Wrapper>
   );
 }
