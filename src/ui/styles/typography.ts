@@ -1,18 +1,29 @@
-import type { FlattenSimpleInterpolation } from "styled-components";
 import { css } from "styled-components";
 import { px2rem } from "./utils";
-import { fonts } from "./fonts";
+import type { NoInfer, RuleSet } from "styled-components/dist/types";
 
 export interface Typography {
-  bodyXs: FlattenSimpleInterpolation;
-  bodyS: FlattenSimpleInterpolation;
-  bodyM: FlattenSimpleInterpolation;
-  bodyL: FlattenSimpleInterpolation;
-  subHeading: FlattenSimpleInterpolation;
-  headingS: FlattenSimpleInterpolation;
-  headingM: FlattenSimpleInterpolation;
-  headingL: FlattenSimpleInterpolation;
+  bodyXs: RuleSet<NoInfer<object>>;
+  bodyS: RuleSet<NoInfer<object>>;
+  bodyM: RuleSet<NoInfer<object>>;
+  bodyL: RuleSet<NoInfer<object>>;
+  subHeading: RuleSet<NoInfer<object>>;
+  headingS: RuleSet<NoInfer<object>>;
+  headingM: RuleSet<NoInfer<object>>;
+  headingL: RuleSet<NoInfer<object>>;
 }
+
+declare type FontType = "Lato";
+
+export const fonts: Record<FontType, RuleSet<NoInfer<object>>> = {
+  Lato: css`
+    font-family: "Lato", sans-serif;
+
+    * {
+      font-family: "Lato", sans-serif;
+    }
+  `
+};
 
 // Body
 const bodyXs = css`

@@ -1,0 +1,18 @@
+/* Lato */
+@font-face {
+  font-family: "Lato", sans-serif;
+  src: url("/public/assets/fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Lato", sans-serif;
+  src: url("/public/assets/fonts/Lato-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Lato", sans-serif;
+  src: url("/public/assets/fonts/VinaSans-Regular.ttf") format("truetype");
+  font-weight: 300;
+}

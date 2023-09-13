@@ -1,8 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { ResetCSS } from "@/src/ui/styles/reset";
 import { colors } from "./colors";
-import { fonts, FontStyled } from "./fonts";
-import { typography } from "@/src/ui/styles/typography";
+import { fonts, typography } from "@/src/ui/styles/typography";
 import { px2rem } from "@/src/ui/styles/utils";
 
 const Styles = createGlobalStyle`
@@ -47,6 +46,5 @@ export const GlobalStyles = () => (
   <>
     <Styles />
     <ResetCSS />
-    <FontStyled />
   </>
 );

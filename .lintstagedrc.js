@@ -1,3 +1,7 @@
 module.exports = {
-  "**/*": [() => "just nvm-exec 'yarn check-types'", () => "just nvm-exec 'yarn lint'", "prettier --write --ignore-unknown"]
+  "**/*": [
+    () => "just nvm-exec 'yarn check-types'",
+    () => "just nvm-exec 'yarn lint'",
+    "prettier './src' './pages' './*.{ts,js}' --check --ignore-unknown"
+  ]
 };

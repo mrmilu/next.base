@@ -11,6 +11,7 @@ import { Modal } from "@/src/ui/components/modal/modal";
 import Head from "next/head";
 import "@/src/common/utils/yup_extensions";
 import { uiProvider } from "@/src/ui/providers/ui.provider";
+import "../src/ui/styles/fonts.css"; // TODO not working
 
 // Conditionally inject axe into the page.
 // This only happens outside of production and in a browser (not SSR).

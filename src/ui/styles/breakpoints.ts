@@ -1,5 +1,5 @@
-import type { FlattenSimpleInterpolation } from "styled-components";
 import { css } from "styled-components";
+import type { NoInfer, RuleSet } from "styled-components/dist/types";
 
 export const breakpoints: Record<BreakpointTypes, number> = {
   sm: 480,
@@ -8,7 +8,7 @@ export const breakpoints: Record<BreakpointTypes, number> = {
 };
 
 export type BreakpointTypes = "sm" | "md" | "lg";
-export const includeMedia = (type: BreakpointTypes, styles: FlattenSimpleInterpolation) => css`
+export const includeMedia = (type: BreakpointTypes, styles: RuleSet<NoInfer<object>>) => css`
   @media (min-width: ${breakpoints[type]}px) {
     ${styles}
   }
