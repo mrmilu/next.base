@@ -1,7 +1,9 @@
 import type { IEnvVars } from "../interfaces/env_vars";
 import { injectable } from "inversify";
+import { generatorConf } from "inversify-generator/decorators";
 
 @injectable()
+@generatorConf({ binding: "default" })
 export class EnvVars implements IEnvVars {
   serverUrl: string = process.env.NEXT_PUBLIC_API_URL
     ? `${process.env.NEXT_PUBLIC_API_URL}${this.isProduction ? "/api" : "/s/graphql/"}`

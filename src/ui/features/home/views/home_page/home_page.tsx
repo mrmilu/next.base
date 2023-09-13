@@ -1,11 +1,8 @@
-import { locator } from "@/src/core/app/ioc";
-import { TYPES } from "@/src/core/app/ioc/types";
 import { AppErrorBoundary } from "@/src/ui/components/app_error_boundary/app_error_boundary";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { Button } from "@/src/ui/components/button/button";
 import { ControlledInput } from "@/src/ui/components/input/input";
 import Styled from "@/src/ui/features/home/views/home_page/home_page.styled";
-import type { TagManagerService } from "@front_web_mrmilu/services";
 import { timeout } from "@front_web_mrmilu/utils";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BaseError } from "make-error";
@@ -15,6 +12,9 @@ import type { ReactElement } from "react";
 import { useEffect, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { object, string } from "yup";
+import { TagManagerService } from "@front_web_mrmilu/services";
+
+const tagManagerService = new TagManagerService();
 
 interface FormValues {
   name: string;
@@ -60,7 +60,8 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    locator.get<TagManagerService>(TYPES.TagManagerService).sendEvent("home_page_visit");
+    // TODO improve inversify-generator to accept modules and third party deps with constantValue/dynamicValue https://github.com/inversify/InversifyJS/blob/master/wiki/value_injection.md
+    tagManagerService.sendEvent("home_page_visit");
   }, []);
 
   const age = form.watch("age");

@@ -1,8 +1,8 @@
 import type { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { locator } from "@/src/core/app/ioc";
+import { locator } from "@/src/core/app/ioc/__generated__";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
-import { TYPES } from "@/src/core/app/ioc/types";
+import { TYPES } from "@/src/core/app/ioc/__generated__/types";
 import type { GetUsersUseCase } from "@/src/core/users/domain/use_cases/get_users_use_case";
 import UsersPage from "@/src/ui/features/users/views/users_ssr_page/users_ssr_page";
 

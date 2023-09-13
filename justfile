@@ -25,6 +25,14 @@ start:
 graphql-codegen:
     ./nvm_exec.sh yarn graphql
 
+# Generate inversify bindings (watch execution)
+ioc-generate-watch:
+    ./nvm_exec.sh yarn ioc-generate --watch
+
+# Generate inversify bindings
+ioc-generate:
+    ./nvm_exec.sh yarn ioc-generate
+
 # Proxy comand through nvm
 nvm-exec command:
     ./nvm_exec.sh {{command}}

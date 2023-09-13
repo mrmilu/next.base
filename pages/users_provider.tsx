@@ -1,10 +1,10 @@
 import type { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import UsersPageWithProvider from "@/src/ui/features/users/views/users_page/users_page";
-import { locator } from "@/src/core/app/ioc";
+import { locator } from "@/src/core/app/ioc/__generated__";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import type { GetUsersUseCase } from "@/src/core/users/domain/use_cases/get_users_use_case";
-import { TYPES } from "@/src/core/app/ioc/types";
+import { TYPES } from "@/src/core/app/ioc/__generated__/types";
 
 export default UsersPageWithProvider;
 

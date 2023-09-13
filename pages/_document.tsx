@@ -1,4 +1,4 @@
-import "@/src/core/app/ioc/index";
+import "@/src/core/app/ioc/__generated__/index";
 import type { DocumentContext } from "next/document";
 import Document, { Head, Main, NextScript, Html } from "next/document";
 import { ServerStyleSheet } from "styled-components";
