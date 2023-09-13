@@ -49,7 +49,8 @@ just install-deps
 **Run project**
 
 ```shell
-just dev
+just ioc-generate-watch # in one terminal
+just dev # in another
 ```
 
 **See a list of available commands**
