@@ -1,6 +1,6 @@
 import { px2rem } from "./utils.css";
 import { style } from "@vanilla-extract/css";
-import { latoFontFamily } from "@/src/ui/styles/fonts.css";
+import { latoFontFamily } from "@/src/ui/styles/constants";
 
 // Body
 const bodyXs = {

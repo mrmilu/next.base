@@ -1,6 +1,5 @@
 import { globalFontFace } from "@vanilla-extract/css";
-
-export const latoFontFamily = "Lato";
+import { latoFontFamily } from "@/src/ui/styles/constants";
 
 globalFontFace(latoFontFamily, {
   src: `url("/assets/fonts/Lato-Regular.ttf") format('truetype')`,

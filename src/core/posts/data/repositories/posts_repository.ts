@@ -11,10 +11,8 @@ import { fromJson, fromJsonPage } from "@/src/common/utils/class-transformer";
 import type { Page } from "@/src/core/app/domain/models/page";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import type { CreatePostMutation } from "@/src/core/posts/data/graphql/mutations/__generated__/create_post";
-import { generatorConf } from "inversify-generator/decorators";
 
 @injectable()
-@generatorConf({ scope: "singleton", binding: "default" })
 export class PostsRepository implements IPostsRepository {
   @inject(TYPES.MockService) private mockServiceProvider!: IocProvider<MockService>;
   @inject(TYPES.JSONPlaceholderService) private jsonPlaceholderServiceProvider!: IocProvider<JSONPlaceholderService>;
