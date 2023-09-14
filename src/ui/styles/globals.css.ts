@@ -1,8 +1,8 @@
-import { typographyConfig } from "@/src/ui/styles/typography";
+import { typographyConfig } from "@/src/ui/styles/typography.css";
 import { px2rem } from "@/src/ui/styles/utils";
 import { globalStyle } from "@vanilla-extract/css";
 import { vars } from "@/src/ui/styles/theme.css";
-import { latoFontFamily } from "@/src/ui/styles/fonts";
+import { latoFontFamily } from "@/src/ui/styles/fonts.css";
 
 globalStyle("body", {
   backgroundColor: vars.colors.gray10

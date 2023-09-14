@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { typographyStyles } from "@/src/ui/styles/typography";
+import { typographyStyles } from "@/src/ui/styles/typography.css";
 import { spacing } from "@/src/ui/styles/spacing";
 import { px2rem } from "@/src/ui/styles/utils";
 import { colors } from "../../styles/colors";
