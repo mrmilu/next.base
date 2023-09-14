@@ -110,5 +110,5 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 // ensure that your source maps include changes from all other Webpack plugins
 module.exports =
   NEXT_PUBLIC_SENTRY_ENABLED === "true"
-    ? withSentryConfig(withVanillaExtract(moduleExports), SentryWebpackPluginOptions)
-    : withBundleAnalyzer(withVanillaExtract(moduleExports));
+    ? withVanillaExtract(withSentryConfig(moduleExports, SentryWebpackPluginOptions))
+    : withVanillaExtract(withBundleAnalyzer(moduleExports));

@@ -1,6 +1,7 @@
-import { px2rem } from "@/src/ui/styles/utils";
+import { px2rem } from "@/src/ui/styles/utils.css";
 import { spacing } from "@/src/ui/styles/spacing";
 import { vars } from "@/src/ui/styles/theme.css";
+import type { RecipeVariants } from "@vanilla-extract/recipes";
 import { recipe } from "@vanilla-extract/recipes";
 
 const button = recipe({
@@ -12,6 +13,13 @@ const button = recipe({
     cursor: "pointer"
   },
   variants: {
+    type: {
+      danger: {
+        alignSelf: "end",
+        width: "auto",
+        backgroundColor: "darkred"
+      }
+    },
     disabled: {
       true: {
         backgroundColor: vars.colors.gray20,
@@ -33,5 +41,7 @@ const button = recipe({
 const classes = {
   button
 };
+
+export type ButtonVariants = RecipeVariants<typeof button>;
 
 export default classes;

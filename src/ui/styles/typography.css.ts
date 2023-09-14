@@ -1,4 +1,4 @@
-import { px2rem } from "./utils";
+import { px2rem } from "./utils.css";
 import { style } from "@vanilla-extract/css";
 import { latoFontFamily } from "@/src/ui/styles/fonts.css";
 

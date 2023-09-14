@@ -5,10 +5,12 @@ import React from "react";
 import type { NextPage } from "next";
 import { appWithTranslation } from "next-i18next";
 import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
-import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
 import { Modal } from "@/src/ui/components/modal/modal";
 import Head from "next/head";
 import "@/src/common/utils/yup_extensions";
+import "@/src/ui/styles/globals.css";
+import "@/src/ui/styles/reset.css";
+import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
 import { uiProvider } from "@/src/ui/providers/ui.provider";
 
 // Conditionally inject axe into the page.

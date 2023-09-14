@@ -1,21 +1,21 @@
-import Styled from "@/src/ui/components/simple_card/simple_card.styled";
 import type { MouseEventHandler } from "react";
+import { typographyStyles } from "@/src/ui/styles/typography.css";
+import css from "./simple_card.css";
 
 export interface SimpleCardProps {
   title: string;
   subtitle: string;
-  className?: string;
   onClick?: MouseEventHandler;
 }
 
-export const SimpleCard = ({ title, subtitle, className, onClick }: SimpleCardProps) => {
+export const SimpleCard = ({ title, subtitle, onClick }: SimpleCardProps) => {
   return (
-    <Styled.Wrapper onClick={onClick} className={className}>
-      <Styled.Avatar />
-      <Styled.Content>
-        <h4>{title}</h4>
-        <p>{subtitle}</p>
-      </Styled.Content>
-    </Styled.Wrapper>
+    <div onClick={onClick} className={css.wrapper({ onClick: Boolean(onClick) })}>
+      <div className={css.avatar} />
+      <div className={css.content}>
+        <h4 className={typographyStyles.bodyL}>{title}</h4>
+        <p className={css.p}>{subtitle}</p>
+      </div>
+    </div>
   );
 };

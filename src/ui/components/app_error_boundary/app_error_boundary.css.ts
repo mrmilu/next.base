@@ -1,4 +1,4 @@
-import { px2rem } from "@/src/ui/styles/utils";
+import { px2rem } from "@/src/ui/styles/utils.css";
 import { vars } from "@/src/ui/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 

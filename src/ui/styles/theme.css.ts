@@ -1,5 +1,5 @@
 import { createTheme } from "@vanilla-extract/css";
-import { px2rem } from "@/src/ui/styles/utils";
+import { px2rem } from "@/src/ui/styles/utils.css";
 
 export const [theme, vars] = createTheme({
   colors: {

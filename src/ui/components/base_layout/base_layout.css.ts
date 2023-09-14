@@ -1,4 +1,4 @@
-import { px2rem } from "@/src/ui/styles/utils";
+import { px2rem } from "@/src/ui/styles/utils.css";
 import { spacing } from "../../styles/spacing";
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/src/ui/styles/theme.css";
@@ -32,7 +32,7 @@ const nav = style({
   display: "flex",
   flex: "0 0 auto",
   alignItems: "center",
-  justifyContent: "start",
+  justifyContent: "flex-start",
   backgroundColor: vars.colors.gray20,
   padding: `0 ${px2rem(spacing.size4)}`,
   gap: px2rem(spacing.size4),

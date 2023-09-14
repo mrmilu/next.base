@@ -1,9 +1,9 @@
-import Styled from "@/src/ui/components/switch/switch.styled";
 import type { FieldInputProps, FormikHandlers } from "formik";
 import { useField } from "formik";
 import type { KeyboardEvent } from "react";
 import { useRef } from "react";
 import type { BaseFormikProps } from "@/src/ui/view_models/formik";
+import css from "./switch.css";
 
 interface SwitchProps {
   label?: string;
@@ -40,10 +40,11 @@ export const Switch = ({ value, label, onChange, formik, name, id, defaultChecke
   };
 
   return (
-    <Styled.Wrapper>
+    <div className={css.wrapper}>
       {label && <p>{label}</p>}
-      <Styled.Switch htmlFor={id} tabIndex={0} className={className} onKeyPress={handleKeypress}>
+      <label htmlFor={id} tabIndex={0} className={css.label} onKeyPress={handleKeypress}>
         <input
+          className={css.input}
           ref={innerRef}
           id={id}
           name={field.name}
@@ -52,9 +53,9 @@ export const Switch = ({ value, label, onChange, formik, name, id, defaultChecke
           value={field.value}
           defaultChecked={field.checked}
         />
-        <span />
-      </Styled.Switch>
-    </Styled.Wrapper>
+        <span className={css.span} />
+      </label>
+    </div>
   );
 };
 

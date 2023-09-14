@@ -1,8 +1,8 @@
 import type { FieldInputProps, FieldMetaProps, FormikHandlers } from "formik";
 import { useField } from "formik";
 import type { BaseFormikProps } from "../../view_models/formik";
-import Styled from "@/src/ui/components/input/input.styled";
 import type { FocusEventHandler, HTMLInputTypeAttribute, KeyboardEventHandler } from "react";
+import css from "./input.css";
 
 interface InputProps {
   label?: string;
@@ -16,25 +16,10 @@ interface InputProps {
   placeholder?: string;
   formik?: BaseFormikProps<string | undefined>;
   value?: string;
-  className?: string;
   type?: HTMLInputTypeAttribute;
 }
 
-export const Input = ({
-  value,
-  label,
-  onChange,
-  onKeyPress,
-  onFocus,
-  onBlur,
-  onKeyDown,
-  placeholder,
-  formik,
-  name,
-  id,
-  className,
-  type
-}: InputProps) => {
+export const Input = ({ value, label, onChange, onKeyPress, onFocus, onBlur, onKeyDown, placeholder, formik, name, id, type }: InputProps) => {
   let field: FieldInputProps<string | undefined>;
   let meta: FieldMetaProps<string | undefined>;
   if (formik) {
@@ -53,24 +38,24 @@ export const Input = ({
   }
 
   return (
-    <Styled.Wrapper>
-      <Styled.Input className={className} htmlFor={id}>
-        {label && <span>{label}</span>}
+    <div className={css.wrapper}>
+      <label className={css.label} htmlFor={id}>
+        {label && <span className={css.span}>{label}</span>}
         <input type={type} id={id} placeholder={placeholder} onFocus={onFocus} onKeyDown={onKeyDown} onKeyPress={onKeyPress} {...field} />
-      </Styled.Input>
+      </label>
       {meta.error && meta.touched && (
-        <Styled.Error>
+        <div className={css.error}>
           <p>{meta.error}</p>
-        </Styled.Error>
+        </div>
       )}
-    </Styled.Wrapper>
+    </div>
   );
 };
 
 type InputFormikProps = Omit<InputProps, "formik" | "name" | "id"> & { name: string; id?: string };
 
-export const InputFormik = ({ id, label, name, onChange, placeholder, className, type }: InputFormikProps) => {
+export const InputFormik = ({ id, label, name, onChange, placeholder, type }: InputFormikProps) => {
   const [field, meta] = useField({ name, type });
   if (onChange) field.onChange = onChange;
-  return <Input id={id ?? name} formik={{ field, meta }} label={label} placeholder={placeholder} className={className} />;
+  return <Input id={id ?? name} formik={{ field, meta }} label={label} placeholder={placeholder} />;
 };

@@ -1,54 +1,33 @@
 import "@/src/core/app/ioc/index";
-import type { DocumentContext } from "next/document";
-import Document, { Head, Main, NextScript, Html } from "next/document";
-import { ServerStyleSheet } from "styled-components";
-import type { AppPropsType, AppType } from "next/dist/shared/lib/utils";
+import type { DocumentContext, DocumentInitialProps } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 import React from "react";
+import { theme } from "@/src/ui/styles/theme.css";
 
 class MyDocument extends Document {
-  static async getInitialProps (ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet();
+  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
 
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp:
-            (App: AppType) =>
-              ({ pageProps, ...restProps }: AppPropsType) => {
+    // Run the React rendering logic synchronously
+    ctx.renderPage = () =>
+      originalRenderPage({
+        // Useful for wrapping the whole react tree
+        enhanceApp: (App) => App,
+        // Useful for wrapping in a per-page basis
+        enhanceComponent: (Component) => Component
+      });
 
-                return sheet.collectStyles(
-                  <App { ...restProps } pageProps={pageProps} />
-                );
-              }
-        });
-
-      const initialProps = await Document.getInitialProps(ctx);
-      return {
-        ...initialProps,
-        styles: [
-          <React.Fragment key="styled-sheets">
-            { initialProps.styles }
-            { sheet.getStyleElement() }
-          </React.Fragment>
-        ]
-      };
-    } finally {
-      sheet.seal();
-    }
+    // Run the parent `getInitialProps`, it now includes the custom `renderPage`
+    return await Document.getInitialProps(ctx);
   }
 
-  render () {
+  render() {
     return (
       <Html>
-        <Head>
-          <link rel="preload" href="/assets/fonts/Lato-Regular.ttf" as="font" type="font/truetype" />
-          <link rel="preload" href="/assets/fonts/Lato-Bold.ttf" as="font" type="font/truetype" />
-          <link rel="preload" href="/assets/fonts/Lato-Light.ttf" as="font" type="font/truetype" />
-        </Head>
-        <body>
-        <Main />
-        <NextScript />
+        <Head />
+        <body className={theme}>
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );

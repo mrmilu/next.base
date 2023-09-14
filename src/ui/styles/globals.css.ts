@@ -1,5 +1,5 @@
 import { typographyConfig } from "@/src/ui/styles/typography.css";
-import { px2rem } from "@/src/ui/styles/utils";
+import { px2rem } from "@/src/ui/styles/utils.css";
 import { globalStyle } from "@vanilla-extract/css";
 import { vars } from "@/src/ui/styles/theme.css";
 import { latoFontFamily } from "@/src/ui/styles/fonts.css";

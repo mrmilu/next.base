@@ -1,11 +1,10 @@
 import { useTranslation } from "next-i18next";
-import { FormikProvider, useFormik } from "formik";
+import { Form, FormikProvider, useFormik } from "formik";
 import { InputFormik } from "@/src/ui/components/input/input";
 import { Button } from "@/src/ui/components/button/button";
 import type { ReactElement } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import Styled from "@/src/ui/features/home/views/home_page/home_page.styled";
 import { useRouter } from "next/router";
 import { BaseError } from "make-error";
 import { AppErrorBoundary } from "@/src/ui/components/app_error_boundary/app_error_boundary";
@@ -14,6 +13,7 @@ import { locator } from "@/src/core/app/ioc";
 import type { TagManagerService } from "@front_web_mrmilu/services";
 import { TYPES } from "@/src/core/app/ioc/types";
 import { number, object, string } from "yup";
+import css from "./home_page.css";
 
 interface FormValues {
   name: string;
@@ -35,7 +35,9 @@ export default function HomePage() {
     () =>
       object().shape({
         name: string().required(`${t("form.errors.required")}`),
-        email: string().required(`${t("form.errors.required")}`).email(`${t("form.errors.email")}`),
+        email: string()
+          .required(`${t("form.errors.required")}`)
+          .email(`${t("form.errors.email")}`),
         age: number()
           .typeError(t("form.errors.number") ?? "")
           .required(`${t("form.errors.required")}`)
@@ -70,26 +72,26 @@ export default function HomePage() {
   }, [formik.values.age]);
 
   return (
-    <Styled.Wrapper>
+    <div className={css.wrapper}>
       <h1>{t("homeTitle")}</h1>
-      <Styled.Locale>
+      <div className={css.locale}>
         <p>{t("helloWorld")}</p>
         <select aria-label="Languages" name="language" value={router.locale} onChange={(e) => changeLanguage(e.target.value)}>
           <option value="es">ES</option>
           <option value="en">EN</option>
         </select>
-      </Styled.Locale>
+      </div>
       <FormikProvider value={formik}>
-        <Styled.Form>
+        <Form className={css.form}>
           <InputFormik name="name" label={`${t("form.fields.name.label")}`} placeholder={`${t("form.fields.name.placeholder")}`} />
           <InputFormik name="email" label={`${t("form.fields.email.label")}`} placeholder={`${t("form.fields.email.placeholder")}`} />
           <InputFormik name="age" type="number" label={`${t("form.fields.age.label")}`} placeholder={`${t("form.fields.age.placeholder")}`} />
           <Button type="submit" disabled={formik.isSubmitting} onClick={() => setFirstSubmit(true)}>
             {t("form.submit")}
           </Button>
-        </Styled.Form>
+        </Form>
       </FormikProvider>
-    </Styled.Wrapper>
+    </div>
   );
 }
 
