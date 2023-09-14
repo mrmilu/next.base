@@ -9,6 +9,7 @@ corepack-enable:
 install-deps:
     ./nvm_exec.sh yarn
     ./nvm_exec.sh yarn patch-package
+    ./nvm_exec.sh yarn husky install
 
 # Starts Next development server
 dev:
@@ -24,6 +25,14 @@ start:
 # Downloads schema and generates corresponding ts types
 graphql-codegen:
     ./nvm_exec.sh yarn graphql
+
+# Generate inversify bindings (watch execution)
+ioc-generate-watch:
+    ./nvm_exec.sh yarn ioc-generate --watch
+
+# Generate inversify bindings
+ioc-generate:
+    ./nvm_exec.sh yarn ioc-generate
 
 # Proxy comand through nvm
 nvm-exec command:

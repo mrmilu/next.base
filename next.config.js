@@ -20,7 +20,7 @@ const {
 
 const apiDomain = NODE_ENV !== "production" ? "next_base.dev.mrmilu.com" : NEXT_PUBLIC_API_URL?.replace("https://", "");
 
-const moduleExports = {
+const nextConfig = {
   eslint: {
     dirs: ["pages", "src"]
   },
@@ -86,7 +86,7 @@ const moduleExports = {
   }
 };
 
-const SentryWebpackPluginOptions = {
+const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
   // the following options are set automatically, and overriding them is not
   // recommended:
@@ -110,5 +110,5 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 // ensure that your source maps include changes from all other Webpack plugins
 module.exports =
   NEXT_PUBLIC_SENTRY_ENABLED === "true"
-    ? withVanillaExtract(withSentryConfig(moduleExports, SentryWebpackPluginOptions))
-    : withVanillaExtract(withBundleAnalyzer(moduleExports));
+    ? withVanillaExtract(withSentryConfig(nextConfig, sentryWebpackPluginOptions))
+    : withVanillaExtract(withBundleAnalyzer(nextConfig));

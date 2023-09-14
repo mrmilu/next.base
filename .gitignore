@@ -6,7 +6,12 @@ __generated__
 .yalc
 yalc.lock
 tsconfig.tsbuildinfo
-.yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # dependencies
 /node_modules
@@ -33,7 +38,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env.development.local
 .env.development.local
 .env.test.local
 .env.production.local

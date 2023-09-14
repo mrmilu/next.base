@@ -19,7 +19,7 @@
 
 ### Prerequisites
 
-This project uses the following packages
+This project uses the following packages, please install them first.
 
 - [nvm](https://github.com/nvm-sh/nvm) (Node version manager)
 - [Just](https://just.systems/man/en/chapter_4.html) (For justfile usage)
@@ -49,7 +49,8 @@ just install-deps
 **Run project**
 
 ```shell
-just dev
+just ioc-generate-watch # in one terminal
+just dev # in another
 ```
 
 **See a list of available commands**

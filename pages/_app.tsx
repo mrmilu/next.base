@@ -12,6 +12,7 @@ import "@/src/ui/styles/globals.css";
 import "@/src/ui/styles/reset.css";
 import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
 import { uiProvider } from "@/src/ui/providers/ui.provider";
+import "../src/ui/styles/fonts.css"; // TODO not working
 
 // Conditionally inject axe into the page.
 // This only happens outside of production and in a browser (not SSR).

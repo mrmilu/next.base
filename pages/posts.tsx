@@ -1,10 +1,10 @@
 import type { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { locator } from "@/src/core/app/ioc";
-import type { IocProvider } from "@/src/core/app/ioc/interfaces";
-import { TYPES } from "@/src/core/app/ioc/types";
+import { TYPES } from "@/src/core/app/ioc/__generated__/types";
 import type { GetPostsUseCase } from "@/src/core/posts/domain/use_cases/get_posts_use_case";
 import PostsPage from "@/src/ui/features/posts/views/posts_ssr_page/posts_ssr_page";
+import { locator } from "@/src/core/app/ioc/__generated__";
+import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 
 export default PostsPage;
 

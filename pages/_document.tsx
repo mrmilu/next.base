@@ -1,4 +1,4 @@
-import "@/src/core/app/ioc/index";
+import "@/src/core/app/ioc/__generated__/index";
 import type { DocumentContext, DocumentInitialProps } from "next/document";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import React from "react";
