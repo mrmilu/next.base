@@ -1,0 +1,74 @@
+diff --git a/node_modules/@vanilla-extract/next-plugin/dist/vanilla-extract-next-plugin.cjs.dev.js b/node_modules/@vanilla-extract/next-plugin/dist/vanilla-extract-next-plugin.cjs.dev.js
+index 0f6ca91..1f61384 100644
+--- a/node_modules/@vanilla-extract/next-plugin/dist/vanilla-extract-next-plugin.cjs.dev.js
++++ b/node_modules/@vanilla-extract/next-plugin/dist/vanilla-extract-next-plugin.cjs.dev.js
+@@ -8,6 +8,7 @@ var css = require('next/dist/build/webpack/config/blocks/css');
+ var findPagesDir = require('next/dist/lib/find-pages-dir');
+ var fileResolve = require('next/dist/build/webpack/config/blocks/css/loaders/file-resolve');
+ var NextMiniCssExtractPluginDefault = require('next/dist/build/webpack/plugins/mini-css-extract-plugin');
++var {getGlobalCssLoader} = require('next/dist/build/webpack/config/blocks/css/loaders');
+ 
+ function _interopDefault (e) { return e && e.__esModule ? e : { 'default': e }; }
+ 
+@@ -97,10 +98,23 @@ const createVanillaExtractPlugin = (pluginOptions = {}) => (nextConfig = {}) =>
+     const cssRules = config.module.rules.find(rule => Array.isArray(rule.oneOf) && rule.oneOf.some(({
+       test
+     }) => typeof test === 'object' && typeof test.test === 'function' && test.test('filename.css'))).oneOf;
++    const postcss = () => css.lazyPostCSS(options.dir, getSupportedBrowsers(options.dir, options.dev), undefined);
+     cssRules.unshift({
+       test: /\.vanilla\.css$/i,
+       sideEffects: true,
+-      use: getVanillaExtractCssLoaders(options, resolvedNextConfig.assetPrefix)
++      use: dev ? getGlobalCssLoader(
++        {
++          assetPrefix: config.assetPrefix,
++          isClient: !isServer,
++          isServer,
++          isDevelopment: dev,
++          future: resolvedNextConfig.future || {},
++          experimental: resolvedNextConfig.experimental || {},
++          // @ts-ignore -- 'appDir' config is in beta
++          hasAppDir: false,
++        },
++        postcss,
++        []) : getVanillaExtractCssLoaders(options, resolvedNextConfig.assetPrefix)
+     });
+ 
+     // vanilla-extract need to emit the css file on both server and client, both during the
+diff --git a/node_modules/@vanilla-extract/next-plugin/dist/vanilla-extract-next-plugin.cjs.prod.js b/node_modules/@vanilla-extract/next-plugin/dist/vanilla-extract-next-plugin.cjs.prod.js
+index 0f6ca91..b59736f 100644
+--- a/node_modules/@vanilla-extract/next-plugin/dist/vanilla-extract-next-plugin.cjs.prod.js
++++ b/node_modules/@vanilla-extract/next-plugin/dist/vanilla-extract-next-plugin.cjs.prod.js
+@@ -8,6 +8,7 @@ var css = require('next/dist/build/webpack/config/blocks/css');
+ var findPagesDir = require('next/dist/lib/find-pages-dir');
+ var fileResolve = require('next/dist/build/webpack/config/blocks/css/loaders/file-resolve');
+ var NextMiniCssExtractPluginDefault = require('next/dist/build/webpack/plugins/mini-css-extract-plugin');
++var {getGlobalCssLoader} = require('next/dist/build/webpack/config/blocks/css/loaders');
+ 
+ function _interopDefault (e) { return e && e.__esModule ? e : { 'default': e }; }
+ 
+@@ -97,10 +98,23 @@ const createVanillaExtractPlugin = (pluginOptions = {}) => (nextConfig = {}) =>
+     const cssRules = config.module.rules.find(rule => Array.isArray(rule.oneOf) && rule.oneOf.some(({
+       test
+     }) => typeof test === 'object' && typeof test.test === 'function' && test.test('filename.css'))).oneOf;
++    const postcss = () => css.lazyPostCSS(options.dir, getSupportedBrowsers(options.dir, options.dev), undefined);
+     cssRules.unshift({
+       test: /\.vanilla\.css$/i,
+       sideEffects: true,
+-      use: getVanillaExtractCssLoaders(options, resolvedNextConfig.assetPrefix)
++      use: dev ? getGlobalCssLoader(
++        {
++          assetPrefix: config.assetPrefix,
++          isClient: !isServer,
++          isServer,
++          isDevelopment: dev,
++          future: resolvedNextConfig.future || {},
++          experimental: resolvedNextConfig.experimental || {},
++          // @ts-ignore -- 'appDir' config is in beta
++            hasAppDir: false,
++        },
++        postcss,
++        []) : getVanillaExtractCssLoaders(options, resolvedNextConfig.assetPrefix)
+     });
+ 
+     // vanilla-extract need to emit the css file on both server and client, both during the

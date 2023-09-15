@@ -1,17 +1,18 @@
 import type { MouseEventHandler, PropsWithChildren } from "react";
-import Styled from "@/src/ui/components/button/button.styled";
+import type { ButtonVariants } from "./button.css";
+import css from "./button.css";
 
 export interface ButtonProps {
   onClick?: MouseEventHandler;
   type?: "submit" | "reset" | "button";
   disabled?: boolean;
-  className?: string;
+  variants?: Omit<ButtonVariants, "disabled">;
 }
 
-export const Button = ({ className, children, onClick, type, disabled }: PropsWithChildren<ButtonProps>) => {
+export const Button = ({ children, onClick, type, disabled, variants }: PropsWithChildren<ButtonProps>) => {
   return (
-    <Styled.Wrapper className={className} type={type} onClick={onClick} disabled={disabled}>
+    <button className={css.button({ disabled, ...variants })} type={type} onClick={onClick} disabled={disabled}>
       {children}
-    </Styled.Wrapper>
+    </button>
   );
 };

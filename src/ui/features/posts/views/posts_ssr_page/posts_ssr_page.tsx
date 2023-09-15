@@ -1,10 +1,11 @@
 import type { ReactElement } from "react";
 import { useMemo } from "react";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import Styled from "../../../users/views/users_page/users_page.styled";
 import { useBreakpointsMatch } from "@front_web_mrmilu/hooks";
 import { Post } from "@/src/core/posts/domain/models/post";
 import type { ConstructorType } from "@/src/common/interfaces/constructor_type";
+import css from "../../../users/views/users_page/users_page.css";
+import { SimpleCard } from "@/src/ui/components/simple_card/simple_card";
 
 export interface PostsPageProps {
   serializedPosts: Array<Record<string, unknown>>;
@@ -18,12 +19,12 @@ export default function PostsPage({ serializedPosts }: PostsPageProps) {
   );
 
   return (
-    <Styled.Wrapper>
+    <div className={css.wrapper}>
       {mdAndUp && <h2>Posts SSR page</h2>}
       {postDomain.map((post, idx) => (
-        <Styled.SimpleCard key={`${post.id}_${idx}`} title={post.title} subtitle={post.body} />
+        <SimpleCard key={`${post.id}_${idx}`} title={post.title} subtitle={post.body} />
       ))}
-    </Styled.Wrapper>
+    </div>
   );
 }
 

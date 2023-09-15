@@ -2,14 +2,14 @@
 
 ### Index and features
 
-- [Clean architecture](https://www.notion.so/mrmilu/Arquitectura-7e45973fc107487294a63bac9f5c3aa4) <-- READ THIS!
+- Clean architecture
 - Dependency Injection ([Inversify](https://github.com/inversify/InversifyJS))
 - Typescript
 - [Class transformers](https://github.com/typestack/class-transformer)
-- Redux toolkit
+- [Zustand](https://github.com/pmndrs/zustand)
 - Apollo (GraphQL)
 - [Commitlint](docs/comitlint.md) (with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) config)
-- [Styled components](docs/styled_components.md)
+- [Vanilla extract](https://vanilla-extract.style/)
 - ESLint (with TypeScript config)
 - Prettier
 - [Error boundary](docs/error_boundary.md)
@@ -83,7 +83,8 @@ SENTRY_PROJECT=project-name
 SENTRY_AUTH_TOKEN=sentry-user-auth-token
 ```
 
-Also create a `.env.production.local` file with your environment variables with the following defaults for production build
+Also create a `.env.production.local` file with your environment variables with the following defaults for production
+build
 
 ```
 NEXT_PUBLIC_API_URL=https://graphqlzero.almansi.me
@@ -95,4 +96,12 @@ SENTRY_URL=https://sentry.mrmilu.com
 SENTRY_ORG=mrmilu
 SENTRY_PROJECT=project-name
 SENTRY_AUTH_TOKEN=sentry-user-auth-token
+```
+
+### CI/CD build commands
+
+```shell
+yarn install
+yarn ioc-generate
+yarn build
 ```

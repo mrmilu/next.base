@@ -5,13 +5,14 @@ import React from "react";
 import type { NextPage } from "next";
 import { appWithTranslation } from "next-i18next";
 import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
-import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
-import { GlobalStyles } from "@/src/ui/styles/globals";
 import { Modal } from "@/src/ui/components/modal/modal";
 import Head from "next/head";
 import "@/src/common/utils/yup_extensions";
+import "@/src/ui/styles/globals.css";
+import "@/src/ui/styles/fonts.css";
+import "@/src/ui/styles/reset.css";
+import { AppRouterController } from "@/src/ui/controllers/app_router_controller";
 import { uiProvider } from "@/src/ui/providers/ui.provider";
-import "../src/ui/styles/fonts.css"; // TODO not working
 
 // Conditionally inject axe into the page.
 // This only happens outside of production and in a browser (not SSR).
@@ -45,7 +46,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         )}
         <meta httpEquiv="referrer" content="no-referrer, strict-origin-when-cross-origin" />
       </Head>
-      <GlobalStyles />
       <Modal />
       <MainLoader />
       {getLayout(<Component {...pageProps} />)}
