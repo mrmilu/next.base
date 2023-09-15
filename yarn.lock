@@ -123,7 +123,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.14.0, @babel/core@npm:^7.20.7, @babel/core@npm:^7.22.9, @babel/core@npm:~7.22.17":
+"@babel/core@npm:^7.14.0, @babel/core@npm:^7.20.7, @babel/core@npm:^7.22.9, @babel/core@npm:~7.22.19":
   version: 7.22.19
   resolution: "@babel/core@npm:7.22.19"
   dependencies:
@@ -1507,7 +1507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/near-operation-file-preset@npm:2.5.0":
+"@graphql-codegen/near-operation-file-preset@npm:~2.5.0":
   version: 2.5.0
   resolution: "@graphql-codegen/near-operation-file-preset@npm:2.5.0"
   dependencies:
@@ -1584,7 +1584,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-codegen/typescript-graphql-files-modules@npm:2.2.1":
+"@graphql-codegen/typescript-graphql-files-modules@npm:~2.2.1":
   version: 2.2.1
   resolution: "@graphql-codegen/typescript-graphql-files-modules@npm:2.2.1"
   dependencies:
@@ -2804,7 +2804,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:~20.6.0":
+"@types/node@npm:*":
   version: 20.6.0
   resolution: "@types/node@npm:20.6.0"
   checksum: 52611801af5cf151c6fac1963aa4a8a8ca2e388a9e9ed82b01b70bca762088ded5b32cc789c5564220d5d7dccba2b8dd34446a3d4fc74736805e1f2cf262e29d
@@ -2815,6 +2815,13 @@ __metadata:
   version: 20.4.7
   resolution: "@types/node@npm:20.4.7"
   checksum: a40d7003f66b56220a2028179e49f950b46fa6dbf860a4a6ecbd6ba7976f05b2f0b31ced39689ec88a7d9e32d07e088c6a06d270b99d5bc13a28291ac2f30ca7
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:~20.6.1":
+  version: 20.6.1
+  resolution: "@types/node@npm:20.6.1"
+  checksum: f9848617221b513d558071c804b006750d1ee1734c5ffea3ada9a0edd1642334ad0812222d6b99b7b8c0e1a5f1e557946ae99444c2705e9afc125abdf9fa36c2
   languageName: node
   linkType: hard
 
@@ -3037,7 +3044,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vanilla-extract/next-plugin@npm:^2.3.0":
+"@vanilla-extract/next-plugin@npm:~2.3.0":
   version: 2.3.0
   resolution: "@vanilla-extract/next-plugin@npm:2.3.0"
   dependencies:
@@ -3056,7 +3063,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vanilla-extract/recipes@npm:^0.5.0":
+"@vanilla-extract/recipes@npm:~0.5.0":
   version: 0.5.0
   resolution: "@vanilla-extract/recipes@npm:0.5.0"
   peerDependencies:
@@ -3621,7 +3628,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-import-graphql@npm:2.8.1":
+"babel-plugin-import-graphql@npm:~2.8.1":
   version: 2.8.1
   resolution: "babel-plugin-import-graphql@npm:2.8.1"
   dependencies:
@@ -3633,7 +3640,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-inline-react-svg@npm:2.0.2":
+"babel-plugin-inline-react-svg@npm:~2.0.2":
   version: 2.0.2
   resolution: "babel-plugin-inline-react-svg@npm:2.0.2"
   dependencies:
@@ -3655,7 +3662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-transform-typescript-metadata@npm:0.3.2":
+"babel-plugin-transform-typescript-metadata@npm:~0.3.2":
   version: 0.3.2
   resolution: "babel-plugin-transform-typescript-metadata@npm:0.3.2"
   dependencies:
@@ -4048,7 +4055,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"class-transformer@npm:0.5.1":
+"class-transformer@npm:~0.5.1":
   version: 0.5.1
   resolution: "class-transformer@npm:0.5.1"
   checksum: f191c8b4cc4239990f5efdd790cabdd852c243ed66248e39f6616a349c910c6eed2d9fd1fbf7ee6ea89f69b4f1d0b493b27347fe0cd0ae26b47c3745a805b6d3
@@ -6284,7 +6291,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:8.0.3":
+"husky@npm:~8.0.3":
   version: 8.0.3
   resolution: "husky@npm:8.0.3"
   bin:
@@ -6348,7 +6355,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:10.0.2":
+"immer@npm:~10.0.2":
   version: 10.0.2
   resolution: "immer@npm:10.0.2"
   checksum: 525a3b14210d02ae420c3b9f6ca14f7e9bcf625611d1356e773e7739f14c7c8de50dac442e6c7de3a6e24a782f7b792b6b8666bc0b3f00269d21a95f8f68ca84
@@ -6481,7 +6488,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inversify-generator@npm:^0.1.4":
+"inversify-generator@npm:~0.1.4":
   version: 0.1.4
   resolution: "inversify-generator@npm:0.1.4"
   dependencies:
@@ -6497,7 +6504,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inversify@npm:6.0.1":
+"inversify@npm:~6.0.1":
   version: 6.0.1
   resolution: "inversify@npm:6.0.1"
   checksum: b6c9b56ef7817a71534b06101c2b0a0130b67c47a769f58794d9c0643591a83ac02be30a48c00cb729c0c83ece96dde369c419d48c32d0201c6cc7407629fbc5
@@ -7361,7 +7368,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:^4.17.12, lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:~4.17.0":
+"lodash@npm:^4.17.12, lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:~4.17.0, lodash@npm:~4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -7840,7 +7847,7 @@ __metadata:
   dependencies:
     "@apollo/client": ~3.8.3
     "@axe-core/react": ~4.7.3
-    "@babel/core": ~7.22.17
+    "@babel/core": ~7.22.19
     "@babel/plugin-proposal-decorators": ~7.22.15
     "@commitlint/cli": ~17.7.1
     "@commitlint/config-conventional": ~17.7.0
@@ -7852,48 +7859,48 @@ __metadata:
     "@graphql-codegen/cli": ~5.0.0
     "@graphql-codegen/fragment-matcher": ~5.0.0
     "@graphql-codegen/introspection": ~4.0.0
-    "@graphql-codegen/near-operation-file-preset": 2.5.0
+    "@graphql-codegen/near-operation-file-preset": ~2.5.0
     "@graphql-codegen/typescript": ~4.0.1
-    "@graphql-codegen/typescript-graphql-files-modules": 2.2.1
+    "@graphql-codegen/typescript-graphql-files-modules": ~2.2.1
     "@graphql-codegen/typescript-operations": ~4.0.1
     "@hookform/resolvers": ~3.3.1
     "@next/bundle-analyzer": ~13.4.19
     "@sentry/nextjs": ~7.68.0
     "@types/lodash": ~4.14.198
-    "@types/node": ~20.6.0
+    "@types/node": ~20.6.1
     "@types/react": ~18.2.21
     "@typescript-eslint/eslint-plugin": ~6.7.0
     "@vanilla-extract/css": ~1.13.0
-    "@vanilla-extract/next-plugin": ^2.3.0
-    "@vanilla-extract/recipes": ^0.5.0
+    "@vanilla-extract/next-plugin": ~2.3.0
+    "@vanilla-extract/recipes": ~0.5.0
     axios: ~1.5.0
-    babel-plugin-import-graphql: 2.8.1
-    babel-plugin-inline-react-svg: 2.0.2
-    babel-plugin-transform-typescript-metadata: 0.3.2
-    class-transformer: 0.5.1
+    babel-plugin-import-graphql: ~2.8.1
+    babel-plugin-inline-react-svg: ~2.0.2
+    babel-plugin-transform-typescript-metadata: ~0.3.2
+    class-transformer: ~0.5.1
     eslint: ~8.49.0
     eslint-config-next: ~13.4.19
     eslint-config-prettier: ~9.0.0
     eslint-plugin-unused-imports: ~3.0.0
     graphql: ~16.8.0
-    husky: 8.0.3
+    husky: ~8.0.3
     i18next: ~23.5.1
-    immer: 10.0.2
-    inversify: 6.0.1
-    inversify-generator: ^0.1.4
+    immer: ~10.0.2
+    inversify: ~6.0.1
+    inversify-generator: ~0.1.4
     lint-staged: ~14.0.1
-    lodash: 4.17.21
+    lodash: ~4.17.21
     next: ~13.4.19
     next-i18next: ~14.0.3
-    patch-package: ^8.0.0
+    patch-package: ~8.0.0
     prettier: ~3.0.3
-    query-string: 8.1.0
-    react: 18.2.0
-    react-dom: 18.2.0
+    query-string: ~8.1.0
+    react: ~18.2.0
+    react-dom: ~18.2.0
     react-hook-form: ~7.46.1
     react-i18next: ~13.2.2
     react-spring: ~9.7.2
-    reflect-metadata: 0.1.13
+    reflect-metadata: ~0.1.13
     typescript: ~5.2.2
     yup: ~1.2.0
     zustand: ~4.4.1
@@ -8491,7 +8498,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"patch-package@npm:^8.0.0":
+"patch-package@npm:~8.0.0":
   version: 8.0.0
   resolution: "patch-package@npm:8.0.0"
   dependencies:
@@ -8761,7 +8768,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"query-string@npm:8.1.0":
+"query-string@npm:~8.1.0":
   version: 8.1.0
   resolution: "query-string@npm:8.1.0"
   dependencies:
@@ -8786,7 +8793,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:18.2.0":
+"react-dom@npm:~18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -8849,7 +8856,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.2.0":
+"react@npm:~18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -8911,7 +8918,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reflect-metadata@npm:0.1.13":
+"reflect-metadata@npm:~0.1.13":
   version: 0.1.13
   resolution: "reflect-metadata@npm:0.1.13"
   checksum: 798d379a7b6f6455501145419505c97dd11cbc23857a386add2b9ef15963ccf15a48d9d15507afe01d4cd74116df8a213247200bac00320bd7c11ddeaa5e8fb4
