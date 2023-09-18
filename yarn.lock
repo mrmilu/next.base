@@ -6488,9 +6488,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inversify-generator@npm:~0.1.4":
-  version: 0.1.4
-  resolution: "inversify-generator@npm:0.1.4"
+"inversify-generator@npm:~0.1.5":
+  version: 0.1.5
+  resolution: "inversify-generator@npm:0.1.5"
   dependencies:
     chalk: ~4.1.2
     chokidar: ~3.5.3
@@ -6500,7 +6500,7 @@ __metadata:
     inversify: ~6.0.1
   bin:
     inversify-generator: bin.js
-  checksum: 93bcfb36c366a3658cbb9697f2820607c04a42b28c2c369fa4e3a856c4e41e9d09d04a43f96293bab1cb26f9d60807903f1451764a64ab8e920a2dd9afdf8b7f
+  checksum: e0e9b8df6c9782ed90e02be20811d521a500b30cc778945bd01363ceaf85e1fb198ca461f60c58b202eb50d0cf6eae3edab91d497e95124899e7921e3d388a56
   languageName: node
   linkType: hard
 
@@ -7887,7 +7887,7 @@ __metadata:
     i18next: ~23.5.1
     immer: ~10.0.2
     inversify: ~6.0.1
-    inversify-generator: ~0.1.4
+    inversify-generator: ~0.1.5
     lint-staged: ~14.0.1
     lodash: ~4.17.21
     next: ~13.4.19
