@@ -1,7 +1,7 @@
 ## i18n-next
 
 **Each time you add a new namespace** to the folder `assets/locales/{lang}` you should also add its corresponding
-declarations to the file `react-i18next.d.ts`. This way typescript will be able to infer the translations keys
+declarations to the file `i18next.d.ts`. This way typescript will be able to infer the translations keys
 for each file.
 
 **_Also remember_** (as stated in the package documentation) that for translations to work the following snippet

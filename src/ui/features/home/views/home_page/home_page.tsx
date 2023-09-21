@@ -1,105 +1,26 @@
-import { AppErrorBoundary } from "@/src/ui/components/app_error_boundary/app_error_boundary";
-import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
-import { Button } from "@/src/ui/components/button/button";
-import { ControlledInput } from "@/src/ui/components/input/input";
-import { timeout } from "@front_web_mrmilu/utils";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { BaseError } from "make-error";
-import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
-import type { ReactElement } from "react";
-import { useEffect, useMemo } from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import { object, string } from "yup";
-import { TagManagerService } from "@front_web_mrmilu/services";
 import css from "./home_page.css";
+import { serverSideTranslation } from "@/src/ui/i18n";
+import type { LngParamsViewModel } from "@/src/ui/view_models/params_view_model";
+import LanguageSwitcher from "@/src/ui/features/home/views/home_page/components/language_switcher/language_switcher";
+import HomePageForm from "@/src/ui/features/home/views/home_page/components/home_page_form/home_page_form";
 
-const tagManagerService = new TagManagerService();
+// const tagManagerService = new TagManagerService();
 
-interface FormValues {
-  name: string;
-  email: string;
-  age: string;
-}
-
-const defaultValues: FormValues = {
-  name: "",
-  email: "",
-  age: ""
-};
-
-export default function HomePage() {
-  const { t } = useTranslation();
-  const router = useRouter();
-  const validationSchema = useMemo(
-    () =>
-      object().shape({
-        name: string().required(`${t("form.errors.required")}`),
-        email: string()
-          .required(`${t("form.errors.required")}`)
-          .email(`${t("form.errors.email")}`),
-        age: string()
-          .isNumber(`${t("form.errors.required")}`)
-          .required(`${t("form.errors.required")}`)
-          .isNotUnderAge(`${t("form.errors.underAge")}`)
-      }),
-    [t]
-  );
-  const form = useForm({
-    defaultValues,
-    resolver: yupResolver(validationSchema, { abortEarly: false }),
-    reValidateMode: "onChange"
-  });
-  const handleSubmit = async (values: FormValues) => {
-    await timeout(3000);
-    alert(`name: ${values.name}, email: ${values.email}, age: ${values.age}`);
-  };
-
-  const changeLanguage = (language: string) => {
-    router.push(`${router.basePath}`, router.asPath, { locale: language });
-  };
-
-  useEffect(() => {
-    // TODO improve inversify-generator to accept modules and third party deps with constantValue/dynamicValue https://github.com/inversify/InversifyJS/blob/master/wiki/value_injection.md
-    tagManagerService.sendEvent("home_page_visit");
-  }, []);
-
-  const age = form.watch("age");
-
-  useEffect(() => {
-    if (Number(age) > 40) {
-      throw new BaseError("The user is too old xD");
-    }
-  }, [age]);
+export default async function HomePage({ params }: LngParamsViewModel) {
+  const { t } = await serverSideTranslation(params.lng, "home");
+  // useEffect(() => {
+  //   // TODO improve inversify-generator to accept modules and third party deps with constantValue/dynamicValue https://github.com/inversify/InversifyJS/blob/master/wiki/value_injection.md
+  //   tagManagerService.sendEvent("home_page_visit");
+  // }, []);
 
   return (
     <div className={css.wrapper}>
-      <h1>{t("homeTitle")}</h1>
+      <h1>{t("home_title")}</h1>
       <div className={css.locale}>
-        <p>{t("helloWorld")}</p>
-        <select aria-label="Languages" name="language" value={router.locale} onChange={(e) => changeLanguage(e.target.value)}>
-          <option value="es">ES</option>
-          <option value="en">EN</option>
-        </select>
+        <p>{t("hello_world")}</p>
+        <LanguageSwitcher lng={params.lng} />
       </div>
-      <FormProvider {...form}>
-        <form className={css.form} onSubmit={form.handleSubmit(handleSubmit)}>
-          <ControlledInput name="name" label={`${t("form.fields.name.label")}`} placeholder={`${t("form.fields.name.placeholder")}`} />
-          <ControlledInput name="email" label={`${t("form.fields.email.label")}`} placeholder={`${t("form.fields.email.placeholder")}`} />
-          <ControlledInput name="age" type="number" label={`${t("form.fields.age.label")}`} placeholder={`${t("form.fields.age.placeholder")}`} />
-          <Button type="submit" disabled={form.formState.isSubmitting}>
-            {t("form.submit")}
-          </Button>
-        </form>
-      </FormProvider>
+      <HomePageForm lng={params.lng} />
     </div>
   );
 }
-
-HomePage.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <BaseLayout logged={page.props.logged}>
-      <AppErrorBoundary>{page}</AppErrorBoundary>
-    </BaseLayout>
-  );
-};

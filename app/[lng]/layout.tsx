@@ -1,0 +1,53 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+import "@/src/core/app/ioc/__generated__";
+import "@/src/common/utils/yup_extensions";
+import "@/src/ui/styles/globals.css";
+import "@/src/ui/styles/fonts.css";
+import "@/src/ui/styles/reset.css";
+import React from "react";
+import { theme } from "@/src/ui/styles/theme.css";
+import type { PropsWithChildren } from "react";
+import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
+import { Modal } from "@/src/ui/components/modal/modal";
+import type { Metadata } from "next";
+import type { LngParamsViewModel } from "@/src/ui/view_models/params_view_model";
+import { dir } from "i18next";
+import { languages } from "@/src/ui/i18n/settings";
+import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
+
+// Conditionally inject axe into the page.
+// This only happens outside of production and in a browser (not SSR).
+if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
+  const ReactDOM = require("react-dom");
+  const axe = require("@axe-core/react");
+  axe(React, ReactDOM, 1000);
+}
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
+
+export const metadata: Metadata = {
+  title: "Next boilerplate app",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=2"
+};
+
+export default function RootLayout({ children, params: { lng } }: PropsWithChildren<LngParamsViewModel>) {
+  return (
+    <>
+      <html lang={lng} dir={dir(lng)}>
+        <head>
+          {process.env.NODE_ENV === "production" && (
+            <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; child-src 'none'; style-src 'unsafe-inline'; object-src 'none'" />
+          )}
+          <meta httpEquiv="referrer" content="no-referrer, strict-origin-when-cross-origin" />
+        </head>
+        <body className={theme}>
+          <Modal />
+          <MainLoader />
+          <BaseLayout lng={lng}>{children}</BaseLayout>
+        </body>
+      </html>
+    </>
+  );
+}

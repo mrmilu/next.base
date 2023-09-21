@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import("next").NextConfig} */
 const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
-const { i18n } = require("./next-i18next.config");
 const { withSentryConfig } = require("@sentry/nextjs");
 
 const withVanillaExtract = createVanillaExtractPlugin();
@@ -22,7 +21,7 @@ const apiDomain = NODE_ENV !== "production" ? "next_base.dev.mrmilu.com" : NEXT_
 
 const nextConfig = {
   eslint: {
-    dirs: ["pages", "src"]
+    dirs: ["app", "src"]
   },
   reactStrictMode: true,
   async rewrites() {
@@ -41,7 +40,6 @@ const nextConfig = {
         ]
       : [...DEFAULT_REWRITES];
   },
-  i18n,
   images: {
     domains: [apiDomain]
   },

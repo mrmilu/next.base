@@ -1,3 +1,4 @@
+"use client";
 import type { PropsWithChildren, ReactElement } from "react";
 import { cloneElement, forwardRef, useEffect, useRef, useState } from "react";
 import { useTransition, animated, easings } from "@react-spring/web";
