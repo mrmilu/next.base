@@ -1,4 +1,5 @@
 "use client";
+import "@/src/common/utils/yup_extensions";
 import { Button } from "@/src/ui/components/button/button";
 import { ControlledInput } from "@/src/ui/components/input/input";
 import { timeout } from "@front_web_mrmilu/utils";
@@ -23,7 +24,7 @@ const defaultValues: FormValues = {
 };
 
 export default function HomePageForm() {
-  const t = useTranslations("home_page");
+  const t = useTranslations("home");
   const validationSchema = useMemo(
     () =>
       object().shape({

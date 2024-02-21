@@ -1,18 +1,19 @@
 "use client";
 import { useRouter } from "@/src/ui/i18n";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function LanguageSwitcher() {
-  const t = useTranslations("home_page");
+  const t = useTranslations("home");
+  const locale = useLocale();
   const router = useRouter();
   const changeLanguage = (locale: string) => {
-    router.push(`/`, { locale });
+    router.replace(`/`, { locale });
   };
 
   return (
     <>
       <p>{t("language_switcher")}</p>
-      <select aria-label="Languages" name="language" value={"es"} onChange={(e) => changeLanguage(e.target.value)}>
+      <select aria-label="Languages" name="language" value={locale} onChange={(e) => changeLanguage(e.target.value)}>
         <option value="es">ES</option>
         <option value="en">EN</option>
       </select>

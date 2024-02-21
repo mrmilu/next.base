@@ -13,6 +13,9 @@ export default getRequestConfig(async ({ locale }) => {
   if (!locales.includes(locale)) notFound();
 
   return {
-    messages: (await import(`./messages/${locale}.json`)).default
+    messages: {
+      home: (await import(`./messages/${locale}/home.json`)).default,
+      posts: (await import(`./messages/${locale}/posts.json`)).default
+    }
   };
 });

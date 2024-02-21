@@ -10,8 +10,10 @@ import type { PropsWithChildren } from "react";
 import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
 import { Modal } from "@/src/ui/components/modal/modal";
 import type { Metadata, Viewport } from "next";
-import type { LngParamsViewModel } from "@/src/ui/view_models/params_view_model";
+import type { LocaleParams } from "@/src/ui/view_models/params_view_model";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
+import { locales } from "@/src/ui/i18n";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 // Conditionally inject axe into the page.
 // This only happens outside of production and in a browser (not SSR).
@@ -19,6 +21,10 @@ if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
   const ReactDOM = require("react-dom");
   const axe = require("@axe-core/react");
   axe(React, ReactDOM, 1000);
+}
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
 }
 
 export const metadata: Metadata = {
@@ -30,7 +36,9 @@ export const viewport: Viewport = {
   width: "device-width"
 };
 
-export default function RootLayout({ children, params: { locale } }: PropsWithChildren<LngParamsViewModel>) {
+export default function RootLayout({ children, params: { locale } }: PropsWithChildren<LocaleParams>) {
+  unstable_setRequestLocale(locale);
+
   return (
     <>
       <html lang={locale}>
