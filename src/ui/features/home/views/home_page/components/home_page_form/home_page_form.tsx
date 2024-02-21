@@ -7,12 +7,8 @@ import { useEffect, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { object, string } from "yup";
 import css from "../../home_page.css";
-import { useTranslationClient } from "@/src/ui/i18n/client";
 import { BaseError } from "@/src/core/app/domain/models/base_error";
-
-interface Props {
-  lng: string;
-}
+import { useTranslations } from "next-intl";
 
 interface FormValues {
   name: string;
@@ -26,8 +22,8 @@ const defaultValues: FormValues = {
   age: ""
 };
 
-export default function HomePageForm({ lng }: Props) {
-  const { t } = useTranslationClient(lng, "home");
+export default function HomePageForm() {
+  const t = useTranslations("home_page");
   const validationSchema = useMemo(
     () =>
       object().shape({

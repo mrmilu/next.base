@@ -11,8 +11,6 @@ import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
 import { Modal } from "@/src/ui/components/modal/modal";
 import type { Metadata, Viewport } from "next";
 import type { LngParamsViewModel } from "@/src/ui/view_models/params_view_model";
-import { dir } from "i18next";
-import { languages } from "@/src/ui/i18n/settings";
 import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 
 // Conditionally inject axe into the page.
@@ -21,10 +19,6 @@ if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
   const ReactDOM = require("react-dom");
   const axe = require("@axe-core/react");
   axe(React, ReactDOM, 1000);
-}
-
-export async function generateStaticParams() {
-  return languages.map((lng) => ({ lng }));
 }
 
 export const metadata: Metadata = {
@@ -36,10 +30,10 @@ export const viewport: Viewport = {
   width: "device-width"
 };
 
-export default function RootLayout({ children, params: { lng } }: PropsWithChildren<LngParamsViewModel>) {
+export default function RootLayout({ children, params: { locale } }: PropsWithChildren<LngParamsViewModel>) {
   return (
     <>
-      <html lang={lng} dir={dir(lng)}>
+      <html lang={locale}>
         <head>
           {process.env.NODE_ENV === "production" && (
             <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; child-src 'none'; style-src 'unsafe-inline'; object-src 'none'" />
@@ -49,7 +43,7 @@ export default function RootLayout({ children, params: { lng } }: PropsWithChild
         <body className={theme}>
           <Modal />
           <MainLoader />
-          <BaseLayout lng={lng}>{children}</BaseLayout>
+          <BaseLayout>{children}</BaseLayout>
         </body>
       </html>
     </>

@@ -1,23 +1,20 @@
 "use client";
-import { useTranslationClient } from "@/src/ui/i18n/client";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/src/ui/i18n";
+import { useTranslations } from "next-intl";
 
-interface Props {
-  lng: string;
-}
-export default function LanguageSwitcher({ lng }: Props) {
-  const { t } = useTranslationClient(lng, "home");
+export default function LanguageSwitcher() {
+  const t = useTranslations("home_page");
   const router = useRouter();
-  const changeLanguage = (language: string) => {
-    router.push(`/${language}`);
+  const changeLanguage = (locale: string) => {
+    router.push(`/`, { locale });
   };
 
   return (
     <>
       <p>{t("language_switcher")}</p>
-      <select aria-label="Languages" name="language" value={lng} onChange={(e) => changeLanguage(e.target.value)}>
-        <option value="es-ES">ES</option>
-        <option value="en-GB">EN</option>
+      <select aria-label="Languages" name="language" value={"es"} onChange={(e) => changeLanguage(e.target.value)}>
+        <option value="es">ES</option>
+        <option value="en">EN</option>
       </select>
     </>
   );

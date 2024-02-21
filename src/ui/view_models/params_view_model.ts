@@ -1,5 +1,5 @@
 export interface LngParamsViewModel {
   params: {
-    lng: string;
+    locale: string;
   };
 }

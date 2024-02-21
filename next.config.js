@@ -2,10 +2,21 @@
 /** @type {import("next").NextConfig} */
 const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
 const { withSentryConfig } = require("@sentry/nextjs");
+const createNextIntlPlugin = require("next-intl/plugin");
 
 const withVanillaExtract = createVanillaExtractPlugin();
+const withNextIntl = createNextIntlPlugin("./src/ui/i18n/index.ts");
 
-const { NEXT_PUBLIC_SENTRY_ENABLED, NODE_ENV, NEXT_PUBLIC_API_URL, SENTRY_ORG, SENTRY_PROJECT, SENTRY_AUTH_TOKEN, SENTRY_URL } = process.env;
+const {
+  NEXT_PUBLIC_SENTRY_ENABLED,
+  NODE_ENV,
+  NEXT_PUBLIC_API_URL,
+  SENTRY_ORG,
+  SENTRY_PROJECT,
+  SENTRY_AUTH_TOKEN,
+  SENTRY_URL,
+  BUNDLE_ANALYZER_ENABLED
+} = process.env;
 
 const apiDomain = NODE_ENV !== "production" ? "next_base.dev.mrmilu.com" : NEXT_PUBLIC_API_URL?.replace("https://", "");
 
@@ -96,7 +107,8 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports =
+const wrappedConfig =
   NEXT_PUBLIC_SENTRY_ENABLED === "true"
-    ? withVanillaExtract(withSentryConfig(nextConfig, sentryWebpackPluginOptions))
-    : withVanillaExtract(withBundleAnalyzer(nextConfig));
+    ? withNextIntl(withVanillaExtract(withSentryConfig(nextConfig, sentryWebpackPluginOptions)))
+    : withNextIntl(withVanillaExtract(nextConfig));
+module.exports = BUNDLE_ANALYZER_ENABLED === "true" ? withBundleAnalyzer(wrappedConfig) : wrappedConfig;

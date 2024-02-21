@@ -1,26 +1,18 @@
-import type { KeyPrefix, Namespace, i18n } from "i18next";
-import { createInstance } from "i18next";
-import resourcesToBackend from "i18next-resources-to-backend";
-import { initReactI18next } from "react-i18next/initReactI18next";
-import { getOptions } from "./settings";
+import { notFound } from "next/navigation";
+import { getRequestConfig } from "next-intl/server";
+import { createSharedPathnamesNavigation } from "next-intl/navigation";
 
-const initI18next = async (lng: string, ns: Namespace | undefined) => {
-  const i18nInstance = createInstance();
-  await i18nInstance
-    .use(initReactI18next)
-    .use(resourcesToBackend((language: string, namespace: string) => import(`./locales/${language}/${namespace}.json`)))
-    .init(getOptions(lng, ns));
-  return i18nInstance;
-};
+export const locales = ["en", "es"];
 
-export async function serverSideTranslation(
-  lng: string,
-  ns: Namespace | undefined,
-  options?: { keyPrefix: KeyPrefix<Namespace> }
-): Promise<{ t: i18n["t"]; i18n: i18n }> {
-  const i18nextInstance = await initI18next(lng, ns);
+export const localePrefix = "always"; // Default
+
+export const { Link, redirect, usePathname, useRouter } = createSharedPathnamesNavigation({ locales, localePrefix });
+
+export default getRequestConfig(async ({ locale }) => {
+  // Validate that the incoming `locale` parameter is valid
+  if (!locales.includes(locale)) notFound();
+
   return {
-    t: i18nextInstance.getFixedT(lng, ns, options?.keyPrefix),
-    i18n: i18nextInstance
+    messages: (await import(`./messages/${locale}.json`)).default
   };
-}
+});

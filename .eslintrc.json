@@ -3,7 +3,9 @@
   "extends": ["plugin:@typescript-eslint/recommended", "prettier", "next/core-web-vitals"],
   "rules": {
     "unused-imports/no-unused-imports": "error",
-    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/consistent-type-imports": ["error", {
+      "disallowTypeAnnotations": false
+    }],
     "react/display-name": 0,
     "react/react-in-jsx-scope": 0,
     "react/prop-types": 0,
