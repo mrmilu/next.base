@@ -1,4 +1,4 @@
 export interface IEnvVars {
-  serverUrl: string;
-  anotherServiceUrl: string;
+  apiUrl: string;
+  graphqlApiUrl: string;
 }

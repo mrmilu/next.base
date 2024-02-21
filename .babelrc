@@ -2,15 +2,8 @@
   "presets": ["next/babel"],
   "plugins": [
     "import-graphql",
-    [
-      "inline-react-svg",
-      {
-        "svgo": {
-          "plugins": [{ "name": "removeViewBox", "active": false }]
-        }
-      }
-    ],
     "babel-plugin-transform-typescript-metadata",
-    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    "@babel/plugin-proposal-class-properties"
   ]
 }

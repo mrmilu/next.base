@@ -1,4 +1,6 @@
 build
 coverage
+yarn.lock
+*.yml
 *.json
 *.md

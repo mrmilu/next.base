@@ -11,7 +11,6 @@ export const config = {
 };
 
 export function middleware(req: NextRequest) {
-  console.log("url", req.url);
   if (req.nextUrl.pathname.startsWith("/users")) {
     const loggedCookie = req.cookies.get("logged")?.value;
     const isUserLogged = Boolean(loggedCookie) && loggedCookie === "true";

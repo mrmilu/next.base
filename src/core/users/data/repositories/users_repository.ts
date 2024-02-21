@@ -3,7 +3,7 @@ import { TYPES } from "@/src/core/app/ioc/__generated__/types";
 import type { User } from "@/src/core/users/domain/models/user";
 import UsersQueryOperation from "../graphql/queries/users.graphql";
 import { plainToClass } from "class-transformer";
-import type { MockService } from "@/src/core/app/data/services/mock_service";
+import type { GraphqlService } from "@/src/core/app/data/services/graphql_service";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import { UserDataModel } from "@/src/core/users/data/models/user_data_model";
 import type { IUsersRepository } from "@/src/core/users/domain/interfaces/users_repository";
@@ -11,7 +11,7 @@ import type { UsersQuery } from "@/src/core/users/data/graphql/queries/__generat
 
 @injectable()
 export class UsersRepository implements IUsersRepository {
-  @inject(TYPES.MockService) private mockServiceProvider!: IocProvider<MockService>;
+  @inject(TYPES.GraphqlService) private mockServiceProvider!: IocProvider<GraphqlService>;
 
   async users(): Promise<Array<User>> {
     const mockService = await this.mockServiceProvider();

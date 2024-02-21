@@ -5,6 +5,7 @@ import type { GetUsersUseCase } from "@/src/core/users/domain/use_cases/get_user
 import { TYPES } from "@/src/core/app/ioc/__generated__/types";
 import UserRow from "@/src/ui/features/users/views/users_page/components/user_row";
 import PageTitle from "@/src/ui/features/users/views/users_page/components/page_title";
+import { instanceToPlain } from "class-transformer";
 
 export default async function UsersPage() {
   const getUser = await locator.get<IocProvider<GetUsersUseCase>>(TYPES.GetUsersUseCase)();
@@ -14,7 +15,7 @@ export default async function UsersPage() {
     <div className={css.wrapper}>
       <PageTitle />
       {users.map((user, idx) => (
-        <UserRow key={`${user.id}_${idx}`} user={user} />
+        <UserRow key={`${user.id}_${idx}`} user={instanceToPlain(user)} />
       ))}
     </div>
   );

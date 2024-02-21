@@ -3,12 +3,12 @@ import { Button } from "@/src/ui/components/button/button";
 import { ControlledInput } from "@/src/ui/components/input/input";
 import { timeout } from "@front_web_mrmilu/utils";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { BaseError } from "make-error";
 import { useEffect, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { object, string } from "yup";
 import css from "../../home_page.css";
 import { useTranslationClient } from "@/src/ui/i18n/client";
+import { BaseError } from "@/src/core/app/domain/models/base_error";
 
 interface Props {
   lng: string;
@@ -31,14 +31,9 @@ export default function HomePageForm({ lng }: Props) {
   const validationSchema = useMemo(
     () =>
       object().shape({
-        name: string().required(`${t("form.errors.required")}`),
-        email: string()
-          .required(`${t("form.errors.required")}`)
-          .email(`${t("form.errors.email")}`),
-        age: string()
-          // .isNumber(`${t("form.errors.required")}`)
-          .required(`${t("form.errors.required")}`)
-        // .isNotUnderAge(`${t("form.errors.underAge")}`)
+        name: string().required(t("form.errors.required")),
+        email: string().required(t("form.errors.required")).email(t("form.errors.email")),
+        age: string().isNumber(t("form.errors.number")).required(t("form.errors.required")).isNotUnderAge(t("form.errors.underAge"))
       }),
     [t]
   );

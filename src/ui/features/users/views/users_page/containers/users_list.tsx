@@ -1,3 +1,4 @@
+"use client";
 import { useUiProvider } from "@/src/ui/providers/ui.provider";
 import { useUsersListProvider } from "@/src/ui/features/users/state/users_list.provider";
 import type { User } from "@/src/core/users/domain/models/user";

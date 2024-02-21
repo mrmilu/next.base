@@ -16,7 +16,7 @@ export type PutRequestOptions<D> = PostRequestOptions<D>;
 export type PatchRequestOptions<D> = PostRequestOptions<D>;
 export type DeleteRequestOptions = GetRequestOptions;
 
-export class RestClient {
+export class HttpClient {
   private client: AxiosInstance;
 
   constructor(baseUrl: string) {

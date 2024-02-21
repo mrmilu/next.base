@@ -5,17 +5,7 @@ const { withSentryConfig } = require("@sentry/nextjs");
 
 const withVanillaExtract = createVanillaExtractPlugin();
 
-const {
-  NEXT_PUBLIC_SENTRY_ENABLED,
-  NODE_ENV,
-  NEXT_PUBLIC_API_URL,
-  NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT,
-  NEXT_PUBLIC_REST_PROXY_ENDPOINT,
-  SENTRY_ORG,
-  SENTRY_PROJECT,
-  SENTRY_AUTH_TOKEN,
-  SENTRY_URL
-} = process.env;
+const { NEXT_PUBLIC_SENTRY_ENABLED, NODE_ENV, NEXT_PUBLIC_API_URL, SENTRY_ORG, SENTRY_PROJECT, SENTRY_AUTH_TOKEN, SENTRY_URL } = process.env;
 
 const apiDomain = NODE_ENV !== "production" ? "next_base.dev.mrmilu.com" : NEXT_PUBLIC_API_URL?.replace("https://", "");
 
@@ -23,23 +13,7 @@ const nextConfig = {
   eslint: {
     dirs: ["app", "src"]
   },
-  reactStrictMode: true,
-  async rewrites() {
-    const DEFAULT_REWRITES = [];
-    return !(NODE_ENV === "production")
-      ? [
-          {
-            source: "/s/graphql",
-            destination: `${NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT}/api`
-          },
-          {
-            source: "/rest/:path*",
-            destination: `${NEXT_PUBLIC_REST_PROXY_ENDPOINT}/:path*`
-          },
-          ...DEFAULT_REWRITES
-        ]
-      : [...DEFAULT_REWRITES];
-  },
+  reactStrictMode: false,
   images: {
     domains: [apiDomain]
   },
@@ -79,6 +53,22 @@ const nextConfig = {
         }
       ]
     });
+
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
+    config.module.rules.push(
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/ // *.svg?url
+      },
+      {
+        test: /\.svg$/i,
+        issuer: fileLoaderRule.issuer,
+        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
+        use: ["@svgr/webpack"]
+      }
+    );
+    fileLoaderRule.exclude = /\.svg$/i;
 
     return config;
   }

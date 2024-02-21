@@ -8,12 +8,12 @@ import { TYPES } from "@/src/core/app/ioc/__generated__/types";
 import { generatorConf } from "inversify-generator/decorators";
 
 @injectable()
-@generatorConf({ typeName: "MockService" })
-export class MockService implements NetworkInterfaces.IGraphqlDataSource {
+@generatorConf({ typeName: "GraphqlService" })
+export class GraphqlService implements NetworkInterfaces.IGraphqlDataSource {
   private graphqlClient: GraphqlClient;
 
   constructor(@inject(TYPES.IEnvVars) envVars: IEnvVars) {
-    this.graphqlClient = new GraphqlClient(envVars.serverUrl, generatedIntrospection.possibleTypes);
+    this.graphqlClient = new GraphqlClient(envVars.graphqlApiUrl, generatedIntrospection.possibleTypes);
   }
 
   mutate<T, V = Record<string, unknown>>(mutation: DocumentNode, variables?: V): Promise<T | null | undefined> {
