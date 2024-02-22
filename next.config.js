@@ -18,7 +18,7 @@ const {
   BUNDLE_ANALYZER_ENABLED
 } = process.env;
 
-const apiDomain = NODE_ENV !== "production" ? "next_base.dev.mrmilu.com" : NEXT_PUBLIC_API_URL?.replace("https://", "");
+const apiDomain = NODE_ENV !== "production" ? "next_base.dev.mrmilu.com" : NEXT_PUBLIC_API_URL?.replace("https://", "") ?? "";
 
 const nextConfig = {
   eslint: {
