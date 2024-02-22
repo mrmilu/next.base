@@ -1,47 +1,30 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import("next").NextConfig} */
 const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
-const { i18n } = require("./next-i18next.config");
 const { withSentryConfig } = require("@sentry/nextjs");
+const createNextIntlPlugin = require("next-intl/plugin");
 
 const withVanillaExtract = createVanillaExtractPlugin();
+const withNextIntl = createNextIntlPlugin("./src/ui/i18n/index.ts");
 
 const {
   NEXT_PUBLIC_SENTRY_ENABLED,
   NODE_ENV,
   NEXT_PUBLIC_API_URL,
-  NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT,
-  NEXT_PUBLIC_REST_PROXY_ENDPOINT,
   SENTRY_ORG,
   SENTRY_PROJECT,
   SENTRY_AUTH_TOKEN,
-  SENTRY_URL
+  SENTRY_URL,
+  BUNDLE_ANALYZER_ENABLED
 } = process.env;
 
-const apiDomain = NODE_ENV !== "production" ? "next_base.dev.mrmilu.com" : NEXT_PUBLIC_API_URL?.replace("https://", "");
+const apiDomain = NODE_ENV !== "production" ? "next_base.dev.mrmilu.com" : NEXT_PUBLIC_API_URL?.replace("https://", "") ?? "";
 
 const nextConfig = {
   eslint: {
-    dirs: ["pages", "src"]
+    dirs: ["app", "src"]
   },
-  reactStrictMode: true,
-  async rewrites() {
-    const DEFAULT_REWRITES = [];
-    return !(NODE_ENV === "production")
-      ? [
-          {
-            source: "/s/graphql",
-            destination: `${NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT}/api`
-          },
-          {
-            source: "/rest/:path*",
-            destination: `${NEXT_PUBLIC_REST_PROXY_ENDPOINT}/:path*`
-          },
-          ...DEFAULT_REWRITES
-        ]
-      : [...DEFAULT_REWRITES];
-  },
-  i18n,
+  reactStrictMode: false,
   images: {
     domains: [apiDomain]
   },
@@ -82,6 +65,22 @@ const nextConfig = {
       ]
     });
 
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
+    config.module.rules.push(
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/ // *.svg?url
+      },
+      {
+        test: /\.svg$/i,
+        issuer: fileLoaderRule.issuer,
+        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
+        use: ["@svgr/webpack"]
+      }
+    );
+    fileLoaderRule.exclude = /\.svg$/i;
+
     return config;
   }
 };
@@ -108,7 +107,8 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports =
+const wrappedConfig =
   NEXT_PUBLIC_SENTRY_ENABLED === "true"
-    ? withVanillaExtract(withSentryConfig(nextConfig, sentryWebpackPluginOptions))
-    : withVanillaExtract(withBundleAnalyzer(nextConfig));
+    ? withNextIntl(withVanillaExtract(withSentryConfig(nextConfig, sentryWebpackPluginOptions)))
+    : withNextIntl(withVanillaExtract(nextConfig));
+module.exports = BUNDLE_ANALYZER_ENABLED === "true" ? withBundleAnalyzer(wrappedConfig) : wrappedConfig;

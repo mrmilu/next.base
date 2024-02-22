@@ -8,8 +8,6 @@ corepack-enable:
 # Installs project package.json dependencies
 install-deps:
     ./nvm_exec.sh yarn
-    ./nvm_exec.sh yarn patch-package
-    ./nvm_exec.sh yarn husky install
 
 # Starts Next development server
 dev:

@@ -2,9 +2,14 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import queryString from "query-string";
 
-export const middlewareGate = (req: NextRequest, next: boolean, redirectTo = "/404", queryParams?: Record<string, unknown>) => {
+export const middlewareGate = (
+  req: NextRequest,
+  next: boolean,
+  redirectTo = "/404",
+  queryParams?: Record<string, unknown>
+): NextResponse | undefined => {
   if (next) {
-    return NextResponse.next();
+    return;
   } else {
     const url = req.nextUrl.clone();
     url.pathname = redirectTo;

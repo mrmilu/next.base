@@ -23,7 +23,8 @@ const form = style({
 
 const locale = style({
   display: "flex",
-  alignItems: "center",
+  flexDirection: "column",
+  alignItems: "flex-start",
   margin: `${px2rem(spacing.size4)} 0`,
   gap: px2rem(spacing.size4)
 });

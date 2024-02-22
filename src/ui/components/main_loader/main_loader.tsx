@@ -1,3 +1,4 @@
+"use client";
 import css from "./main_loader.css";
 import { easings, useTransition, animated } from "@react-spring/web";
 import { useUiProvider } from "@/src/ui/providers/ui.provider";

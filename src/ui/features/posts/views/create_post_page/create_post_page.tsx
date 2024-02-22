@@ -1,6 +1,5 @@
-import type { ReactElement } from "react";
+"use client";
 import { useCallback, useState } from "react";
-import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
 import { Button } from "@/src/ui/components/button/button";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import { TYPES } from "@/src/core/app/ioc/__generated__/types";
@@ -73,7 +72,3 @@ export default function CreatePostPage() {
     </div>
   );
 }
-
-CreatePostPage.getLayout = function getLayout(page: ReactElement) {
-  return <BaseLayout logged={page.props.logged}>{page}</BaseLayout>;
-};

@@ -1,13 +1,8 @@
-import Link from "next/link";
 import type { PropsWithChildren } from "react";
-import { Button } from "@/src/ui/components/button/button";
-import { useUserProvider } from "@/src/ui/providers/user.provider";
-import { useRouter } from "next/router";
-import React, { useEffect } from "react";
-import { LoggingModal } from "@/src/ui/components/logging_modal/logging_modal";
-import { CookieUtils } from "@front_web_mrmilu/utils";
-import { useUiProvider } from "@/src/ui/providers/ui.provider";
+import React from "react";
 import css from "./base_layout.css";
+import LoginButton from "@/src/ui/features/misc/containers/login_button/login_button";
+import { Link } from "@/src/ui/i18n";
 
 function ListElement(props: { href: string; label: string }) {
   return (
@@ -17,25 +12,7 @@ function ListElement(props: { href: string; label: string }) {
   );
 }
 
-export const BaseLayout = ({ children }: PropsWithChildren<{ logged?: boolean }>) => {
-  const setLogged = useUserProvider((state) => state.setLogged);
-  const login = useUserProvider((state) => state.login);
-  const logout = useUserProvider((state) => state.logout);
-  const isUserLogged = useUserProvider((state) => state.logged);
-  const showModal = useUiProvider((state) => state.showModal);
-  const router = useRouter();
-
-  useEffect(() => {
-    if (router.query.protectedRouteAccessAttempt) {
-      showModal(<LoggingModal />);
-    }
-  }, [router.query, showModal]);
-
-  useEffect(() => {
-    const logged = CookieUtils.getCookie("logged");
-    setLogged(logged === "true");
-  }, [setLogged]);
-
+export const BaseLayout = ({ children }: PropsWithChildren) => {
   return (
     <div className={css.wrapper}>
       <nav className={css.nav}>
@@ -46,7 +23,7 @@ export const BaseLayout = ({ children }: PropsWithChildren<{ logged?: boolean }>
           <ListElement href="/create_post" label="create post" />
           <ListElement href="/posts" label="list post" />
         </ul>
-        <Button onClick={isUserLogged ? logout : login}>{isUserLogged ? "Log out" : "Log in"}</Button>
+        <LoginButton />
       </nav>
       <main className={css.main}>{children}</main>
       <footer className={css.footer}>cool footer</footer>
