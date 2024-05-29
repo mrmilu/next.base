@@ -1,23 +1,21 @@
-import { inject, injectable } from "inversify";
 import { TYPES } from "@/src/core/app/ioc/__generated__/types";
+import { inject, injectable } from "inversify";
 import type { User } from "@/src/core/users/domain/models/user";
-import UsersQueryOperation from "../graphql/queries/users.graphql";
 import { plainToClass } from "class-transformer";
-import type { GraphqlService } from "@/src/core/app/data/services/graphql_service";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import { UserDataModel } from "@/src/core/users/data/models/user_data_model";
 import type { IUsersRepository } from "@/src/core/users/domain/interfaces/users_repository";
-import type { UsersQuery } from "@/src/core/users/data/graphql/queries/__generated__/users";
+import type { RestService } from "@/src/core/app/data/services/rest_service";
 
 @injectable()
 export class UsersRepository implements IUsersRepository {
-  @inject(TYPES.GraphqlService) private mockServiceProvider!: IocProvider<GraphqlService>;
+  @inject(TYPES.RestService) private restServiceProvider!: IocProvider<RestService>;
 
   async users(): Promise<Array<User>> {
-    const mockService = await this.mockServiceProvider();
-    const response = await mockService.query<UsersQuery>(UsersQueryOperation);
+    const restService = await this.restServiceProvider();
+    const response = await restService.get<Array<Record<string, unknown>>>("/users");
     return (
-      response?.users?.data?.map((user) => {
+      response.map((user) => {
         const dataModel = plainToClass(UserDataModel, user, { excludeExtraneousValues: true });
         return dataModel.toDomain();
       }) ?? []

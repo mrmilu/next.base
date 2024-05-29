@@ -40,9 +40,6 @@
       }
     ]
   },
-  "files": [
-    "src/common/@types/graphql.d.ts"
-  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

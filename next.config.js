@@ -53,17 +53,7 @@ const nextConfig = {
       }
     ];
   },
-  webpack: (config, options) => {
-    config.module.rules.push({
-      test: /\.(graphql|gql)$/,
-      include: [options.dir],
-      exclude: /node_modules/,
-      use: [
-        {
-          loader: "graphql-tag/loader"
-        }
-      ]
-    });
+  webpack: (config) => {
 
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
     config.module.rules.push(
