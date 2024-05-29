@@ -26,7 +26,6 @@ export default function CreatePostPage() {
         if (post) setPostTitle((prevState) => [...prevState, post.title]);
       })
       .finally(() => {
-        console.log("set post number");
         setPostNumber((prevState) => prevState + 1);
       });
     if (asyncStateOn && !isDebounce) setPromise(promise);

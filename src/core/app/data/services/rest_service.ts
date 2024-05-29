@@ -2,7 +2,7 @@ import { inject, injectable } from "inversify";
 import { HttpClient } from "@/src/common/network/rest/http_client";
 import type { IEnvVars } from "@/src/core/app/domain/interfaces/env_vars";
 import { TYPES } from "@/src/core/app/ioc/__generated__/types";
-import type { IRestDataSource, RestDataSourceOptions } from "@/src/common/interfaces/rest_data_source";
+import type { IRestDataSource, RestDataSourceOptionsWithParams, RestDataSourceOptionsWithData } from "@/src/common/interfaces/rest_data_source";
 import { generatorConf } from "inversify-generator/decorators";
 
 @injectable()
@@ -14,10 +14,12 @@ export class RestService implements IRestDataSource {
     this.httpClient = new HttpClient(`${envVars.apiUrl}`);
   }
 
-  async get<T = unknown>(url: string, { params }: RestDataSourceOptions = {}): Promise<T> {
-    const res = await this.httpClient.get<T>(url, {
-      params
-    });
+  async get<T = unknown>(url: string, options: RestDataSourceOptionsWithParams = {}): Promise<T> {
+    const res = await this.httpClient.get<T>(url, options);
+    return res.data;
+  }
+  async post<T = unknown, D = unknown>(url: string, options: RestDataSourceOptionsWithData<D> = {}): Promise<T> {
+    const res = await this.httpClient.post<T, D>(url, options);
     return res.data;
   }
 }

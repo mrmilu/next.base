@@ -14,10 +14,20 @@ export class PostsRepository implements IPostsRepository {
   @inject(TYPES.RestService) private restServiceProvider!: IocProvider<RestService>;
 
   async createPost(input: CreatePostInputModel): Promise<Post | null> {
-    console.log({ createPostInput: input });
     const restService = await this.restServiceProvider();
-    const createdPost = await restService.get<Record<string, unknown>>("/posts/1");
-    return fromJson<PostDataModel>(PostDataModel, createdPost).toDomain();
+    const { id } = await restService.post<Record<string, unknown>>("/posts", {
+      data: {
+        title: input.title,
+        body: input.body,
+        userId: 1
+      }
+    });
+    return fromJson<PostDataModel>(PostDataModel, {
+      id,
+      title: input.title,
+      body: input.body,
+      userId: 1
+    }).toDomain();
   }
 
   async posts(): Promise<Page<Post>> {
