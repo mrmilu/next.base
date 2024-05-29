@@ -7,7 +7,7 @@ import { PostDataModel } from "@/src/core/posts/data/models/post_data_model";
 import { fromJson, fromJsonPage } from "@/src/common/utils/class_transformer";
 import type { Page } from "@/src/core/app/domain/models/page";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
-import { CreatePostInputModel } from "../../domain/models/create_post_input_model";
+import type { CreatePostInputModel } from "../../domain/models/create_post_input_model";
 
 @injectable()
 export class PostsRepository implements IPostsRepository {
