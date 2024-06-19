@@ -20,9 +20,9 @@ build:
 start:
     ./nvm_exec.sh yarn start
 
-# Downloads schema and generates corresponding ts types
-graphql-codegen:
-    ./nvm_exec.sh yarn graphql
+fix:
+    ./nvm_exec.sh yarn lint
+    ./nvm_exec.sh yarn prettier-fix
 
 # Generate inversify bindings (watch execution)
 ioc-generate-watch:

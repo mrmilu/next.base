@@ -7,7 +7,6 @@
 - Typescript
 - [Class transformers](https://github.com/typestack/class-transformer)
 - [Zustand](https://github.com/pmndrs/zustand)
-- Apollo (GraphQL)
 - [Commitlint](docs/comitlint.md) (with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) config)
 - [Vanilla extract](https://vanilla-extract.style/)
 - ESLint (with TypeScript config)
@@ -71,8 +70,6 @@ Create a `.env.development.local` file with your environment variables with the 
 
 ```
 NEXT_PUBLIC_API_URL=http://localhost:3000
-NEXT_PUBLIC_ANOTHER_API_URL=http://localhost:3000
-NEXT_PUBLIC_GRAPHQL_PROXY_ENDPOINT=https://graphqlzero.almansi.me
 NEXT_PUBLIC_REST_PROXY_ENDPOINT=https://jsonplaceholder.typicode.com
 NEXT_PUBLIC_SENTRY_DSN=project_dsn
 NEXT_PUBLIC_SENTRY_ENABLED=false
@@ -87,8 +84,7 @@ Also create a `.env.production.local` file with your environment variables with 
 build
 
 ```
-NEXT_PUBLIC_API_URL=https://graphqlzero.almansi.me
-NEXT_PUBLIC_ANOTHER_API_URL=https://jsonplaceholder.typicode.com
+NEXT_PUBLIC_API_URL=https://jsonplaceholder.typicode.com
 #NEXT_PUBLIC_SENTRY_DSN=project_dsn
 NEXT_PUBLIC_SENTRY_ENABLED=false
 SENTRY_ENVIRONMENT=dev
