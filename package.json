@@ -22,7 +22,7 @@
     "@hookform/resolvers": "~3.6.0",
     "@sentry/nextjs": "~7.102.0",
     "@svgr/webpack": "~8.1.0",
-    "@vanilla-extract/css": "~1.14.2",
+    "@vanilla-extract/css": "~1.15.3",
     "@vanilla-extract/recipes": "~0.5.3",
     "accept-language": "~3.0.18",
     "axios": "~1.7.2",
