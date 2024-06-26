@@ -7,30 +7,34 @@ corepack-enable:
 
 # Installs project package.json dependencies
 install-deps:
-    ./nvm_exec.sh yarn
+    ./nvm_exec.sh pnpm install
 
 # Starts Next development server
 dev:
-    ./nvm_exec.sh yarn dev
+    ./nvm_exec.sh pnpm dev
 # Builds Next application
 build:
-    ./nvm_exec.sh yarn build
+    ./nvm_exec.sh pnpm build
 
 # Starts Next server for built application
 start:
-    ./nvm_exec.sh yarn start
+    ./nvm_exec.sh pnpm start
 
 fix:
-    ./nvm_exec.sh yarn lint
-    ./nvm_exec.sh yarn prettier-fix
+    ./nvm_exec.sh pnpm lint
+    ./nvm_exec.sh pnpm prettier-fix
 
 # Generate inversify bindings (watch execution)
 ioc-generate-watch:
-    ./nvm_exec.sh yarn ioc-generate --watch
+    ./nvm_exec.sh pnpm ioc-generate --watch
 
 # Generate inversify bindings
 ioc-generate:
-    ./nvm_exec.sh yarn ioc-generate
+    ./nvm_exec.sh pnpm ioc-generate
+
+# Commit
+commit:
+    ./nvm_exec.sh pnpm commit
 
 # Proxy comand through nvm
 nvm-exec command:
