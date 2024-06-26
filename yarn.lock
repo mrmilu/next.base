@@ -22,13 +22,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@axe-core/react@npm:~4.8.5":
-  version: 4.8.5
-  resolution: "@axe-core/react@npm:4.8.5"
+"@axe-core/react@npm:~4.9.1":
+  version: 4.9.1
+  resolution: "@axe-core/react@npm:4.9.1"
   dependencies:
-    axe-core: "npm:~4.8.4"
+    axe-core: "npm:~4.9.1"
     requestidlecallback: "npm:^0.3.0"
-  checksum: 10/0d103fde320962c9551359739372fd608585bdd88d109dae0875c3e8c7bff9738c6915357f6722ced5e3d56a6003191cb8b1725b8ad85f2c58299d457b2f5ed1
+  checksum: 10/3175d042c0ce22a9d69c508050c3120db3059266f81af02987b7032af0eced99a49a647afab78e4f31327dcb495b30b2f2a170b080cc2ae9ae5074f10b882891
   languageName: node
   linkType: hard
 
@@ -3104,21 +3104,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:~18.2.57":
-  version: 18.2.57
-  resolution: "@types/react@npm:18.2.57"
+"@types/react@npm:~18.3.3":
+  version: 18.3.3
+  resolution: "@types/react@npm:18.3.3"
   dependencies:
     "@types/prop-types": "npm:*"
-    "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10/beee45a8ee48862fb5101f6ebdd89ccc20c5a6df29dcd2315560bc3b57ea3af8d09a8e9bb1c58063a70f9010e0d2c7bd300819438e2ca62810285c3d7275ab5a
-  languageName: node
-  linkType: hard
-
-"@types/scheduler@npm:*":
-  version: 0.16.3
-  resolution: "@types/scheduler@npm:0.16.3"
-  checksum: 10/2b0aec39c24268e3ce938c5db2f2e77f5c3dd280e05c262d9c2fe7d890929e4632a6b8e94334017b66b45e4f92a5aa42ba3356640c2a1175fa37bef2f5200767
+  checksum: 10/68e203b7f1f91d6cf21f33fc7af9d6d228035a26c83f514981e54aa3da695d0ec6af10c277c6336de1dd76c4adbe9563f3a21f80c4462000f41e5f370b46e96c
   languageName: node
   linkType: hard
 
@@ -3829,10 +3821,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:~4.8.4":
-  version: 4.8.4
-  resolution: "axe-core@npm:4.8.4"
-  checksum: 10/c8b3972b17afac33b9e151556fa500b9218086ca763866942de30e7f51ac50582902ad03ec16381796c95afaacfa8c33efb2d02ab4f09b6c09d6be58b95da978
+"axe-core@npm:~4.9.1":
+  version: 4.9.1
+  resolution: "axe-core@npm:4.9.1"
+  checksum: 10/9d4944f6d3289428e1c6b41a80516f6558a960889f59c3c00f0fb88b955eda81edf9ca377c2cbc2a775f4003596d2aeaa35acca5aad3e1fc6b3d1e26e82b02cc
   languageName: node
   linkType: hard
 
@@ -7592,7 +7584,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mrmilu.next.base@workspace:."
   dependencies:
-    "@axe-core/react": "npm:~4.8.5"
+    "@axe-core/react": "npm:~4.9.1"
     "@commitlint/cli": "npm:~18.6.1"
     "@commitlint/config-conventional": "npm:~18.6.2"
     "@commitlint/prompt-cli": "npm:~18.6.1"
@@ -7606,7 +7598,7 @@ __metadata:
     "@svgr/webpack": "npm:~8.1.0"
     "@types/lodash": "npm:~4.14.202"
     "@types/node": "npm:~20.11.19"
-    "@types/react": "npm:~18.2.57"
+    "@types/react": "npm:~18.3.3"
     "@typescript-eslint/eslint-plugin": "npm:~7.9.0"
     "@vanilla-extract/css": "npm:~1.14.1"
     "@vanilla-extract/next-plugin": "npm:~2.3.6"
@@ -7628,8 +7620,8 @@ __metadata:
     next-intl: "npm:^3.15.2"
     prettier: "npm:~3.2.5"
     query-string: "npm:~8.2.0"
-    react: "npm:~18.2.0"
-    react-dom: "npm:~18.2.0"
+    react: "npm:~18.3.1"
+    react-dom: "npm:~18.3.1"
     react-hook-form: "npm:~7.50.1"
     react-spring: "npm:~9.7.3"
     reflect-metadata: "npm:~0.2.1"
@@ -8391,15 +8383,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:~18.2.0":
-  version: 18.2.0
-  resolution: "react-dom@npm:18.2.0"
+"react-dom@npm:~18.3.1":
+  version: 18.3.1
+  resolution: "react-dom@npm:18.3.1"
   dependencies:
     loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.23.0"
+    scheduler: "npm:^0.23.2"
   peerDependencies:
-    react: ^18.2.0
-  checksum: 10/ca5e7762ec8c17a472a3605b6f111895c9f87ac7d43a610ab7024f68cd833d08eda0625ce02ec7178cc1f3c957cf0b9273cdc17aa2cd02da87544331c43b1d21
+    react: ^18.3.1
+  checksum: 10/3f4b73a3aa083091173b29812b10394dd06f4ac06aff410b74702cfb3aa29d7b0ced208aab92d5272919b612e5cda21aeb1d54191848cf6e46e9e354f3541f81
   languageName: node
   linkType: hard
 
@@ -8436,12 +8428,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:~18.2.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
+"react@npm:~18.3.1":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
   dependencies:
     loose-envify: "npm:^1.1.0"
-  checksum: 10/b9214a9bd79e99d08de55f8bef2b7fc8c39630be97c4e29d7be173d14a9a10670b5325e94485f74cd8bff4966ef3c78ee53c79a7b0b9b70cba20aa8973acc694
+  checksum: 10/261137d3f3993eaa2368a83110466fc0e558bc2c7f7ae7ca52d94f03aac945f45146bd85e5f481044db1758a1dbb57879e2fcdd33924e2dde1bdc550ce73f7bf
   languageName: node
   linkType: hard
 
@@ -8940,12 +8932,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "scheduler@npm:0.23.0"
+"scheduler@npm:^0.23.2":
+  version: 0.23.2
+  resolution: "scheduler@npm:0.23.2"
   dependencies:
     loose-envify: "npm:^1.1.0"
-  checksum: 10/0c4557aa37bafca44ff21dc0ea7c92e2dbcb298bc62eae92b29a39b029134f02fb23917d6ebc8b1fa536b4184934314c20d8864d156a9f6357f3398aaf7bfda8
+  checksum: 10/e8d68b89d18d5b028223edf090092846868a765a591944760942b77ea1f69b17235f7e956696efbb62c8130ab90af7e0949bfb8eba7896335507317236966bc9
   languageName: node
   linkType: hard
 
