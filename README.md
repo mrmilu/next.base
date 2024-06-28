@@ -31,7 +31,7 @@ nvm install
 ```
 
 Finally, enable [corepack](https://github.com/nodejs/corepack) so the correct
-version of yarn is used.
+version of pnpm is used.
 
 ```shell
 just corepack-enable
@@ -61,7 +61,7 @@ just
 **Proxy commands through nvm**
 
 ```shell
-just nvm-exec "yarn add @front_web_mrmilu/hooks"
+just nvm-exec "pnpm add @front_web_mrmilu/hooks"
 ```
 
 ### Environment variables
@@ -97,7 +97,7 @@ SENTRY_AUTH_TOKEN=sentry-user-auth-token
 ### CI/CD build commands
 
 ```shell
-yarn install
-yarn ioc-generate
-yarn build
+pnpm install
+pnpm ioc-generate
+pnpm build
 ```

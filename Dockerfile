@@ -1,7 +1,5 @@
 FROM node:18-alpine AS base
 RUN corepack enable
-RUN yarn set version stable
-RUN yarn config set enableImmutableInstalls false
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -10,8 +8,8 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock .yarnrc.yml ./
-RUN yarn
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install
 
 
 # Rebuild the source code only when needed
@@ -28,7 +26,7 @@ COPY . .
 RUN --mount=type=secret,id=next_env_variables \
     cat /run/secrets/next_env_variables > .env.local
 
-RUN yarn build
+RUN pnpm build
 
 # If using npm comment out above and use below instead
 # RUN npm run build
