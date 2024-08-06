@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { UserStateViewModel } from "@/src/ui/view_models/user_state";
+import type { UserStateViewModel } from "@/src/ui/view-models/user-state";
 import { CookieUtils } from "@front_web_mrmilu/utils";
 import { createStore, useStore } from "zustand";
 import { immer } from "zustand/middleware/immer";

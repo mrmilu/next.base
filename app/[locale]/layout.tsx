@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import "@/src/core/app/ioc/__generated__";
-import "@/src/common/utils/yup_extensions";
+import "@/src/common/utils/yup-extensions";
 import "@/src/ui/styles/globals.css";
 import "@/src/ui/styles/fonts.css";
 import "@/src/ui/styles/reset.css";
 import React from "react";
 import { theme } from "@/src/ui/styles/theme.css";
 import type { PropsWithChildren } from "react";
-import { MainLoader } from "@/src/ui/components/main_loader/main_loader";
+import { MainLoader } from "@/src/ui/components/main-loader/main-loader";
 import { Modal } from "@/src/ui/components/modal/modal";
 import type { Metadata, Viewport } from "next";
-import type { LocaleParams } from "@/src/ui/view_models/params_view_model";
-import { BaseLayout } from "@/src/ui/components/base_layout/base_layout";
+import type { LocaleParams } from "@/src/ui/view-models/params-view-model";
+import { BaseLayout } from "@/src/ui/components/base-layout/base-layout";
 import { locales } from "@/src/ui/i18n";
 import { unstable_setRequestLocale } from "next-intl/server";
 

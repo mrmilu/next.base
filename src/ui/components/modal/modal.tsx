@@ -6,7 +6,7 @@ import { Close as CloseIcon } from "@/src/ui/icons";
 import { useUiProvider } from "@/src/ui/providers/ui.provider";
 import { useClickOutside } from "@front_web_mrmilu/hooks";
 import css from "./modal.css";
-import { IconButton } from "@/src/ui/components/icon_button/icon_button";
+import { IconButton } from "@/src/ui/components/icon-button/icon-button";
 
 const MODAL_TRANSITION_CONFIG = {
   duration: 450,
