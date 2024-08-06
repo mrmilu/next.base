@@ -3,7 +3,7 @@ import { createStore, useStore } from "zustand";
 import type { PropsWithChildren } from "react";
 import { createContext, useContext, useRef } from "react";
 import { immer } from "zustand/middleware/immer";
-import type { ConstructorType } from "@/src/common/interfaces/constructor_type";
+import type { ConstructorType } from "@/src/common/interfaces/constructor-type";
 
 interface StateProviderProps<T extends object, P> {
   initialState?: ConstructorType<T>;
