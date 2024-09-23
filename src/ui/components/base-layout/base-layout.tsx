@@ -18,7 +18,7 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
       <nav className={css.nav}>
         <ul className={css.ul}>
           <ListElement href="/" label="home" />
-          <ListElement href="/users_provider" label="users (with zustand provider)" />
+          <ListElement href="/users-provider" label="users (with zustand provider)" />
           <ListElement href="/users" label="users" />
           <ListElement href="/create-post" label="create post" />
           <ListElement href="/posts" label="list post" />
