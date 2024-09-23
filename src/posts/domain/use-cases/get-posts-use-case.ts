@@ -1,18 +1,16 @@
 import { inject, injectable } from "inversify";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
 import { TYPES } from "@/src/core/app/ioc/__generated__/types";
-import type { IPostsRepository } from "@/src/core/posts/domain/interfaces/posts-repository";
+import type { IPostsRepository } from "@/src/posts/domain/interfaces/posts-repository";
+import type { Post } from "@/src/posts/domain/models/post";
 
 @injectable()
-export class CreatePostUseCase {
+export class GetPostsUseCase {
   @inject(TYPES.IPostsRepository) private readonly postsRepositoryProvider!: IocProvider<IPostsRepository>;
 
-  async execute(postNumber: number) {
+  async execute(): Promise<Array<Post>> {
     const repository = await this.postsRepositoryProvider();
-    const input = {
-      title: `Cool post number ${postNumber}`,
-      body: `This is a cool body for post number ${postNumber}`
-    };
-    return repository.createPost(input);
+    const pagePosts = await repository.posts();
+    return pagePosts.items;
   }
 }

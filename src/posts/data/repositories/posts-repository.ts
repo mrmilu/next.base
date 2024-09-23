@@ -1,9 +1,9 @@
 import type { IPostsRepository } from "../../domain/interfaces/posts-repository";
 import { inject, injectable } from "inversify";
 import { TYPES } from "@/src/core/app/ioc/__generated__/types";
-import type { Post } from "@/src/core/posts/domain/models/post";
+import type { Post } from "@/src/posts/domain/models/post";
 import type { RestService } from "@/src/core/app/data/services/rest-service";
-import { PostDataModel } from "@/src/core/posts/data/models/post-data-model";
+import { PostDTO } from "@/src/posts/data/dtos/post";
 import { fromJson, fromJsonPage } from "@/src/common/utils/class-transformer";
 import type { Page } from "@/src/core/app/domain/models/page";
 import type { IocProvider } from "@/src/core/app/ioc/interfaces";
@@ -22,7 +22,7 @@ export class PostsRepository implements IPostsRepository {
         userId: 1
       }
     });
-    return fromJson<PostDataModel>(PostDataModel, {
+    return fromJson<PostDTO>(PostDTO, {
       id,
       title: input.title,
       body: input.body,
@@ -38,6 +38,6 @@ export class PostsRepository implements IPostsRepository {
       totalCount: dataPostList.length,
       page: 1
     };
-    return fromJsonPage<PostDataModel, Post>(PostDataModel, fakePage).toDomain();
+    return fromJsonPage<PostDTO, Post>(PostDTO, fakePage).toDomain();
   }
 }

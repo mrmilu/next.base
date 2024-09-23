@@ -7,7 +7,7 @@ interface Props {
   subtitle: string;
 }
 
-export default function PageTitle({ title, subtitle }: Props) {
+export default function PostsPageTitle({ title, subtitle }: Props) {
   const { mdAndUp } = useBreakpointsMatch();
   return mdAndUp ? (
     <div>

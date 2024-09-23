@@ -6,9 +6,9 @@ import { TYPES } from "@/src/core/app/ioc/__generated__/types";
 import { debounce } from "lodash";
 import { Switch } from "@/src/ui/components/switch/switch";
 import { useAsyncState } from "@front_web_mrmilu/hooks";
-import type { CreatePostUseCase } from "@/src/core/posts/domain/use-cases/create-post-use-case";
+import type { CreatePostUseCase } from "@/src/posts/domain/use-cases/create-post-use-case";
 import { locator } from "@/src/core/app/ioc/__generated__";
-import css from "./create-post-page.css";
+import css from "@/src/common/presentation/styles/wrapper.css";
 
 export default function CreatePostPage() {
   const [postNumber, setPostNumber] = useState(1);

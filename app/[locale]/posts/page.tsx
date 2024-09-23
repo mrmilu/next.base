@@ -1,3 +1,3 @@
-import PostsPage from "@/src/ui/features/posts/views/posts-page/posts-page";
+import PostsPage from "@/src/posts/presentation/pages/posts/posts";
 
 export default PostsPage;
