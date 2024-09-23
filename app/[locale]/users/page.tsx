@@ -1,3 +1,3 @@
-import UsersPage from "@/src/ui/features/users/views/users-page/users-page";
+import UsersPage from "@/src/users/presentation/pages/users/users";
 
 export default UsersPage;

@@ -15,7 +15,8 @@ export default getRequestConfig(async ({ locale }) => {
   return {
     messages: {
       home: (await import(`./messages/${locale}/home.json`)).default,
-      posts: (await import(`./messages/${locale}/posts.json`)).default
+      posts: (await import(`./messages/${locale}/posts.json`)).default,
+      users: (await import(`./messages/${locale}/users.json`)).default
     }
   };
 });
