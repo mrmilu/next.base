@@ -1,6 +1,6 @@
-import css from "./home-page.css";
-import LanguageSwitcher from "@/src/ui/features/home/views/home-page/components/language-switcher/language-switcher";
-import HomePageForm from "@/src/ui/features/home/views/home-page/components/home-page-form/home-page-form";
+import css from "@/src/home/presentation/styles/home-page.css";
+import LanguageSwitcher from "@/src/home/presentation/components/language-switcher/language-switcher";
+import HomePageForm from "@/src/home/presentation/components/home-page-form/home-page-form";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import LocaleProvider from "@/src/ui/containers/locale-provider";
 import type { LocaleParams } from "@/src/ui/view-models/params-view-model";

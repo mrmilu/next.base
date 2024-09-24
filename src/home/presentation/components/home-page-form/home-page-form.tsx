@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { object, string } from "yup";
-import css from "../../home-page.css";
+import css from "../../styles/home-page.css";
 import { BaseError } from "@/src/core/app/domain/models/base-error";
 import { useTranslations } from "next-intl";
 
