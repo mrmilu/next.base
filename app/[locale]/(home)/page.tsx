@@ -1,3 +1,3 @@
-import HomePage from "@/src/ui/features/home/views/home-page/home-page";
+import HomePage from "@/src/home/presentation/pages/home";
 
 export default HomePage;
