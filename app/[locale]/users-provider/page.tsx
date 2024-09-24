@@ -1,3 +1,3 @@
-import UsersProviderPage from "@/src/ui/features/users/views/users-page/users-provider-page";
+import UsersProviderPage from "@/src/users/presentation/pages/users-with-provider/users-with-provider";
 
 export default UsersProviderPage;

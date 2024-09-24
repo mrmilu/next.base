@@ -7,7 +7,7 @@ import { TYPES } from "@/src/core/app/ioc/__generated__/types";
 import type { Post } from "@/src/posts/domain/models/post";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import PostsPageTitle from "@/src/posts/presentation/components/posts-page-title";
+import PageTitle from "@/src/common/presentation/components/page-title";
 
 export default async function PostsPage() {
   let posts: Array<Post> = [];
@@ -21,7 +21,7 @@ export default async function PostsPage() {
 
   return (
     <div className={css.wrapper}>
-      <PostsPageTitle title={t("title")} subtitle={t("subtitle")} />
+      <PageTitle title={t("title")} subtitle={t("subtitle")} />
       {posts.map((post, idx) => (
         <SimpleCard key={`${post.id}_${idx}`} title={post.title} subtitle={post.body} />
       ))}
