@@ -1,8 +1,8 @@
 import { Expose } from "class-transformer";
-import { Post } from "@/src/core/posts/domain/models/post";
 import type { DataModel } from "@/src/common/interfaces/data-model";
+import { Post } from "@/src/posts/domain/models/post";
 
-export class PostDataModel implements DataModel<Post> {
+export class PostDTO implements DataModel<Post> {
   @Expose()
   id!: string;
   @Expose()

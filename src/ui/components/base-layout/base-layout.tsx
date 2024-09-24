@@ -20,7 +20,7 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
           <ListElement href="/" label="home" />
           <ListElement href="/users_provider" label="users (with zustand provider)" />
           <ListElement href="/users" label="users" />
-          <ListElement href="/create_post" label="create post" />
+          <ListElement href="/create-post" label="create post" />
           <ListElement href="/posts" label="list post" />
         </ul>
         <Suspense>

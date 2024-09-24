@@ -1,3 +1,2 @@
-import CreatePostPage from "@/src/ui/features/posts/views/create-post-page/create-post-page";
-
+import CreatePostPage from "@/src/posts/presentation/pages/create-post/create-post";
 export default CreatePostPage;
