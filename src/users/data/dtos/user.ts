@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
 import { User } from "@/src/users/domain/models/user";
-import type { DataModel } from "@/src/common/interfaces/data-model";
+import type { DataModel } from "@/src/shared/domain/interfaces/data-model";
 
 export class UserDTO implements DataModel<User> {
   @Expose()

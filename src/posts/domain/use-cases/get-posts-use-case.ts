@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
-import type { IocProvider } from "@/src/core/app/ioc/interfaces";
-import { TYPES } from "@/src/core/app/ioc/__generated__/types";
+import type { IocProvider } from "@/src/shared/application/ioc/interfaces";
+import { TYPES } from "@/src/shared/application/ioc/__generated__/types";
 import type { IPostsRepository } from "@/src/posts/domain/interfaces/posts-repository";
 import type { Post } from "@/src/posts/domain/models/post";
 

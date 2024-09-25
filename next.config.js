@@ -5,7 +5,7 @@ const { withSentryConfig } = require("@sentry/nextjs");
 const createNextIntlPlugin = require("next-intl/plugin");
 
 const withVanillaExtract = createVanillaExtractPlugin();
-const withNextIntl = createNextIntlPlugin("./src/ui/i18n/index.ts");
+const withNextIntl = createNextIntlPlugin("./src/shared/presentation/i18n/index.ts");
 
 const {
   NEXT_PUBLIC_SENTRY_ENABLED,
@@ -54,7 +54,6 @@ const nextConfig = {
     ];
   },
   webpack: (config) => {
-
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.(".svg"));
     config.module.rules.push(
       {

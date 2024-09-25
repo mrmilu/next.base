@@ -2,8 +2,8 @@ import css from "@/src/home/presentation/styles/home-page.css";
 import LanguageSwitcher from "@/src/home/presentation/components/language-switcher/language-switcher";
 import HomePageForm from "@/src/home/presentation/components/home-page-form/home-page-form";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import LocaleProvider from "@/src/ui/containers/locale-provider";
-import type { LocaleParams } from "@/src/ui/view-models/params-view-model";
+import LocaleProvider from "@/src/shared/presentation/containers/locale-provider";
+import type { LocaleParams } from "@/src/shared/presentation/view-models/params-view-model";
 
 export default async function HomePage({ params: { locale } }: LocaleParams) {
   // unstable_setRequestLocale only use when page can be statically rendered

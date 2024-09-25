@@ -1,8 +1,8 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { middlewareGate } from "@/src/common/utils/next";
+import { middlewareGate } from "@/src/shared/utils/next";
 import createIntlMiddleware from "next-intl/middleware";
-import { locales } from "@/src/ui/i18n";
+import { locales } from "@/src/shared/presentation/i18n";
 
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)"]

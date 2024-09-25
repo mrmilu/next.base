@@ -1,7 +1,7 @@
-import { px2rem, wrapperStyles } from "@/src/ui/styles/utils.css";
-import { spacing } from "@/src/ui/styles/spacing";
+import { px2rem, wrapperStyles } from "@/src/shared/presentation/styles/utils.css";
+import { spacing } from "@/src/shared/presentation/styles/spacing";
 import { style } from "@vanilla-extract/css";
-import { vars } from "@/src/ui/styles/theme.css";
+import { vars } from "@/src/shared/presentation/styles/theme.css";
 
 const wrapper = style([
   wrapperStyles,

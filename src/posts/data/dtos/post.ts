@@ -1,5 +1,5 @@
 import { Expose } from "class-transformer";
-import type { DataModel } from "@/src/common/interfaces/data-model";
+import type { DataModel } from "@/src/shared/domain/interfaces/data-model";
 import { Post } from "@/src/posts/domain/models/post";
 
 export class PostDTO implements DataModel<Post> {
