@@ -1,12 +1,12 @@
 import css from "@/src/shared/presentation/styles/wrapper.css";
 import { locator } from "@/src/shared/ioc/__generated__";
 import type { IocProvider } from "@/src/shared/ioc/interfaces";
-import type { GetUsersUseCase } from "@/src/users/domain/use-cases/get-users-use-case";
+import type { GetUsersUseCase } from "@/src/users/application/use-cases/get-users-use-case";
 import { TYPES } from "@/src/shared/ioc/__generated__/types";
 import UsersList from "@/src/users/presentation/containers/users-list";
 import { instanceToPlain } from "class-transformer";
 import type { User } from "@/src/users/domain/models/user";
-import UsersListProvider from "@/src/users/application/providers/user-list-provider";
+import UsersListProvider from "@/src/users/presentation/providers/user-list-provider";
 import PageTitle from "@/src/shared/presentation/components/page-title/page-title";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";

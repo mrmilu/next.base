@@ -1,10 +1,10 @@
 "use client";
 import { Button } from "@/src/shared/presentation/components/button/button";
-import { useUserStore } from "@/src/users/application/stores/user-store";
+import { useUserStore } from "@/src/users/presentation/stores/user-store";
 import React, { useEffect } from "react";
 import { LoggingModal } from "@/src/shared/presentation/components/logging-modal/logging-modal";
 import { CookieUtils } from "@front_web_mrmilu/utils";
-import { useUiProvider } from "@/src/shared/application/providers/ui.provider";
+import { useUiProvider } from "@/src/shared/presentation/providers/ui.provider";
 import { useSearchParams } from "next/navigation";
 
 export default function LoginButton() {

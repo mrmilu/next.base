@@ -3,7 +3,7 @@ import type { PropsWithChildren, ReactElement } from "react";
 import { cloneElement, forwardRef, useEffect, useRef, useState } from "react";
 import { useTransition, animated, easings } from "@react-spring/web";
 import { Close as CloseIcon } from "assets/icons";
-import { useUiProvider } from "@/src/shared/application/providers/ui.provider";
+import { useUiProvider } from "@/src/shared/presentation/providers/ui.provider";
 import { useClickOutside } from "@front_web_mrmilu/hooks";
 import css from "./modal.css";
 import { IconButton } from "@/src/shared/presentation/components/icon-button/icon-button";

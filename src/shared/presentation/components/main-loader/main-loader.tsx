@@ -1,7 +1,7 @@
 "use client";
 import css from "./main-loader.css";
 import { easings, useTransition, animated } from "@react-spring/web";
-import { useUiProvider } from "@/src/shared/application/providers/ui.provider";
+import { useUiProvider } from "@/src/shared/presentation/providers/ui.provider";
 import { Loader } from "@/src/shared/presentation/components/loader/loader";
 
 export const MainLoader = () => {

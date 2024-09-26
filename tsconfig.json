@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/ioc/*": [
-        "src/common/ioc/*"
+        "src/shared/ioc/*"
       ],
       "@/src/*": [
         "src/*"
