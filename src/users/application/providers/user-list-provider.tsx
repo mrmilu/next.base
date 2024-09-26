@@ -1,9 +1,9 @@
 "use client";
 import type { PropsWithChildren } from "react";
 import { User } from "@/src/users/domain/models/user";
-import type { ConstructorType } from "@/src/common/interfaces/constructor-type";
+import type { ConstructorType } from "@/src/shared/domain/interfaces/constructor-type";
 
-import { createProvider } from "@/src/common/utils/zustand";
+import { createProvider } from "@/src/shared/utils/zustand";
 import type { UsersListStateViewModel } from "@/src/users/presentation/view-models/users-list-state";
 
 export const useUsersListProvider = createProvider<UsersListStateViewModel>(() => () => ({

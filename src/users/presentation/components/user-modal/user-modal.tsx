@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import type { User } from "@/src/users/domain/models/user";
-import { ModalContent } from "@/src/ui/components/modal/modal";
+import { ModalContent } from "@/src/shared/presentation/components/modal/modal";
 import css from "./user-modal.css";
 
 interface UserModalProps {

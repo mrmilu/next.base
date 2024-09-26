@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import "@/src/core/app/ioc/__generated__";
-import "@/src/common/utils/yup-extensions";
-import "@/src/ui/styles/globals.css";
-import "@/src/ui/styles/fonts.css";
-import "@/src/ui/styles/reset.css";
+import "@/src/shared/ioc/__generated__";
+import "@/src/shared/utils/yup-extensions";
+import "@/src/shared/presentation/styles/globals.css";
+import "@/src/shared/presentation/styles/fonts.css";
+import "@/src/shared/presentation/styles/reset.css";
 import React from "react";
-import { theme } from "@/src/ui/styles/theme.css";
+import { theme } from "@/src/shared/presentation/styles/theme.css";
 import type { PropsWithChildren } from "react";
-import { MainLoader } from "@/src/ui/components/main-loader/main-loader";
-import { Modal } from "@/src/ui/components/modal/modal";
+import { MainLoader } from "@/src/shared/presentation/components/main-loader/main-loader";
+import { Modal } from "@/src/shared/presentation/components/modal/modal";
 import type { Metadata, Viewport } from "next";
-import type { LocaleParams } from "@/src/ui/view-models/params-view-model";
-import { BaseLayout } from "@/src/ui/components/base-layout/base-layout";
-import { locales } from "@/src/ui/i18n";
+import type { LocaleParams } from "@/src/shared/presentation/view-models/params-view-model";
+import { BaseLayout } from "@/src/shared/presentation/components/base-layout/base-layout";
+import { locales } from "@/src/shared/presentation/i18n";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 // Conditionally inject axe into the page.

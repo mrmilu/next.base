@@ -29,8 +29,7 @@
     "incremental": true,
     "typeRoots": [
       "node_modules/@types",
-      "src/@types",
-      "src/common/@types"
+      "src/@types"
     ],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,

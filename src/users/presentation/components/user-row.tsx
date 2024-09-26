@@ -1,10 +1,10 @@
 "use client";
-import { SimpleCard } from "@/src/ui/components/simple-card/simple-card";
-import { useUiProvider } from "@/src/ui/providers/ui.provider";
+import { SimpleCard } from "@/src/shared/presentation/components/simple-card/simple-card";
+import { useUiProvider } from "@/src/shared/application/providers/ui.provider";
 import { User } from "@/src/users/domain/models/user";
 import { UserModal } from "@/src/users/presentation/components/user-modal/user-modal";
 import { useMemo } from "react";
-import type { ConstructorType } from "@/src/common/interfaces/constructor-type";
+import type { ConstructorType } from "@/src/shared/domain/interfaces/constructor-type";
 
 interface Props {
   user: Record<string, unknown>;

@@ -1,13 +1,13 @@
-import css from "@/src/common/presentation/styles/wrapper.css";
-import { SimpleCard } from "@/src/ui/components/simple-card/simple-card";
-import { locator } from "@/src/core/app/ioc/__generated__";
-import type { IocProvider } from "@/src/core/app/ioc/interfaces";
+import css from "@/src/shared/presentation/styles/wrapper.css";
+import { SimpleCard } from "@/src/shared/presentation/components/simple-card/simple-card";
+import { locator } from "@/src/shared/ioc/__generated__";
+import type { IocProvider } from "@/src/shared/ioc/interfaces";
 import type { GetPostsUseCase } from "@/src/posts/domain/use-cases/get-posts-use-case";
-import { TYPES } from "@/src/core/app/ioc/__generated__/types";
+import { TYPES } from "@/src/shared/ioc/__generated__/types";
 import type { Post } from "@/src/posts/domain/models/post";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import PageTitle from "@/src/common/presentation/components/page-title";
+import PageTitle from "@/src/shared/presentation/components/page-title/page-title";
 
 export default async function PostsPage() {
   let posts: Array<Post> = [];

@@ -1,14 +1,14 @@
 "use client";
-import "@/src/common/utils/yup-extensions";
-import { Button } from "@/src/ui/components/button/button";
-import { ControlledInput } from "@/src/ui/components/input/input";
+import "@/src/shared/utils/yup-extensions";
+import { Button } from "@/src/shared/presentation/components/button/button";
+import { ControlledInput } from "@/src/shared/presentation/components/input/input";
 import { timeout } from "@front_web_mrmilu/utils";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { object, string } from "yup";
 import css from "../../styles/home-page.css";
-import { BaseError } from "@/src/core/app/domain/models/base-error";
+import { BaseError } from "@/src/shared/domain/models/base-error";
 import { useTranslations } from "next-intl";
 
 interface FormValues {

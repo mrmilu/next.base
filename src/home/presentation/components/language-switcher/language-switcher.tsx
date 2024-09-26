@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "@/src/ui/i18n";
+import { useRouter } from "@/src/shared/presentation/i18n";
 import { useLocale, useTranslations } from "next-intl";
 
 export default function LanguageSwitcher() {
