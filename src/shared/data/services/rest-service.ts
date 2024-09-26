@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
 import { HttpClient } from "@/src/shared/data/network/rest/http-client";
 import type { IEnvVars } from "@/src/shared/domain/interfaces/env-vars";
-import { TYPES } from "@/src/shared/application/ioc/__generated__/types";
+import { TYPES } from "@/src/shared/ioc/__generated__/types";
 import type {
   IRestDataSource,
   RestDataSourceOptionsWithParams,

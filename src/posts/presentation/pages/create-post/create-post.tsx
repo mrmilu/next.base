@@ -1,13 +1,13 @@
 "use client";
 import { useCallback, useState } from "react";
 import { Button } from "@/src/shared/presentation/components/button/button";
-import type { IocProvider } from "@/src/shared/application/ioc/interfaces";
-import { TYPES } from "@/src/shared/application/ioc/__generated__/types";
+import type { IocProvider } from "@/src/shared/ioc/interfaces";
+import { TYPES } from "@/src/shared/ioc/__generated__/types";
 import { debounce } from "lodash";
 import { Switch } from "@/src/shared/presentation/components/switch/switch";
 import { useAsyncState } from "@front_web_mrmilu/hooks";
 import type { CreatePostUseCase } from "@/src/posts/domain/use-cases/create-post-use-case";
-import { locator } from "@/src/shared/application/ioc/__generated__";
+import { locator } from "@/src/shared/ioc/__generated__";
 import css from "@/src/shared/presentation/styles/wrapper.css";
 
 export default function CreatePostPage() {

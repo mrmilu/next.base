@@ -1,12 +1,12 @@
 import type { IPostsRepository } from "../../domain/interfaces/posts-repository";
 import { inject, injectable } from "inversify";
-import { TYPES } from "@/src/shared/application/ioc/__generated__/types";
+import { TYPES } from "@/src/shared/ioc/__generated__/types";
 import type { Post } from "@/src/posts/domain/models/post";
 import type { RestService } from "@/src/shared/data/services/rest-service";
 import { PostDTO } from "@/src/posts/data/dtos/post";
 import { fromJson, fromJsonPage } from "@/src/shared/utils/class-transformer";
 import type { Page } from "@/src/shared/domain/models/page";
-import type { IocProvider } from "@/src/shared/application/ioc/interfaces";
+import type { IocProvider } from "@/src/shared/ioc/interfaces";
 import type { CreatePostInputModel } from "../../domain/models/create-post-input-model";
 
 @injectable()

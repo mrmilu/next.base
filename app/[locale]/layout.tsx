@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import "@/src/shared/application/ioc/__generated__";
+import "@/src/shared/ioc/__generated__";
 import "@/src/shared/utils/yup-extensions";
 import "@/src/shared/presentation/styles/globals.css";
 import "@/src/shared/presentation/styles/fonts.css";

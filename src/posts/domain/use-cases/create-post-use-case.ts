@@ -1,7 +1,7 @@
 import { inject, injectable } from "inversify";
-import type { IocProvider } from "@/src/shared/application/ioc/interfaces";
+import type { IocProvider } from "@/src/shared/ioc/interfaces";
 import type { IPostsRepository } from "@/src/posts/domain/interfaces/posts-repository";
-import { TYPES } from "@/src/shared/application/ioc/__generated__/types";
+import { TYPES } from "@/src/shared/ioc/__generated__/types";
 
 @injectable()
 export class CreatePostUseCase {
