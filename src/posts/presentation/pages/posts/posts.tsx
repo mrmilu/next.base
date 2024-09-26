@@ -2,7 +2,7 @@ import css from "@/src/shared/presentation/styles/wrapper.css";
 import { SimpleCard } from "@/src/shared/presentation/components/simple-card/simple-card";
 import { locator } from "@/src/shared/ioc/__generated__";
 import type { IocProvider } from "@/src/shared/ioc/interfaces";
-import type { GetPostsUseCase } from "@/src/posts/domain/use-cases/get-posts-use-case";
+import type { GetPostsUseCase } from "@/src/posts/application/use-cases/get-posts-use-case";
 import { TYPES } from "@/src/shared/ioc/__generated__/types";
 import type { Post } from "@/src/posts/domain/models/post";
 import { notFound } from "next/navigation";

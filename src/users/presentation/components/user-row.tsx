@@ -1,6 +1,6 @@
 "use client";
 import { SimpleCard } from "@/src/shared/presentation/components/simple-card/simple-card";
-import { useUiProvider } from "@/src/shared/application/providers/ui.provider";
+import { useUiProvider } from "@/src/shared/presentation/providers/ui.provider";
 import { User } from "@/src/users/domain/models/user";
 import { UserModal } from "@/src/users/presentation/components/user-modal/user-modal";
 import { useMemo } from "react";

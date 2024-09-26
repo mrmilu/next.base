@@ -1,7 +1,7 @@
 import css from "@/src/shared/presentation/styles/wrapper.css";
 import { locator } from "@/src/shared/ioc/__generated__";
 import type { IocProvider } from "@/src/shared/ioc/interfaces";
-import type { GetUsersUseCase } from "@/src/users/domain/use-cases/get-users-use-case";
+import type { GetUsersUseCase } from "@/src/users/application/use-cases/get-users-use-case";
 import { TYPES } from "@/src/shared/ioc/__generated__/types";
 import UserRow from "@/src/users/presentation/components/user-row";
 import PageTitle from "@/src/shared/presentation/components/page-title/page-title";

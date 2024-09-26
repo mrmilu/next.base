@@ -1,6 +1,6 @@
 "use client";
-import { useUiProvider } from "@/src/shared/application/providers/ui.provider";
-import { useUsersListProvider } from "@/src/users/application/providers/user-list-provider";
+import { useUiProvider } from "@/src/shared/presentation/providers/ui.provider";
+import { useUsersListProvider } from "@/src/users/presentation/providers/user-list-provider";
 import type { User } from "@/src/users/domain/models/user";
 import { UserModal } from "@/src/users/presentation/components/user-modal/user-modal";
 import { SimpleCard } from "@/src/shared/presentation/components/simple-card/simple-card";
