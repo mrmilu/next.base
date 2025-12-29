@@ -1,4 +1,6 @@
-FROM node:18-alpine AS base
+ARG NODE_VERSION=18-alpine
+
+FROM node:${NODE_VERSION} AS base
 RUN corepack enable
 
 # Install dependencies only when needed

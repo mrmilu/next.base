@@ -22,6 +22,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Read Node version from .nvmrc
+        id: node_version
+        run: echo "NODE_VER=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
@@ -30,7 +34,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: ${{ steps.node_version.outputs.NODE_VER }}
           cache: 'pnpm'
 
       - name: Security Audit
@@ -62,6 +66,8 @@ jobs:
           file: ${{ env.DOCKERFILE }}
           tags: ${{ steps.meta_main.outputs.tags }}
           labels: ${{ steps.meta_main.outputs.labels }}
+          build-args: |
+            NODE_VERSION=${{ steps.node_version.outputs.NODE_VER }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           secrets: |
